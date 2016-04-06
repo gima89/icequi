@@ -1,12 +1,12 @@
 -> COMANDI GIT <-
 
-INIZIALIZZAZIONE
+INIZIALIZZAZIONE:
 
 git init
 git add .
 git commit -m "first commit"
 git remote add origin git@github.com:nomeutente/nomerepository.git
-git push -u origin master
+git push -u origin master <-
 
 
 PER MANDARE:
@@ -22,12 +22,15 @@ PER SCARICARE:
 
 git pull -> (per scaricare la repository)
 
+
+IN CASO DI MERGE:
+
 git commit -m "commento" -> ("fai la foto al file") (potrebbe chiederlo se qualcun'altro ha modificato qualcosa)
 
 :wq -> (write and quit) in caso di merge (se si è sicuri di aver lavorato su parti diverse)
 
 
-PER VISUALIZZARE :
+PER VISUALIZZARE:
 
 git diff -> mostra i cambiamenti del file
 git log -> mostra tutti i commit dei file
@@ -43,7 +46,7 @@ git commit -m "commento"
 
 git push
 
-PER RECUPERARE VERSIONI PRECEDENTI
+PER RECUPERARE VERSIONI PRECEDENTI:
 
 git checkout -chiave del commit- <- cambia la propria versione con quella precedente specificata con una chiave
 git checkout master <- ritorna all'ultima versione
