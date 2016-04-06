@@ -1,0 +1,49 @@
+-> COMANDI GIT <-
+
+INIZIALIZZAZIONE
+
+git init
+git add .
+git commit -m "first commit"
+git remote add origin git@github.com:nomeutente/nomerepository.git
+git push -u origin master
+
+
+PER MANDARE:
+
+git add . -> (add tutta la cartella) oppure git add nomefile (add solo di un file specifico)
+
+git commit -m "commento" -> ("fai la foto al file")
+
+git push (manda i file sulla repository) oppure git push origin (se non si collega in automatico)
+
+
+PER SCARICARE:
+
+git pull -> (per scaricare la repository)
+
+git commit -m "commento" -> ("fai la foto al file") (potrebbe chiederlo se qualcun'altro ha modificato qualcosa)
+
+:wq -> (write and quit) in caso di merge (se si è sicuri di aver lavorato su parti diverse)
+
+
+PER VISUALIZZARE :
+
+git diff -> mostra i cambiamenti del file
+git log -> mostra tutti i commit dei file
+git log --oneline -> mostra tutti i commit su una riga per file (versione compatta)
+git status -> fa un controllo dello stato (es. se tutto è stato committato)
+
+
+PER CANCELLARE FILE:
+
+git rm nomefile
+
+git commit -m "commento"
+
+git push
+
+PER RECUPERARE VERSIONI PRECEDENTI
+
+git checkout -chiave del commit- <- cambia la propria versione con quella precedente specificata con una chiave
+git checkout master <- ritorna all'ultima versione
