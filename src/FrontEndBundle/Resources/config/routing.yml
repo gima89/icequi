@@ -1,0 +1,23 @@
+front_end_homepage:
+    path:     /
+    defaults: { _controller: FrontEndBundle:Default:index }
+
+search:
+    path:     /search
+    defaults: { _controller: FrontEndBundle:Default:search }
+
+segnala:
+    path:     /segnala
+    defaults: { _controller: FooterEndBundle:Default:segnala }
+
+chi_siamo:
+    path:     /chisiamo
+    defaults: { _controller: FooterEndBundle:Default:chi_siamo }
+
+privacy_policy:
+    path:     /privacypolicy
+    defaults: { _controller: FooterEndBundle:Default:privacy_policy }
+
+contatti:
+    path:     /contatti
+    defaults: { _controller: FooterEndBundle:Default:contatti }  
