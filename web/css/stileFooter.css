@@ -1,0 +1,162 @@
+/*CLASS SELECTORS*/
+
+.formcontatti {
+border-radius: 5px;
+box-shadow: 3px 3px 3px #666 0.45;
+font-family:Sketch;
+font-size:16px;
+margin-bottom: 10px;
+margin-top:10px;
+width:70vh;
+height: 30vh;
+background-color: #ededed;
+text-align: left;
+}
+
+.impostazionimain {
+	padding-top: 200px;
+	width:90vh;
+	text-align: center;
+	margin: 0 auto;
+
+}
+
+.impwrap {
+	background-color: #ededed;
+	clear:both;
+	overflow: auto;
+	zoom: 1;
+	padding: 10px 10px 10px 20px;
+}
+
+.impwrap nav {
+	text-align: right;
+	font-family:Sketch;
+	font-size:20px;
+	float: left;
+	width: 45%;
+	height: 100%;
+	/*border: 1px solid red;*/
+}
+
+.impwrap nav a{
+	color:#000;
+	text-decoration: none;
+
+}
+
+.impwrap nav a:hover{
+	color:#000;
+}
+
+.impwrap nav p {
+	margin: 60px 0px;
+}
+/*.impwrap nav p:last-child {
+	margin-bottom: 0;
+}*/
+
+.impwrap section {
+	float:right;
+	/*border: 1px solid black;*/
+	width: 55%;
+	height: 100%;
+	margin-top: 60px;
+	/*padding-top: 35px;*/
+}
+
+.impwrap section input[type=password]{
+	padding-left:3px;
+}
+
+.impwrap section input[type=password],
+.impwrap select {
+	background-color: #fff;
+	border-radius: 5px;
+	font-family: Sketch;
+	font-size: 16px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	box-shadow: 3px 3px 3px inset #666;
+	/*padding: 5px;
+	box-shadow: 3px 3px 3px inset #666;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width:180px;*/
+}
+
+.impwrap section input[type=submit] {
+	border-radius: 0;
+	/*margin-top: 5px;
+	margin-bottom: 5px;
+	padding:5px;
+	width: 40%;*/
+	font-size: 18px;
+	padding:5px;
+	width: 40%;
+}
+
+.impwrap select {
+	width: 65%;
+	margin-bottom: 10px;
+	height: 30px;
+}
+
+.segnalaButton {
+	margin-bottom: 40px;
+	height: 30%;
+	padding: 5px;
+	width: 15%;
+	font-size:20px;
+	border-radius: 0%;
+}
+
+
+/*ID SELECTORS*/
+
+#contattimain form,h4,p {
+	margin-bottom: 20px;
+}
+
+#contattimain form input {
+margin-top: 20px;
+font-family: Sketch;
+font-size: 18px;
+}
+
+#contattimain,
+#policymain,
+#segnalamain {
+	padding-top: 200px;
+	width:600px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#contattimain h3,
+#policymain h3,
+#segnalamain h3,
+.impostazionimain h3 {
+	font-size: 32px;
+	margin-bottom: 25px;
+}
+
+#policymain h4,p{
+	margin-bottom: 10px;
+}
+
+#segnalamain select,input,textarea {
+		width: 70%;
+		margin: 15px;
+		height: 30px;
+		font-family:Sketch;
+		font-size:16px;
+		border-radius: 5px;
+		background-color: #ededed;
+		box-shadow: 3px 3px 3px #ededed 0.90;
+		box-sizing: border-box;
+}
+
+#segnalamain textarea {
+	height: 60px;
+}

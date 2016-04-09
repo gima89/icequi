@@ -1,0 +1,102 @@
+.bloccoAdmin{
+	margin:10px;
+	overflow: auto;
+}
+
+.bloccoAdmin form{
+	margin:0px;
+	padding:0px;
+	width:100%
+}
+
+.bloccoAdmin form div.segnalazione{
+	background-color:rgb(242,242,242);
+	border-radius:5px;
+	font-size:16px;
+	margin-bottom:20px;
+	padding:15px;
+	padding-bottom:30px;
+	text-align:left;
+}
+
+.bloccoAdmin h4{
+	font-size:18px;
+	margin-bottom:2px;
+}
+
+.bloccoAdmin input[type=email],
+.bloccoAdmin input[type=password],
+.bloccoAdmin input[type=tel],
+.bloccoAdmin input[type=text],
+.bloccoAdmin select{
+	background-color: rgb(242,242,242);
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px inset #666;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	color: #000;
+	font-family:Arial;
+	font-size:18px;
+	margin-bottom: 10px;
+	padding:5px;
+	width:100%;
+}
+
+.bloccoAdmin select.filter{
+	display: inline-block;
+	font-size: 14px;
+	padding:2px;
+	width:50px;
+}
+
+
+.bloccoAdmin span{
+	font-family: Arial;
+	font-size: 16px;
+}
+
+.bloccoAdmin .submitButton{
+	box-sizing:border-box;
+	float:right;
+	font-size:20px;
+	padding:5px 0px;
+	width:25%
+	
+}
+
+.bloccoGusto{
+	box-sizing:border-box;
+}
+
+.bloccoGusto h4{
+	margin-bottom:10px;
+	
+}
+
+.bloccoGusto input[type=color]{
+	display: inline-block;
+	margin-bottom:10px;
+	width: 15%;
+}
+
+.bloccoGusto .submitButton{
+width: 30%;
+}
+
+.bloccoGusto select{
+	display:inline-block;
+	width:30%;
+}
+
+.containerGusti{
+	margin-bottom:10px;
+}
+
+.containerGusti h3{
+	margin-left:2px;
+}
+
+.containerGusti label{
+	display: inline-block;
+}

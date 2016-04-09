@@ -1,3 +1,39 @@
 back_end_homepage:
     path:     /
     defaults: { _controller: BackEndBundle:Default:index }
+
+settings:
+    path:     _settings
+    defaults: { _controller: BackEndBundle:Admin:settings }
+
+admin_manage:
+    path:     _adminManage
+    defaults: { _controller: BackEndBundle:Admin:adminManage }
+
+add_gel:
+    path:     _addGel
+    defaults: { _controller: BackEndBundle:Admin:addGel }
+
+upd_gel:
+    path:     _updGel
+    defaults: { _controller: BackEndBundle:Admin:updGel }
+
+sig_gel:
+    path:     _sigGel
+    defaults: { _controller: BackEndBundle:Admin:sigGel }
+
+add_flavour:
+    path:     _addFlavour
+    defaults: { _controller: BackEndBundle:Admin:addFlavour }
+
+upd_flavour:
+    path:     _updFlavour
+    defaults: { _controller: BackEndBundle:Admin:updFlavour }
+
+del_flavour:
+    path:     _delFlavour
+    defaults: { _controller: BackEndBundle:Admin:delFlavour }
+
+dashboard:
+    path:     _dashboard
+    defaults: { _controller: BackEndBundle:Admin:dashboard }

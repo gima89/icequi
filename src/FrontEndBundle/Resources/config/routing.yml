@@ -1,23 +1,27 @@
-front_end_homepage:
+_homepage:
     path:     /
     defaults: { _controller: FrontEndBundle:Default:index }
 
-search:
+_search:
     path:     /search
     defaults: { _controller: FrontEndBundle:Default:search }
 
+_favorites:
+    path:     /favorites
+    defaults: { _controller: FrontEndBundle:Default:favorite }
+
 segnala:
     path:     /segnala
-    defaults: { _controller: FooterEndBundle:Default:segnala }
+    defaults: { _controller: FrontEndBundle:Footer:segnala }
 
-chi_siamo:
+chisiamo:
     path:     /chisiamo
-    defaults: { _controller: FooterEndBundle:Default:chi_siamo }
+    defaults: { _controller: FrontEndBundle:Footer:chisiamo }
 
-privacy_policy:
-    path:     /privacypolicy
-    defaults: { _controller: FooterEndBundle:Default:privacy_policy }
+privacy:
+    path:     /privacy
+    defaults: { _controller: FrontEndBundle:Footer:privacy }
 
 contatti:
     path:     /contatti
-    defaults: { _controller: FooterEndBundle:Default:contatti }  
+    defaults: { _controller: FrontEndBundle:Footer:contatti }

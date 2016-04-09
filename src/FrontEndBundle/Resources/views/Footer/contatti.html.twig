@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stileFooter.css" />
+{% endblock %}
+
+{% block body %}
+<div id="contattimain">
+	<h3>CONTATTACI</h3>
+	<form>
+		<textarea class="formcontatti" method="POST" placeholder="Inserisci qua il testo del messaggio."></textarea>
+    <br>
+    <input type="submit" value="INVIA" class="submitButton segnalaButton" style="margin-bottom:10px;">
+	</form>
+  <p>Oppure mandaci un’ email a: <a href="mailto:icequi@info.it?subject=contatta%20iceQui&body=Gentili%20signori">icequi@info.it</a></p>
+</div>
+{% endblock %}

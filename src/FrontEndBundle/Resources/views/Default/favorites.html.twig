@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets  %}
+<style>html: overflow-y: auto </style>
+{% endblock %}
+
+{% block body %}
+<div id="results">
+	<header id="resultHeader">
+		<h1><span>2</span> Gelaterie Preferite     </h1>
+		<h6 id="ricerca">Cerca</h6><img src="http://www.marcolanci.it/icequi/img/downArrow.png" alt="downArrow" id="arrow" onclick="giraFreccia();" />
+		<hr />
+	</header>
+	<section id="searchPanel">
+		<form name="searchForm" method="get" action="<?php $_SERVER['PHP_SELF'] ?>">
+			<div id="searchFormWrapper">
+				<div class="searchFormColumn">
+					<select name="gusto1">
+						<option>Nessun Gusto</option>
+						<?php crea_elenco($gusti); ?>
+					</select><br />
+					<select name="gusto2">
+						<option>Nessun Gusto</option>
+						<?php crea_elenco($gusti); ?>
+					</select><br />
+					<select name="gusto3">
+						<option>Nessun Gusto</option>
+						<?php crea_elenco($gusti); ?>
+					</select>
+				</div>
+				<div class="searchFormColumn">
+					<select name="region">
+						<option>Ovunque</option>
+					<?php crea_elenco($regioni); ?>
+					</select><br />
+					<select name="gusto2">
+						<option>Ovunque</option>
+						<?php crea_elenco($province) ?>
+					</select><br />
+					<select name="gusto3">
+						<option>Ovunque</option>
+						<?php crea_elenco($cities) ?>
+					</select>
+				</div>
+				<div class="searchFormColumn">
+					<select name="day1">
+						<option>Indifferente</option>
+						<?php crea_elenco($days); ?>
+					</select><br />
+					<select name="day2">
+						<option>Indifferente</option>
+						<?php crea_elenco($days) ?>
+					</select><br />
+					<select name="day3">
+						<option>Indifferente</option>
+						<?php crea_elenco($days) ?>
+					</select>
+				</div>
+				<div class="searchFormColumn">
+					<input type="submit" value="CERCA" class="submitButton" />
+				</div>
+			</div>
+		</form>
+	</section>
+	<section class="resultSection">
+		<div class="resultInfo">
+			<h2>1. La Gelateria di Delgano</h2>
+			<p class="address">Via Benedetto Varchi, 4</p>
+			<p class="tel">02 87213421</p>
+		</div>
+		<div class="resultIcon">
+			<div><img src="http://www.marcolanci.it/icequi/img/visualizzaGusti.png" alt="Visualizza i Gusti" class="imgGusti" /></div>
+			<div><img src="http://www.marcolanci.it/icequi/img/yellowStar.png" alt="Rimuovi dai preferiti" title="Rimuovi dai preferiti" onclick="changePic(this)" /></div>
+			<div><img  class="invita" src="http://www.marcolanci.it/icequi/img/inviteFriends.png" alt="Invita amici" title="Invita amici" /></div>
+		</div>
+	</section>
+	<section class="resultSection greyBG">
+		<div class="resultInfo">
+			<h2>2. Bar Rizzo"</h2>
+			<p class="address">Viale Regina Margherita, 111</p>
+			<p class="tel">090 939495</p>
+		</div>
+		<div class="resultIcon">
+			<div><img src="http://www.marcolanci.it/icequi/img/visualizzaGusti.png" alt="Visualizza i Gusti" class="imgGusti" /></div>
+			<div><img src="http://www.marcolanci.it/icequi/img/yellowStar.png" alt="Rimuovi dai preferiti" title="Rimuovi dai preferiti" onclick="changePic(this)" /></div>
+			<div><img  class="invita" src="http://www.marcolanci.it/icequi/img/inviteFriends.png" alt="Invita amici" title="Invita amici" /></div>
+		</div>
+	</section>
+	<div class="impaginatore"><a href="#">1</a> <a href="#">>></a> <a href="#">1</a></div>
+</div>
+
+<div class="layer" id="layerGusti">
+	<section class="popup">
+		<div id="popupGusti">
+			<div class="closePP" id="gustiClose"></div>
+			<h2>IN QUESTA GELATERIA PUOI TROVARE</h2>
+			<!-- il colore deve cambiare dinamicamente -->
+			<div class="flavoursWrapper">
+			<p><span class="gelatini" style="color: green;">&#127846;</span>Pistacchio</p>
+			<p><span class="gelatini" style="color: brown">&#127846;</span>Cacao</p>
+			<p><span class="gelatini" style="color: red">&#127846;</span>Fragola</p>
+			<p><span class="gelatini" style="color: cyan">&#127846;</span>Puffo</p>
+			<p><span class="gelatini" style="color: lightyellow">&#127846;</span>Ananas</p>
+			<p><span class="gelatini" style="color: yellow">&#127846;</span>Banana</p>
+			<p><span class="gelatini" style="color: bordeaux">&#127846;</span>Amarena</p>
+			<p><span class="gelatini" style="color: red">&#127846;</span>Mela Rossa</p>
+			<p><span class="gelatini" style="color: white">&#127846;</span>Stracciatella</p>
+			<p><span class="gelatini" style="color: pink">&#127846;</span>Prosciutto</p>
+			<p><span class="gelatini" style="color: #0ABAB5">&#127846;</span>Carofiglio</p>
+			<p><span class="gelatini" style="color: purple">&#127846;</span>Prugna</p>
+			</div>
+		</div>
+	</section>
+</div>
+{% endblock %}

@@ -1,1 +1,124 @@
-Hello World!
+{% extends 'base.html.twig' %}
+
+{% block header %}
+<header>
+	<div id="hpTopBar">
+		<nav>
+			<a href="#" title="Registrati" id="reg">Registrati</a>
+				<span> &#124; </span>
+			<a href="#" title="Effettua il login" id="log">Login</a>
+		</nav>
+	</div>
+	<div id="hpBanner">
+		<img id="hpLogo" src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQuiLogo" />
+	</div>
+</header>
+{% endblock %}
+
+{% block body %}
+<aside>
+	<nav>
+		<a href="#explained"><div id="cerchio1" class="circle current"></div></a>
+		<a href="#iceCreamSection"><div id="cerchio2" class="circle"></div></a>
+		<a href="#cityForm"><div id="cerchio3" class="circle"></div></a>
+		<a href="#daysForm"><div id="cerchio4" class="circle"></div></a>
+	</nav>
+</aside>
+<div id="hpMain">
+			<section id="explained" class="hpSection">
+				<h1 id="titolo">CERCHI UN GELATO<wbr> E NON SAI DOVE TROVARLO?</h1>
+				<div id="iconBox">
+					<div>
+						<img src="http://www.marcolanci.it/icequi/img/coppetta.png" alt="Icona1" class="hpIcon"/>
+						<p>Scegli da uno a tre gusti,</p>
+					</div>
+					<div>
+						<img src="http://www.marcolanci.it/icequi/img/map.png" alt="Icona2" class="hpIcon"/>
+						<p>imposta la tua citt&agrave;..</p>
+					</div>
+					<div>
+						<img src="http://www.marcolanci.it/icequi/img/friends.png" alt="Icona3" class="hpIcon"/>
+						<p>e invita i tuoi amici!</p>
+					</div>
+				</div>
+				<a href="#iceCreamSection"><div class="hpBlueButton" id="startButton">INIZIA RICERCA</div></a>
+			</section>
+			<form method="get" action="{{ url ('_favorites') }}" name="hpForm">
+				<section id="iceCreamSection" class="hpSection">
+					<div class="hpFormWrapper">
+						<div class="hpColumn">
+							<h2>SCEGLI I GUSTI</h2>
+							<div class="hpForm">
+								<select name="gusto1">
+									<option>Nessuno</option>
+									<?php crea_elenco($gusti) ?>
+								</select><br />
+								<select name="gusto2">
+									<option>Nessuno</option>
+									<?php crea_elenco($gusti) ?>
+								</select><br />
+								<select name="gusto3">
+									<option>Nessuno</option>
+									<?php crea_elenco($gusti) ?>
+								</select><br />
+							</div>
+						</div>
+						<div class="hpColumn">
+							<img src="http://www.marcolanci.it/icequi/img/coppetta.png" /><br />
+							<a href="#cityForm"><div class="blueButton" id="cityButton">CONTINUA</div></a>
+						</div>
+					</div>
+				</section>
+				<section id="cityForm" class="hpSection">
+					<div class="hpFormWrapper">
+						<div class="hpColumn">
+							<h2>SCEGLI DOVE</h2>
+							<div class="hpForm">
+								<select name="regione">
+									<option >Ovunque</option>
+									<?php crea_elenco($regioni) ?>
+								</select><br />
+								<select name="provincia">
+									<option >Ovunque</option>
+									<?php crea_elenco($province) ?>
+								</select><br />
+								<select name="city">
+									<option>Ovunque</option>
+									<?php crea_elenco($cities) ?>
+								</select><br />
+							</div>
+						</div>
+						<div class="hpColumn">
+							<img src="http://www.marcolanci.it/icequi/img/map.png" /><br />
+							<a href="#daysForm"><div id="daysButton" class="blueButton">CONTINUA</div></a>
+						</div>
+					</div>
+				</section>
+				<section id="daysForm" class="hpSection">
+					<div class="hpFormWrapper">
+						<div class="hpColumn">
+							<h2>SCEGLI  GIORNI</h2>
+							<div class="hpForm">
+								<select name="day1">
+									<option>Nessuno</option>
+									<?php crea_elenco($days) ?>
+								</select><br />
+								<select name="day2">
+									<option>Nessuno</option>
+									<?php crea_elenco($days) ?>
+								</select><br />
+								<select name="day3">
+									<option>Nessuno</option>
+									<?php crea_elenco($days) ?>
+								</select><br />
+							</div>
+						</div>
+						<div class="hpColumn">
+							<img src="http://www.marcolanci.it/icequi/img/days.png" /><br />
+							<input type="submit" value="CERCA!" class="submitButton"/>
+						</div>
+					</div>
+				</section>
+			</form>
+		</div>
+{% endblock %}

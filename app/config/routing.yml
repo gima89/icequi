@@ -1,8 +1,12 @@
-back_end:
-    resource: "@BackEndBundle/Resources/config/routing.yml"
-    prefix:   /
-
 front_end:
     resource: "@FrontEndBundle/Resources/config/routing.yml"
     prefix:   /
 
+back_end:
+    resource: "@BackEndBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+#Ho commentato la rotta di diefault affinché venisse sovrascritta dal FrontEndBundle
+# app:
+#    resource: "@AppBundle/Controller/"
+#    type:     annotation

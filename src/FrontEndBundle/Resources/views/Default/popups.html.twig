@@ -1,0 +1,52 @@
+<div class="layer" id="layer">
+			<section class="popup">
+				<div id="signUpPopUp">
+					<div class="closePP" id="signUpClose"></div>
+						<h2>BENVENUTO SU</h2>
+						<img src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
+						<form name="signUpForm" method="get" action="<?= $_SERVER['PHP_SELF'] ?>" />
+							<input type="hidden" name="logged" value="1" />
+							<input type="mail" name="user" placeholder="E-mail" class="greyInput" /><br />
+							<input type="password" name="psw1" placeholder="Password" class="greyInput" /><br />
+							<input type="password" name="psw2" placeholder="Ripeti Password" class="greyInput" /><br />
+							<input type="submit" class="submitButton" value="REGISTRATI" />
+						</form>
+					<div class="popupFooter">
+						OPPURE REGISTRATI CON FACEBOOK <a href="http://www.facebook.com" target="_blank"><img src="http://www.marcolanci.it/icequi/img/fblogin.png" alt="Facebook LogIn" /></a>
+					</div>
+				</div>
+				<div id="signInPopUp">
+					<div class="closePP" id="signInClose"></div>
+						<h2>BENTORNATO SU</h2>
+						<img src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
+						<form name="signInForm" method="get" action="<?= $_SERVER['PHP_SELF'] ?>" id="signInForm" />
+							<input type="hidden" name="logged" value="1" />
+							<input type="mail" name="user" placeholder="E-mail" class="greyInput" /><br />
+							<input type="password" name="psw" placeholder="Password" class="greyInput" /><br />
+							<p id="forgotten">Password Dimenticata?</p>
+							<input type="submit" class="submitButton" value="ACCEDI" />
+						</form>
+						<form name="forgottenForm" method="post" action="recover.php" id="forgottenForm" />
+							<input type="mail" name="mail" placeholder="E-mail" class="greyInput" /><br />
+							<p id="tornaAlLogin">Torna al login</p>
+							<input type="submit" class="submitButton" value="RECUPERO" />
+						</form>
+					<div class="popupFooter">
+						OPPURE REGISTRATI CON FACEBOOK <a href="http://www.facebook.com" target="_blank"><img src="http://www.marcolanci.it/icequi/img/fblogin.png" alt="Facebook LogIn" /></a>
+					</div>
+				</div>
+				<div id="inviteFriendsPopUp">
+					<div class="closePP" id="inviteFriendsClose"></div>
+						<h2>INVITA I TUOI AMICI:</h2>
+						<img src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
+						<form name="inviteFriendsForm" method="post" action="invita.php" />
+							<input type="mail" name="mail1" placeholder="E-mail amico 1" class="greyInput" /><br />
+							<input type="mail" name="mail2" placeholder="E-mail amico 2" class="greyInput" /><br />
+							<input type="mail" name="mail3" placeholder="E-mail amico 3" class="greyInput" /><br />
+							<input type="mail" name="mail4" placeholder="E-mail amico 4" class="greyInput" /><br />
+							<input type="mail" name="mail5" placeholder="E-mail amico 5" class="greyInput" /><br />
+							<input type="submit" class="submitButton" value="INVITA!" />
+					</form>
+				</div>
+			</section>
+		</div>

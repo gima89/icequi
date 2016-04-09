@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stileFooter.css" />
+<style>
+	html{
+			 overflow-y: auto;
+			 }
+</style>
+{% endblock %}
+
+{% block body %}
+<div id="segnalamain">
+	<h3 >SEGNALACI UNA GELATERIA</h3>
+		<div id="segnalaselect">
+			<form method="POST">
+				<select class="segnalacitta" name="regione">
+					<option>Regione</option>
+				</select>
+				<select class="segnalacitta" name="provincia">
+					<option>Provincia</option>
+				</select>
+				<select class="segnalacitta" name="citta">
+						<option>Citta</option>
+				</select>
+		</div>
+		<div id="segnalaform">
+			<input type="text" name="nome" placeholder="Nome della gelateria." class="segnalainput" required="required">
+			<input type="text" name="via" placeholder="Via." class="segnalainput" required="required">
+			<input type="tel" name="telefono" placeholder="Telefono" class="segnalainput"><br/>
+			<div id="formsegnala">
+				<textarea name="raccontaci" placeholder="Raccontaci quali gusti hai provato!"></textarea><br />
+				<input type="submit" value="INVIA" class="submitButton segnalaButton" method="POST">
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}

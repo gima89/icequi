@@ -1,0 +1,372 @@
+h1{
+	
+	padding-left: 50px;
+	width: 100%;
+}
+
+.adminTitle{
+	border:0px solid #aaa;
+	background-color:#aaa;
+	border-radius: 3px 3px 0 0;
+	font-family: Arial;
+	font-size: 24px;
+	padding:5px;
+}
+
+/*
+.bloccoAdmin{
+	width:100%;
+}
+
+.bloccoAdmin form{
+	border:1px solid #000;
+	width:100%;
+}
+
+
+.bloccoAdmin h4{
+	font-size:18px;
+	padding:5px;
+
+}
+
+.bloccoAdmin input[type="email"],
+.bloccoAdmin input[type="password"],
+.bloccoAdmin input[type="tel"],
+.bloccoAdmin input[type="text"],
+.bloccoAdmin select{
+	background-color: rgb(242,242,242);
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px inset #666;
+	color: #000;
+	font-family:Arial;
+	font-size:18px;
+	margin:10px;
+	padding:5px;
+	width:90%;
+}
+
+.bloccoAdmin label[for=filtra]{
+	font-size:16px;
+	font-style: italic;
+}
+
+.bloccoAdmin select.filter{
+	background-color: #fff;
+	border-radius: 0px;
+	box-shadow: 0px 0px 0px #fff;
+	color: #000;
+	font-family:Arial;
+	font-size:12px;
+	margin:10px;
+	padding:5px;
+	width:50px;
+}
+
+.bloccoAdmin label{
+	font-size:18px;
+	padding:5px;
+
+}
+
+.bloccoAdmin span{
+	color: #888;
+	font-size:24px;
+}
+
+.bloccoAdmin .submitButton{
+	margin:10px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	padding-left: 5px;
+	padding-right:5px;
+	font-family: Arial;
+	font-size: 16px;
+	text-align:center;
+	width:100px;
+}
+
+.bloccoAdmin form div{
+	margin: 0;
+	padding: 0;
+	text-align:right;
+	width:100%;
+}
+
+.bloccoAdmin form div.bloccoGusti{
+	text-align: left;
+}
+
+
+.bloccoAdmin form div.segnalazione p{
+	margin-bottom:5px;
+}
+
+.bloccoGusti{
+	display:inline-block;
+	font-size:16px;
+	margin-left:10px;
+	text-align:left;
+	width:20%;
+	
+}
+*/
+.containerGusti{
+	
+}
+
+.containerGusti h3{
+	font-size:18px;	
+	font-weight:bold;
+	text-align:left;	
+}
+
+.containeGusti table{
+	text-align:left;
+}
+
+
+.esteso{
+	text-align: center;
+	width:100%;
+}
+
+.gelato:before{
+	content:url(../img/gelato.png);
+}
+
+.inline{
+	display:inline-block;
+}S
+
+.reportFormContainer{
+	background-color:rgb(242,242,242);
+	border-radius: 5px;
+	margin:10px auto;
+	padding:10px;
+	text-align:center;
+	width:100%;
+}
+
+.tabGusti{
+	border: 1px solid #000;
+	width:100%;
+}
+
+.tabGusti td{
+	padding-left:5px;
+	padding-right: 5px;
+	text-align:center;
+	vertical-align:middle;
+}
+.tabGusti td input[type=color]{
+	height:35px;
+	padding-left:5px;
+	padding-right:5px;
+	text-align:center;
+	vertical-align:middle;
+	width:100%;
+}
+
+.tabGusti .submitButton{
+	margin: 10px;	
+}
+
+
+
+.wrapperSegnalazioni{
+	width:80%;
+}
+
+#leftCol{
+	/*border-right:1px solid #000;*/
+	display:table-cell;
+	padding:5px;
+	vertical-align:top;
+	width:33%;	
+}
+
+#main{
+	position: absolute;
+		top:30%;
+	width:100%;
+}
+
+#mainMenu{
+	border: 1px solid #444;
+	border-radius: 5px;
+	margin: 0 auto;
+	padding:0px;
+	width:70%;
+	overflow:hidden;
+}
+
+#mainMenu li{
+	background-color: #fff;
+	border-bottom: 1px solid #444;
+	font-family: Arial;
+	font-size: 18px;
+	list-style-type:none;
+	margin:0px;
+	padding:5px;
+}
+
+#mainMenu li:first-child{
+	color:#aaa;
+	background-color: #aaa;
+}
+
+#mainMenu li:last-child{
+	border-bottom-width: 0px;
+}
+
+#mainMenu li:first-child:hover{
+	background-color: #888;
+}
+
+#mainMenu li:hover{
+	background-color: #ddd;
+}
+
+#mainMenu a{
+	color: #000;
+	text-decoration: none;
+}
+
+#mainMenu a:hover{
+	color: #000;
+}
+
+#optionsContainer{
+	/*border: 1px solid #000;*/
+	border: 2px solid #888;
+	border-radius: 5px 5px 5px 5px;
+	margin: 5px auto;
+	max-height:320px;
+	overflow: auto;
+}
+
+#overviewArrow{
+	cursor: pointer;
+	width:20px;
+}
+
+#overviewContainer{
+	/*border: 1px solid #000;*/
+	margin:20px auto;
+	padding:10px;
+	text-align:left;
+	width:80%;
+}
+
+#overviewContainer h6{
+	display:inline-block;
+	font-size:18px;
+	font-weight:bold;	
+}
+
+#overviewContainer p{
+	display:inline-block;
+	font-size:12px;
+	font-style:italic;
+	text-align:right;
+	width:70%;
+}
+
+#overviewPic img{
+	max-width:100%;
+}
+
+#printAndDownload{
+	margin-top:10px;
+	text-align:right;
+}
+
+#printAndDownload div{
+	display:inline-block;
+	font-family: Arial;
+	font-style:italic;
+}
+
+#printAndDownload img{
+	cursor: pointer;
+	width:40px;
+}
+
+#reportFormTable{
+	/*border: 1px solid #000;*/
+	
+	margin: auto;
+	text-align:right;
+	width:90%;
+}	
+
+#reportFormTable select{
+	font-family: Arial;
+	font-size:14px;
+	width:120px
+}
+
+#reportFormTable td{
+ padding: 5px 20px;
+}
+
+#reportFormTable .submitButton{
+	font-size:18px;
+	padding: 3px 10px;
+	width: 60%;
+}
+
+#resultsContainer{
+	/*border: 1px solid #000;*/
+	margin:20px auto;
+	padding:10px;
+	text-align:left;
+	width:80%;
+}
+
+#resultsTable{
+	border:1px solid #000;
+	font-size:16px;
+	margin: auto;
+	width:100%;
+}
+
+#resultsTable td{
+	background-color: rgb(193,224,255);
+	border: 1px solid #000;
+	font-weight: bold;
+	text-align:right;
+	width:33%;
+}
+
+#resultsTable th{
+	background-color: rgb(46,117,182);
+	border: 1px solid #000;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+}
+
+#resultTable tr td:first-child{
+	text-align: left;
+}
+
+#rightCol{
+	/*border-right:1px solid #000;*/
+	display: table-cell;
+	width:66%;
+}
+
+#table{
+	display:table;
+	font-family: Arial;
+	width:100%
+}
+
+
+#wrapper{
+	/*border:1px solid #000;*/
+	margin: 0 auto;
+	width:70%;
+}
