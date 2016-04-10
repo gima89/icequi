@@ -1,7 +1,25 @@
-{% extends "::base.html.twig" %}
+{% extends "::adminBase.html.twig" %}
 
-{% block title %}BackEndBundle:Admin:updFlavour{% endblock %}
+{% block rightcol %}
+<div class="adminTitle">
+	Database Gusti
+</div>
+<form name="modificaGusto" action="<?=$_SERVER['PHP_SELF']."?requestedPage=modificaGusti" ?>" method="post">
+	<div class="bloccoAdmin">
 
-{% block body %}
-<h1>Welcome to the Admin:updFlavour page</h1>
+			<h4>Gusto da modificare:</h4>
+			<select name="flavourToModify">
+				<?php crea_elenco($gusti); ?>
+			</select>
+	</div>
+	<div class="bloccoAdmin bloccoGusto">
+		<h4>Sostituisci con:</h4>
+		<input type="text" name="newFlavourName" placeholder="Nuovo nome gusto" />
+		<select name="ngCategory">
+			<?php crea_elenco($categorie); ?>
+		</select>
+		<label>Modifica il colore: <input type="color" name="ngColor" /></label>
+		<input class="submitButton" type="submit" value="MODIFICA" onclick="alert('Gusto modificato con successo')" />
+	</div>
+</form>
 {% endblock %}

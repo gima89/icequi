@@ -1,7 +1,20 @@
-{% extends "::base.html.twig" %}
+{% extends "::adminBase.html.twig" %}
 
-{% block title %}BackEndBundle:Admin:addFlavour{% endblock %}
-
-{% block body %}
-<h1>Welcome to the Admin:addFlavour page</h1>
+{% block rightcol %}
+<div class="adminTitle">
+	Database Gusti
+</div>
+<div class="bloccoAdmin bloccoGusto">
+	<form name="formNuovoGusto" action="<?=$_SERVER['PHP_SELF']."?requestedPage=nuoviGusti" ?>" method="post">
+		<h4>Aggiungi nuovo gusto</h4>
+		<input type="text" name="ngName" placeholder="Nome del nuovo gusto" />
+		<div class="divGusti">
+			<select name="ngCategory">
+				<?php crea_elenco($categorie); ?>
+			</select>
+			<label>Scegli il colore: <input type="color" name="ngColor" /></label>
+			<input class="submitButton" type="submit" value="INSERISCI" onclick="alert('Nuovo gusto inserito con successo')" />
+		</div>
+	</form>
+</div>
 {% endblock %}

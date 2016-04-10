@@ -1,7 +1,103 @@
-{% extends "::base.html.twig" %}
+{% extends "::adminBase.html.twig" %}
 
-{% block title %}BackEndBundle:Admin:dashboard{% endblock %}
-
-{% block body %}
-<h1>Welcome to the Admin:dashboard page</h1>
+{% block rightcol %}
+<div class="adminTitle">
+	Consulta Reportistica
+</div>
+<div class="reportFormContainer">
+	<form name="reportForm" action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+		<input type="hidden" name="requestedPage" value="reports" />
+			<table id="reportFormTable" >
+				<tr>
+					<td>
+						<select>
+							<?php crea_elenco($regioni) ?>
+						</select>
+					</td>
+					<td>
+						Dal: <input type="date" name="from" />
+					</td>
+				</tr>
+					<td>
+						<select>
+							<?php crea_elenco($province) ?>
+						</select>
+					</td>
+					<td>
+						Al: <input type="date" name="to" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<select>
+							<?php crea_elenco($cities) ?>
+						</select>
+					</td>
+					<td style="text-align: right">
+						<input type="submit" value="FILTRA" class="submitButton" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="overviewContainer">
+		<h6>Overview </h6><p><span id="suggerimento">riduci finestra</span><img src="img/upArrow.png" alt="downArrow" id="overviewArrow" onclick="giraFrecciaOverview();" /></p>
+		<hr />
+		<div id="overviewPic">
+			<img src="http://www.marcolanci.it/img/overview.png" alt="overviewPic" />
+		</div>
+	</div>
+	<div id="resultsContainer">
+		<table id="resultsTable">
+			<tr>
+				<th>Gusto</th>
+				<th>Ricerche</th>
+				<th>Percentuale</th>
+			</tr>
+			<tr>
+				<td>Cioccolato</td>
+				<td>173</td>
+				<td>26,82</td>
+			</tr>
+			<tr>
+				<td>Nocciola</td>
+				<td>158</td>
+				<td>24,5</td>
+			</tr>
+			<tr>
+				<td>Fragola</td>
+				<td>78</td>
+				<td>12,09</td>
+			</tr>
+			<tr>
+				<td>Pistacchio</td>
+				<td>67</td>
+				<td>10,39</td>
+			</tr>
+			<tr>
+				<td>Pan di Stelle</td>
+				<td>65</td>
+				<td>10,08</td>
+			</tr>
+			<tr>
+				<td>Panna</td>
+				<td>54</td>
+				<td>8,37</td>
+			</tr>
+			<tr>
+				<td>Frutti di Bosco</td>
+				<td>32</td>
+				<td>4,96</td>
+			</tr>
+			<tr>
+				<td>Melone</td>
+				<td>18</td>
+				<td>2,79</td>
+			</tr>
+		</table>
+		<div id="printAndDownload">
+			<div>Scarica il report<img src="http://www.marcolanci.it/img/download.png" alt="DownloadButton" /></div>
+				<div>Stampa il report<img src="http://www.marcolanci.it/img/print.png" alt="PrintButton" /></div>
+			</div>
+		</div>
 {% endblock %}

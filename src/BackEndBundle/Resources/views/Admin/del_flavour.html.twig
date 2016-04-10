@@ -1,7 +1,16 @@
-{% extends "::base.html.twig" %}
+{% extends "::adminBase.html.twig" %}
 
-{% block title %}BackEndBundle:Admin:delFlavour{% endblock %}
-
-{% block body %}
-<h1>Welcome to the Admin:delFlavour page</h1>
+{% block rightcol %}
+<div class="adminTitle">
+	Database Gusti
+</div>
+<div class="bloccoAdmin">
+	<form name="eliminaGusto" action="<?=$_SERVER['PHP_SELF']."?requestedPage=eliminaGusti" ?>" method="post">
+		<h4>Seleziona il gusto da eliminare</h4>
+		<select name="flavourToDelete">
+			<?php crea_elenco($gusti) ?>
+		</select>
+		<input class="submitButton" type="submit" value="ELIMINA" onclick="alert('Gusto eliminato con successo')" />
+	</form>
+</div>
 {% endblock %}

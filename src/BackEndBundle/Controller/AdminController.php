@@ -27,6 +27,13 @@ class AdminController extends Controller
         ));
     }
 
+    public function addGel2Action()
+    {
+        return $this->render('BackEndBundle:Admin:add_gel2.html.twig', array(
+            // ...
+        ));
+    }
+
     public function updGelAction()
     {
         return $this->render('BackEndBundle:Admin:upd_gel.html.twig', array(

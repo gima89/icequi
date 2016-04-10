@@ -1,7 +1,27 @@
-{% extends "::base.html.twig" %}
+{% extends "::adminBase.html.twig" %}
 
-{% block title %}BackEndBundle:Admin:sigGel{% endblock %}
-
-{% block body %}
-<h1>Welcome to the Admin:sigGel page</h1>
+{% block rightcol %}
+<div class="adminTitle">
+  Segnalazioni Gelaterie
+</div>
+<div class="bloccoAdmin">
+  <form name="segnalazioni" method="post" action="">
+    <h4>Segnalazione del 23/11/2016 - Ore 09:13</h4>
+    <div class="segnalazione">
+      <p><strong>Da:</strong> tizio.caio@sempronio.it</p>
+      <p><strong>Nome Gelateria:</strong> Caffetteria Olona</p>
+      <p><strong>Indirizzo:</strong> Via Olona 15</p>
+      <p><strong>Citt&agrave;:</strong> Milano</p>
+      <p><strong>Provincia:</strong> Milano</p>
+      <p><strong>Regione:</strong> Lombardia</p>
+      <p><strong>Gusti:</strong> Ho provato fragola, limone e pistacchio, ce n'erano anche molti altri, tra cui gusti particolari, come Mars e Pan di Stelle.</p>
+    </div>
+    <input class="submitButton" type="submit" value="INSERISCI" style="display:inline-block; margin-left:20px; " />
+  </form>
+  <form name="eliminaSegnalazione" method="post" action="">
+      <input type="hidden" name="numSegnalazione" />
+      <input class="submitButton" type="submit" value="LETTA" style="display:inline-block" />
+  </form>
+  </div>
+</div>
 {% endblock %}

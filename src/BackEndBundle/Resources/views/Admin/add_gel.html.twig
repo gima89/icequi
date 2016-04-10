@@ -1,7 +1,25 @@
-{% extends "::base.html.twig" %}
+{% extends "::adminBase.html.twig" %}
 
-{% block title %}BackEndBundle:Admin:addGel{% endblock %}
-
-{% block body %}
-<h1>Welcome to the Admin:addGel page</h1>
+{% block rightcol %}
+							<div class="adminTitle">
+								Aggiungi Gelateria
+							</div>
+							<div class="bloccoAdmin">
+								<form name="nuovaGelateria" action="{{url ('add_gel/2') }}" method="get">
+									<input type="hidden" name="requestedPage" value="aggiungiGelateria2" />
+									<h4>Aggiungi Nuova Gelateria</h4>
+									<input type="text" name="nuovaGelName" placeholder="Nome gelateria" required /><br />
+									<label for="nuovaGelRegion">Seleziona la regione</label><br />
+									<select name="nuovaGelRegion"><?php crea_elenco($regioni) ?></select><br />
+									<label for="nuovaGelProvince">Seleziona la provincia</label><br />
+									<select name="nuovaGelProvince"><?php crea_elenco($province) ?></select><br />
+									<label for="nuovaGelCity">Seleziona la citt&agrave;</label><br />
+									<select name="nuovaGelCity"><?php crea_elenco($cities) ?></select><br />
+									<label for="nuovaGelAddress">Inserisci l'indirizzo</label><br />
+									<input type="text" name="nuovaGelAddress" placeholder="Indirizzo nuova gelateria" required /><br />
+									<label for="nuovaGelTel">Inserisci recapito telefonico</label><br />
+									<input type="tel" name="nuovaGelTel" /><br />
+									<span>1/2</span><input class="submitButton" type="submit" value="CONTINUA" />
+								</form>
+							</div>
 {% endblock %}
