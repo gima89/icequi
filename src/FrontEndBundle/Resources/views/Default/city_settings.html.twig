@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% extends 'settings_base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stileFooter.css" />
+<style>
+	html{
+			 overflow-y: auto;
+			 }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="impostazionimain">
+	<h3>IMPOSTAZIONI ACCOUNT</h3>
+	<div class="impwrap">
+		<nav>
+			<p id="defaultCity"  class="<?= gelatoCambioCity() ?>"><a href="<?= $_SERVER['PHP_SELF']."?requested_function=defaultCity"; ?>">CITT&Agrave; PREDEFINITA</a></p>
+		</nav>
+
+	</div>
+</div>
+{% endblock %}

@@ -10,9 +10,13 @@ _favorites:
     path:     /favorites
     defaults: { _controller: FrontEndBundle:Default:favorite }
 
-settings:
-    path:     /contatti
-    defaults: { _controller: FrontEndBundle:Default:settings }
+password_settings:
+    path:     /contatti/password_settings
+    defaults: { _controller: FrontEndBundle:Default:password_settings }
+
+city_settings:
+    path:     /contatti/city_settings
+    defaults: { _controller: FrontEndBundle:Default:city_settings }
 
 segnala:
     path:     /segnala

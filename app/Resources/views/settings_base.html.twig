@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="author" content="Marco Lancellotti, Giacomo Marolla" />
+        <meta name="description" content="Trova il tuo gelato con un click!" />
+        <title>{% block title %}IceQui{% endblock %}</title>
+        <link rel="icon" type="image/png" href="http://www.marcolanci.it/icequi/img/logo.png" />
+        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stile.css" />
+        {% block stylesheets %}
+        <style>
+		      html{
+			         overflow-y: hidden;
+		           }
+		    </style>{% endblock %}
+    </head>
+    <body>
+        {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stileFooter.css" />
+        <style>
+        	html{
+        			 overflow-y: auto;
+        			 }
+        </style>
+        {% endblock %}
+
+        {% block header %}
+        <header>
+        	<div id="hpTopBar">
+        		<nav>
+        			<a href="admin.php" title="Registrati" id="reg">marco@taginnovationschool.it</a>
+        			<span> &#124; </span><a href="ricerca.php?favorites=1" title="Visualizza le gelaterie preferite">&#127775;</a><span> &#124; </span>
+        			<a href="index.php" title="Effettua il login" id="log">Logout</a>
+        		</nav>
+        	</div>
+        	<div id="headerBanner">
+        		<a href="index.php">
+        		<img id="headerLogo" src="http://www.marcolanci.it/icequi/img/whitelogo.png" />
+        		</a>
+        	</div>
+        </header>
+        {% endblock %}
+
+        {% block password_settings %}
+
+        {% endblock %}
+
+        {% block city_settings %}
+
+        {% endblock %}
+    </body>
+</html>
