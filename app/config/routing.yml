@@ -6,7 +6,7 @@ back_end:
     resource: "@BackEndBundle/Resources/config/routing.yml"
     prefix:   /admin
 
-#Ho commentato la rotta di diefault affinché venisse sovrascritta dal FrontEndBundle
+#Ho commentato la rotta di default affinché venisse sovrascritta dal FrontEndBundle
 # app:
 #    resource: "@AppBundle/Controller/"
 #    type:     annotation

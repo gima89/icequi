@@ -31,4 +31,10 @@ class DefaultController extends Controller
     {
         return $this->render('FrontEndBundle:Default:favorites.html.twig');
     }
+
+    public function settings()
+    {
+        return $this->render('FrontEndBundle:Default:settings.html.twig');
+    }
+
 }
