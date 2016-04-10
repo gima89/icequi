@@ -8,23 +8,10 @@
         <link rel="icon" type="image/png" href="http://www.marcolanci.it/icequi/img/logo.png" />
         <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/reset.css" />
         <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stile.css" />
-        {% block stylesheets %}
-        <style>
-		      html{
-			         overflow-y: hidden;
-		           }
-		    </style>{% endblock %}
+        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stileFooter.css" />
+        <style>html{ overflow-y: auto; }</style>
     </head>
     <body>
-        {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stileFooter.css" />
-        <style>
-        	html{
-        			 overflow-y: auto;
-        			 }
-        </style>
-        {% endblock %}
-
         {% block header %}
         <header>
         	<div id="hpTopBar">
@@ -41,13 +28,15 @@
         	</div>
         </header>
         {% endblock %}
-
-        {% block password_settings %}
-
-        {% endblock %}
-
-        {% block city_settings %}
-
-        {% endblock %}
+        <div class="impostazionimain">
+        	<h3>IMPOSTAZIONI ACCOUNT</h3>
+        		<div class="impwrap">
+      				<nav>
+      					<p id="changePsw" class="<?= gelatoCambioPsw() ?>"><a href="{{ url('password_settings')}}">CAMBIO PASSWORD</a></p>
+      					<p id="defaultCity"  class="<?= gelatoCambioCity() ?>"><a href="{{ url('city_settings')}}">CITT&Agrave; PREDEFINITA</a></p>
+      				</nav>
+              {% block settings_section %}{% endblock %}
+            </div>
+        </div>
     </body>
 </html>

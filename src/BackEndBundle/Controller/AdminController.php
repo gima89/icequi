@@ -41,6 +41,20 @@ class AdminController extends Controller
         ));
     }
 
+    public function updGel2Action()
+    {
+        return $this->render('BackEndBundle:Admin:upd_gel2.html.twig', array(
+            // ...
+        ));
+    }
+
+    public function updGel3Action()
+    {
+        return $this->render('BackEndBundle:Admin:upd_gel3.html.twig', array(
+            // ...
+        ));
+    }
+
     public function sigGelAction()
     {
         return $this->render('BackEndBundle:Admin:sig_gel.html.twig', array(

@@ -32,12 +32,12 @@ class DefaultController extends Controller
         return $this->render('FrontEndBundle:Default:favorites.html.twig');
     }
 
-    public function password_settings()
+    public function password_settingsAction()
     {
         return $this->render('FrontEndBundle:Default:password_settings.html.twig');
 
     }
-    public function city_settings()
+    public function city_settingsAction()
     {
         return $this->render('FrontEndBundle:Default:city_settings.html.twig');
     }

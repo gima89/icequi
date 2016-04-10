@@ -1,0 +1,32 @@
+{% extends "::adminBase.html.twig" %}
+
+{% block rightcol %}
+<div class="adminTitle">
+						Modifica Dati Gelaterie
+					</div>
+					<div class="bloccoAdmin">
+						<form name="GelToModify" action="{{ url('upd_gel3')}}" method="get">
+							<h4>Modifica il nome</h4>
+							<input type="hidden" name="requestedPage" value="modificaGelateria2" />
+							<input type="text" name="modificaGel" value="La Deliziosa" required /><br />
+							<label for="modificaReg">Modifica la Regione</label><br />
+							<select name="modificaReg">
+								<?php crea_elenco($regioni) ?>
+							</select><br />
+							<label for="modificaProv">Modifica la Provincia</label><br />
+							<select name="modificaProv">
+								<?php crea_elenco($province) ?>
+							</select><br />
+							<label for="modificaCity">Modifica la Citt&agrave;</label><br />
+							<select name="modificaCity">
+								<?php crea_elenco($cities) ?>
+							</select><br />
+							<label for="modificaAdd">Modifica l'indirizzo</label><br />
+							<input type="text" name="modificaAdd" value="Corso Numistrano, 214" required /><br />
+							<label for="modificaTel">Modifica il numero di telefono</label><br />
+							<input type="text" name="modificaTel" value="0968 23563" /><br />
+							<input class="submitButton" type="submit" value="CONTINUA" /><span>2/3</span>
+						</form>
+					</div>
+				</div>
+{% endblock %}

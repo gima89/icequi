@@ -1,21 +1,25 @@
-_homepage:
+homepage:
     path:     /
     defaults: { _controller: FrontEndBundle:Default:index }
 
-_search:
+search:
     path:     /search
     defaults: { _controller: FrontEndBundle:Default:search }
 
-_favorites:
+favorites:
     path:     /favorites
     defaults: { _controller: FrontEndBundle:Default:favorite }
 
+settings:
+    path:     /settings
+    defaults: { _controller: FrontEndBundle:Default:password_settings }
+
 password_settings:
-    path:     /contatti/password_settings
+    path:     /password_settings
     defaults: { _controller: FrontEndBundle:Default:password_settings }
 
 city_settings:
-    path:     /contatti/city_settings
+    path:     /city_settings
     defaults: { _controller: FrontEndBundle:Default:city_settings }
 
 segnala:

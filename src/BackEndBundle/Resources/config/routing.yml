@@ -1,3 +1,7 @@
+admin:
+    path:     /
+    defaults: { _controller: BackEndBundle:Admin:settings }
+
 settings:
     path:     settings
     defaults: { _controller: BackEndBundle:Admin:settings }
@@ -12,11 +16,19 @@ add_gel:
 
 add_gel2:
     path:     addGel/2
-    defaults: { _controller: BackEndBundle:Admin:addGel }
+    defaults: { _controller: BackEndBundle:Admin:addGel2 }
 
 upd_gel:
     path:     updGel
     defaults: { _controller: BackEndBundle:Admin:updGel }
+
+upd_gel2:
+    path:     updGel/2
+    defaults: { _controller: BackEndBundle:Admin:updGel2 }
+
+upd_gel3:
+    path:     updGel/3
+    defaults: { _controller: BackEndBundle:Admin:updGel3 }
 
 sig_gel:
     path:     sigGel

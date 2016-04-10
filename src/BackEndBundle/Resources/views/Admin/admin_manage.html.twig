@@ -5,14 +5,14 @@
               Gestisci Amministratori
             </div>
             <div class="bloccoAdmin">
-              <form name="newAdmin" action="<?=$_SERVER['PHP_SELF']."?requestedPage=gestisciAmministratori" ?>" method="post">
+              <form name="newAdmin" action="" method="post">
                 <h4>Nomina nuovo amministratore</h4>
                 <input type="email" name="newAdminEmail" placeholder="E-mail nuovo amministratore" required />
                 <input class="submitButton" type="submit" value="NOMINA" onclick="alert('Nuovo amministratore aggiunto.')" />
               </form>
             </div>
             <div class="bloccoAdmin">
-              <form name="removeAdmin" action="<?=$_SERVER['PHP_SELF']."?requestedPage=gestisciAmministratori" ?>" method="post">
+              <form name="removeAdmin" action="" method="post">
                 <h4>Rimuovi amministratore</h4>
                 <select name="removedAdmin">
                   <option>marco@taginnovationschool.it</option>

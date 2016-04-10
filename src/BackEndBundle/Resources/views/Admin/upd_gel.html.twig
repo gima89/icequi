@@ -1,7 +1,32 @@
-{% extends "::base.html.twig" %}
+{% extends "::adminBase.html.twig" %}
 
-{% block title %}BackEndBundle:Admin:updGel{% endblock %}
-
-{% block body %}
-<h1>Welcome to the Admin:updGel page</h1>
+{% block rightcol %}
+<div class="adminTitle">
+								Modifica Dati Gelaterie
+							</div>
+							<div class="bloccoAdmin">
+								<form name="selezGelToModify" action="{{url ('upd_gel2') }}" method="get">
+									<input type="hidden" name="requestedPage" value="modificaGelateria" />
+									<h4>Indica la gateria da modificare</h4>
+									<label for="regToModify">Seleziona la Regione</label><br />
+									<select name="regToModify">
+										<?php crea_elenco($regioni) ?>
+									</select><br />
+									<label for="provToModify">Seleziona la Provincia</label><br />
+									<select name="provToModify">
+										<?php crea_elenco($province) ?>
+									</select><br />
+									<label for="cityToModify">Seleziona la Citt&agrave;</label><br />
+									<select name="cityToModify">
+										<?php crea_elenco($cities) ?>
+									</select><br />
+									<label for="gelToModify">Gelateria da modificare</label>
+									<select name="gelToModify">
+										<option>Bar Rizzo</option>
+										<option>Bar Olona</option>
+										<option selected>La deliziosa</option>
+									</select>
+									<input class="submitButton" type="submit" value="MODIFICA" /><span>1/3</span>
+								</form>
+							</div>
 {% endblock %}
