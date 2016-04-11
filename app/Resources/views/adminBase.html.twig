@@ -6,10 +6,10 @@
         <meta name="description" content="Trova il tuo gelato con un click!" />
         <title>{% block title %}Admin Section{% endblock %}</title>
         <link rel="icon" type="image/png" href="http://www.marcolanci.it/icequi/img/logo.png" />
-        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/reset.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stile.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/admin.css" />
-		    <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/adminForms.css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/stile.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/adminForms.css') }}" />
         {% block stylesheets %}
         <style>
 		      html{
@@ -22,13 +22,13 @@
         <header>
         	<div id="hpTopBar">
         		<nav>
-        			<a href="admin.php" title="Registrati" id="reg">marco@taginnovationschool.it</a>
+        			<a href="{{ url('admin') }}" title="Registrati" id="reg">marco@taginnovationschool.it</a>
         			<span> &#124; </span><a href="{{url('favorites')}}" title="Visualizza le gelaterie preferite">&#127775;</a><span> &#124; </span>
-        			<a href="{{url('homepage')}}" title="Effettua il login" id="log">Logout</a>
+        			<a href="{{ url('homepage') }}" title="Effettua il logout" id="log">Logout</a>
         		</nav>
         	</div>
         	<div id="headerBanner">
-        		<a href="index.php">
+        		<a href="{{ url('homepage')}}">
         		<img id="headerLogo" src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQuiLogo" />
         		</a>
         	</div>

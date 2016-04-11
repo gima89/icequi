@@ -6,14 +6,15 @@
         <meta name="description" content="Trova il tuo gelato con un click!" />
         <title>{% block title %}IceQui{% endblock %}</title>
         <link rel="icon" type="image/png" href="http://www.marcolanci.it/icequi/img/logo.png" />
-        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/reset.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stile.css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/stile.css') }}" />
         {% block stylesheets %}
         <style>
 		      html{
 			         overflow-y: hidden;
 		           }
-		    </style>{% endblock %}
+		    </style>
+        {% endblock %}
     </head>
     <body>
         {% block header %}
@@ -26,7 +27,7 @@
             </nav>
           </div>
           <div id="headerBanner">
-            <a href="index.php">
+            <a href="{{url('homepage')}}">
             <img id="headerLogo" src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQuiLogo" />
             </a>
           </div>
@@ -51,7 +52,7 @@
                 <div id="signUpPopUp">
                   <div class="closePP" id="signUpClose"></div>
                     <h2>BENVENUTO SU</h2>
-                    <img src="http://www.marcolanci.it/icequi/imgimg/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
+                    <img src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
                     <form name="signUpForm" method="get" action="<?= $_SERVER['PHP_SELF'] ?>" />
                       <input type="hidden" name="logged" value="1" />
                       <input type="mail" name="user" placeholder="E-mail" class="greyInput" /><br />

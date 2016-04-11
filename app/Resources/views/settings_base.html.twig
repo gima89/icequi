@@ -6,9 +6,9 @@
         <meta name="description" content="Trova il tuo gelato con un click!" />
         <title>{% block title %}IceQui{% endblock %}</title>
         <link rel="icon" type="image/png" href="http://www.marcolanci.it/icequi/img/logo.png" />
-        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/reset.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stile.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.marcolanci.it/icequi/css/stileFooter.css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/stile.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/stileFooter.css') }}" />
         <style>html{ overflow-y: auto; }</style>
     </head>
     <body>
@@ -16,13 +16,13 @@
         <header>
         	<div id="hpTopBar">
         		<nav>
-        			<a href="admin.php" title="Registrati" id="reg">marco@taginnovationschool.it</a>
-        			<span> &#124; </span><a href="ricerca.php?favorites=1" title="Visualizza le gelaterie preferite">&#127775;</a><span> &#124; </span>
-        			<a href="index.php" title="Effettua il login" id="log">Logout</a>
+        			<a href="{{ url('admin')}}" title="Registrati" id="reg">marco@taginnovationschool.it</a>
+        			<span> &#124; </span><a href="{{ url('favorites')}}" title="Visualizza le gelaterie preferite">&#127775;</a><span> &#124; </span>
+        			<a href="index.php" title="Effettua il logout" id="log">Logout</a>
         		</nav>
         	</div>
         	<div id="headerBanner">
-        		<a href="index.php">
+        		<a href="{{ url('homepage')}}">
         		<img id="headerLogo" src="http://www.marcolanci.it/icequi/img/whitelogo.png" />
         		</a>
         	</div>
@@ -38,5 +38,21 @@
               {% block settings_section %}{% endblock %}
             </div>
         </div>
+        {% block footer %}
+          <footer>
+            <nav>
+              <ul>
+                <li><a href="{{ url('chisiamo') }}">Chi Siamo</a></li>
+                <li><a href="{{ url('contatti') }}">Contatti</a></li>
+                <li><a href="{{ url('privacy') }}">Privacy Policy</a></li>
+                <li><a href="{{ url('segnala') }}">Segnala nuova gelateria</a></li>
+              </ul>
+            </nav>
+          </footer>
+        {% endblock %}
+        {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://www.marcolanci.it/icequi/js/script.js"></script>
+        {% endblock %}
     </body>
 </html>
