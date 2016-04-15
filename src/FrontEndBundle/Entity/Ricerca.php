@@ -4,6 +4,8 @@ namespace FrontEndBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use FrontEndBundle\Entity\Citta;
+
 /**
  * Ricerca
  *
@@ -39,10 +41,8 @@ class Ricerca
     private $idUtente;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_citta", type="integer")
-     * @Assert\NotNull()
+     * @ORM\ManyToOne(targetEntity="Citta", inversedBy="ricerche")
+     * @ORM\JoinColumn(name="id_citta", referencedColumnName="id")
      */
     private $idCitta;
 
