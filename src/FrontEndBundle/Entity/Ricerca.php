@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="ricerca")
  * @ORM\Entity(repositoryClass="FrontEndBundle\Repository\RicercaRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Ricerca
 {
@@ -83,15 +84,13 @@ class Ricerca
     /**
      * Set dataRicerca
      *
-     * @param \DateTime $dataRicerca
+     * @ORM\PrePersist
      *
      * @return Ricerca
      */
-    public function setDataRicerca($dataRicerca)
+    public function setDataRicercaValue()
     {
-        $this->dataRicerca = $dataRicerca;
-
-        return $this;
+        $this->dataRicerca = new \DateTime();
     }
 
     /**
