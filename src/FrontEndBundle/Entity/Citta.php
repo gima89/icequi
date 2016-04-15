@@ -25,6 +25,7 @@ class Citta
      * @var string
      *
      * @ORM\Column(name="nome_citta", type="string", length=50, unique=true)
+     * @Assert\NotBlank()
      */
     private $nomeCitta;
 
@@ -32,6 +33,7 @@ class Citta
      * @var int
      *
      * @ORM\Column(name="id_provincia", type="integer")
+     * @Assert\NotNull()
      */
     private $idProvincia;
 
