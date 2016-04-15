@@ -25,6 +25,7 @@ class Gusto
      * @var string
      *
      * @ORM\Column(name="nome_gusto", type="string", length=20, unique=true)
+     * @Assert\NotBlank()
      */
     private $nomeGusto;
 
@@ -32,6 +33,7 @@ class Gusto
      * @var string
      *
      * @ORM\Column(name="colore", type="string", length=7)
+     * @Assert\Regex("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")
      */
     private $colore;
 
@@ -39,6 +41,7 @@ class Gusto
      * @var int
      *
      * @ORM\Column(name="id_tipo_gusto", type="integer")
+     * @Assert\NotNull()
      */
     private $idTipoGusto;
 
