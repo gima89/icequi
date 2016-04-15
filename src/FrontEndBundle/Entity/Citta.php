@@ -3,6 +3,8 @@
 namespace FrontEndBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use FrontEndBundle\Entity\Utente;
 
 /**
  * Citta
@@ -36,6 +38,15 @@ class Citta
      */
     private $idProvincia;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Utente", mappedBy="id_citta_predefinita")
+    */
+    private $utenti;
+
+    public function __construct()
+    {
+      $this->utenti = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -93,5 +104,39 @@ class Citta
     public function getIdProvincia()
     {
         return $this->idProvincia;
+    }
+
+    /**
+     * Add utenti
+     *
+     * @param \FrontEndBundle\Entity\Utente $utenti
+     *
+     * @return Citta
+     */
+    public function addUtenti(\FrontEndBundle\Entity\Utente $utenti)
+    {
+        $this->utenti[] = $utenti;
+
+        return $this;
+    }
+
+    /**
+     * Remove utenti
+     *
+     * @param \FrontEndBundle\Entity\Utente $utenti
+     */
+    public function removeUtenti(\FrontEndBundle\Entity\Utente $utenti)
+    {
+        $this->utenti->removeElement($utenti);
+    }
+
+    /**
+     * Get utenti
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUtenti()
+    {
+        return $this->utenti;
     }
 }

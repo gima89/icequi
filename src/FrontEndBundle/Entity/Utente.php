@@ -5,6 +5,7 @@ namespace FrontEndBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use FrontEndBundle\Entity\Segnalazione;
+use FrontEndBundle\Entity\Citta;
 /**
  * User
  *
@@ -40,7 +41,8 @@ class Utente
     /**
      * @var int
      *
-     * @ORM\Column(name="id_citta_predefinita", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Citta", inversedBy="utenti")
+     * @ORM\JoinColumn(name="id_citta_predefinita", referencedColumnName="id")
      */
     private $idCittaPredefinita;
 
