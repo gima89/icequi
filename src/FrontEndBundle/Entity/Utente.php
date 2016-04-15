@@ -8,9 +8,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * User
  *
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="FrontEndBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="FrontEndBundle\Repository\UtenteRepository")
  */
-class User
+class Utente
 {
     /**
      * @var int
