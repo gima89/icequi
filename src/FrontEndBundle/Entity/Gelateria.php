@@ -25,6 +25,7 @@ class Gelateria
      * @var string
      *
      * @ORM\Column(name="nome_gelateria", type="string", length=100)
+     * @Assert\NotBlank()
      */
     private $nomeGelateria;
 
@@ -32,6 +33,7 @@ class Gelateria
      * @var int
      *
      * @ORM\Column(name="id_citta", type="integer")
+     * @Assert\NotNull()
      */
     private $idCitta;
 
@@ -39,6 +41,7 @@ class Gelateria
      * @var string
      *
      * @ORM\Column(name="indirizzo", type="string", length=100)
+     * @Assert\NotBlank()
      */
     private $indirizzo;
 
