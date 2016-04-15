@@ -24,37 +24,37 @@ class Segnalazione
     /**
      * @var int
      *
-     * @ORM\Column(name="id_utente", type="integer", nullable=true)
+     * @ORM\Column(name="id_utente", type="integer")
      */
     private $idUtente;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nome_ge홯ateria_segnalata", type="string", length=255)
+     * @ORM\Column(name="nome_gelateria_segnalata", type="string", length=50)
      */
-    private $nomeGe홯ateriaSegnalata;
+    private $nomeGelateriaSegnalata;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="citta_segnalazione", type="string", length=50)
+     * @ORM\Column(name="citta_segnalazione", type="string", length=25)
      */
     private $cittaSegnalazione;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="regione_segnalazione", type="string", length=50)
+     * @ORM\Column(name="provincia_segnalazione", type="string", length=25)
      */
-    private $regioneSegnalazione;
+    private $provinciaSegnalazione;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="provincia_segnalazione", type="string", length=50)
+     * @ORM\Column(name="regione_segnalazione", type="string", length=25)
      */
-    private $provinciaSegnalazione;
+    private $regioneSegnalazione;
 
     /**
      * @var string
@@ -66,7 +66,7 @@ class Segnalazione
     /**
      * @var string
      *
-     * @ORM\Column(name="telefono_segnalazione", type="string", length=20, nullable=true)
+     * @ORM\Column(name="telefono_segnalazione", type="string", length=15, nullable=true)
      */
     private $telefonoSegnalazione;
 
@@ -106,27 +106,27 @@ class Segnalazione
     }
 
     /**
-     * Set nomeGe홯ateriaSegnalata
+     * Set nomeGelateriaSegnalata
      *
-     * @param string $nomeGe홯ateriaSegnalata
+     * @param string $nomeGelateriaSegnalata
      *
      * @return Segnalazione
      */
-    public function setNomeGe홯ateriaSegnalata($nomeGe홯ateriaSegnalata)
+    public function setNomeGelateriaSegnalata($nomeGelateriaSegnalata)
     {
-        $this->nomeGe홯ateriaSegnalata = $nomeGe홯ateriaSegnalata;
+        $this->nomeGelateriaSegnalata = $nomeGelateriaSegnalata;
 
         return $this;
     }
 
     /**
-     * Get nomeGe홯ateriaSegnalata
+     * Get nomeGelateriaSegnalata
      *
      * @return string
      */
-    public function getNomeGe홯ateriaSegnalata()
+    public function getNomeGelateriaSegnalata()
     {
-        return $this->nomeGe홯ateriaSegnalata;
+        return $this->nomeGelateriaSegnalata;
     }
 
     /**
@@ -154,30 +154,6 @@ class Segnalazione
     }
 
     /**
-     * Set regioneSegnalazione
-     *
-     * @param string $regioneSegnalazione
-     *
-     * @return Segnalazione
-     */
-    public function setRegioneSegnalazione($regioneSegnalazione)
-    {
-        $this->regioneSegnalazione = $regioneSegnalazione;
-
-        return $this;
-    }
-
-    /**
-     * Get regioneSegnalazione
-     *
-     * @return string
-     */
-    public function getRegioneSegnalazione()
-    {
-        return $this->regioneSegnalazione;
-    }
-
-    /**
      * Set provinciaSegnalazione
      *
      * @param string $provinciaSegnalazione
@@ -199,6 +175,30 @@ class Segnalazione
     public function getProvinciaSegnalazione()
     {
         return $this->provinciaSegnalazione;
+    }
+
+    /**
+     * Set regioneSegnalazione
+     *
+     * @param string $regioneSegnalazione
+     *
+     * @return Segnalazione
+     */
+    public function setRegioneSegnalazione($regioneSegnalazione)
+    {
+        $this->regioneSegnalazione = $regioneSegnalazione;
+
+        return $this;
+    }
+
+    /**
+     * Get regioneSegnalazione
+     *
+     * @return string
+     */
+    public function getRegioneSegnalazione()
+    {
+        return $this->regioneSegnalazione;
     }
 
     /**
