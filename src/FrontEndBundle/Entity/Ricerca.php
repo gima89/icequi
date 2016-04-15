@@ -45,9 +45,9 @@ class Ricerca
     /**
      * @var int
      *
-     * @ORM\Column(name="id_gusto_1", type="integer")
+     * @ORM\Column(name="id_gustoUno", type="integer")
      */
-    private $idGusto1;
+    private $idGustoUno;
 
     /**
      * @var int
@@ -218,4 +218,3 @@ class Ricerca
         return $this->idGustoTre;
     }
 }
-
