@@ -3,7 +3,7 @@
 namespace FrontEndBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Gusto
  *
@@ -125,4 +125,3 @@ class Gusto
         return $this->idTipoGusto;
     }
 }
-

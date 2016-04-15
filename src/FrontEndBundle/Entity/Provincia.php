@@ -3,7 +3,7 @@
 namespace FrontEndBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Provincia
  *
@@ -94,4 +94,3 @@ class Provincia
         return $this->idRegione;
     }
 }
-
