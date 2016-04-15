@@ -4,6 +4,7 @@ namespace FrontEndBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use FrontEndBundle\Entity\Gusto;
 /**
  * Tipo_Gusto
  *
@@ -28,6 +29,16 @@ class Tipo_Gusto
      * @Assert\NotBlank()
      */
     private $nomeTipo;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Gusto", mappedBy="id_tipo_gusto")
+    */
+    private $gusti;
+
+    public function __construct()
+    {
+      $this->gusti = new ArrayCollection();
+    }
 
 
     /**
@@ -62,5 +73,39 @@ class Tipo_Gusto
     public function getNomeTipo()
     {
         return $this->nomeTipo;
+    }
+
+    /**
+     * Add gusti
+     *
+     * @param \FrontEndBundle\Entity\Gusto $gusti
+     *
+     * @return Tipo_Gusto
+     */
+    public function addGusti(\FrontEndBundle\Entity\Gusto $gusti)
+    {
+        $this->gusti[] = $gusti;
+
+        return $this;
+    }
+
+    /**
+     * Remove gusti
+     *
+     * @param \FrontEndBundle\Entity\Gusto $gusti
+     */
+    public function removeGusti(\FrontEndBundle\Entity\Gusto $gusti)
+    {
+        $this->gusti->removeElement($gusti);
+    }
+
+    /**
+     * Get gusti
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGusti()
+    {
+        return $this->gusti;
     }
 }

@@ -4,6 +4,7 @@ namespace FrontEndBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use FrontEndBundle\Entity\Tipo_Gusto;
 /**
  * Gusto
  *
@@ -40,7 +41,8 @@ class Gusto
     /**
      * @var int
      *
-     * @ORM\Column(name="id_tipo_gusto", type="integer")
+     * @ORM\ManyToOne(targetEntity="Tipo_Gusto", inversedBy="gusti")
+     * @ORM\JoinColumn(name="id_tipo_gusto", referencedColumnName="id")
      * @Assert\NotNull()
      */
     private $idTipoGusto;
