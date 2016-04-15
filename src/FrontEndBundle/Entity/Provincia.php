@@ -25,6 +25,7 @@ class Provincia
      * @var string
      *
      * @ORM\Column(name="nome_provincia", type="string", length=50, unique=true)
+     * @Assert\NotBlank()
      */
     private $nomeProvincia;
 
@@ -32,6 +33,7 @@ class Provincia
      * @var int
      *
      * @ORM\Column(name="id_regione", type="integer")
+     *@Assert\NotNull()
      */
     private $idRegione;
 
