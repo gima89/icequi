@@ -25,6 +25,7 @@ class Ricerca
      * @var \DateTime
      *
      * @ORM\Column(name="data_ricerca", type="date")
+     * @Assert\Date()
      */
     private $dataRicerca;
 
@@ -32,6 +33,7 @@ class Ricerca
      * @var int
      *
      * @ORM\Column(name="id_utente", type="integer")
+     * @Assert\NotNull()
      */
     private $idUtente;
 
@@ -39,6 +41,7 @@ class Ricerca
      * @var int
      *
      * @ORM\Column(name="id_citta", type="integer")
+     * @Assert\NotNull()
      */
     private $idCitta;
 
@@ -46,6 +49,7 @@ class Ricerca
      * @var int
      *
      * @ORM\Column(name="id_gustoUno", type="integer")
+     * @Assert\NotNull()
      */
     private $idGustoUno;
 
@@ -53,6 +57,7 @@ class Ricerca
      * @var int
      *
      * @ORM\Column(name="id_gustoDue", type="integer")
+     * @Assert\NotNull()
      */
     private $idGustoDue;
 
@@ -60,6 +65,7 @@ class Ricerca
      * @var int
      *
      * @ORM\Column(name="id_gustoTre", type="integer")
+     * @Assert\NotNull()
      */
     private $idGustoTre;
 
