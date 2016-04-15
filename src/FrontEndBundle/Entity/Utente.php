@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="utente")
  * @ORM\Entity(repositoryClass="FrontEndBundle\Repository\UtenteRepository")
  */
 class Utente
@@ -25,9 +25,7 @@ class Utente
      * @var string
      *
      * @ORM\Column(name="mail_utente", type="string", length=30, unique=true)
-     * @Assert\Email(
-     *     message = "Indirizzo inserito non valido",
-     *     checkMX = true
+     * @Assert\NotBlank()
      */
     private $mailUtente;
 
@@ -61,7 +59,7 @@ class Utente
      *
      * @param string $mailUtente
      *
-     * @return User
+     * @return Utente
      */
     public function setMailUtente($mailUtente)
     {
@@ -85,7 +83,7 @@ class Utente
      *
      * @param boolean $isAdmin
      *
-     * @return User
+     * @return Utente
      */
     public function setIsAdmin($isAdmin)
     {
@@ -109,7 +107,7 @@ class Utente
      *
      * @param integer $idCittaPredefinita
      *
-     * @return User
+     * @return Utente
      */
     public function setIdCittaPredefinita($idCittaPredefinita)
     {
