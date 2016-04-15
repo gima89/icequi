@@ -25,6 +25,9 @@ class User
      * @var string
      *
      * @ORM\Column(name="mail_utente", type="string", length=30, unique=true)
+     * @Assert\Email(
+     *     message = "Indirizzo inserito non valido",
+     *     checkMX = true
      */
     private $mailUtente;
 
