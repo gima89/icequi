@@ -25,6 +25,7 @@ class Segnalazione
      * @var int
      *
      * @ORM\Column(name="id_utente", type="integer")
+     * @Assert\NotNull()
      */
     private $idUtente;
 
@@ -32,6 +33,7 @@ class Segnalazione
      * @var string
      *
      * @ORM\Column(name="nome_gelateria_segnalata", type="string", length=50)
+     * @Assert\NotBlank()
      */
     private $nomeGelateriaSegnalata;
 
@@ -39,6 +41,7 @@ class Segnalazione
      * @var string
      *
      * @ORM\Column(name="citta_segnalazione", type="string", length=25)
+     * @Assert\NotBlank()
      */
     private $cittaSegnalazione;
 
@@ -46,6 +49,7 @@ class Segnalazione
      * @var string
      *
      * @ORM\Column(name="provincia_segnalazione", type="string", length=25)
+     * @Assert\NotBlank()
      */
     private $provinciaSegnalazione;
 
@@ -53,6 +57,7 @@ class Segnalazione
      * @var string
      *
      * @ORM\Column(name="regione_segnalazione", type="string", length=25)
+     * @Assert\NotBlank()
      */
     private $regioneSegnalazione;
 
@@ -60,6 +65,7 @@ class Segnalazione
      * @var string
      *
      * @ORM\Column(name="testo_segnalazione", type="text")
+     * @Assert\NotBlank()
      */
     private $testoSegnalazione;
 
