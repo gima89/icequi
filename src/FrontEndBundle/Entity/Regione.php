@@ -26,6 +26,7 @@ class Regione
      * @var string
      *
      * @ORM\Column(name="nome_regione", type="string", length=50, unique=true)
+     * @Assert\NotBlank()
      */
     private $nomeRegione;
 
