@@ -223,4 +223,28 @@ class Ricerca
     {
         return $this->idGustoTre;
     }
+
+    /**
+     * Set idGustoUno
+     *
+     * @param integer $idGustoUno
+     *
+     * @return Ricerca
+     */
+    public function setIdGustoUno($idGustoUno)
+    {
+        $this->idGustoUno = $idGustoUno;
+
+        return $this;
+    }
+
+    /**
+     * Get idGustoUno
+     *
+     * @return integer
+     */
+    public function getIdGustoUno()
+    {
+        return $this->idGustoUno;
+    }
 }

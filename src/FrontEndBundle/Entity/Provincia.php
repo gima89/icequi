@@ -4,6 +4,7 @@ namespace FrontEndBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use FrontEndBundle\Entity\Regione;
 /**
  * Provincia
  *
@@ -30,10 +31,11 @@ class Provincia
     private $nomeProvincia;
 
     /**
-     * @var int
+     * @var Provincia
      *
-     * @ORM\Column(name="id_regione", type="integer")
-     *@Assert\NotNull()
+     * @ORM\ManyToOne(targetEntity="Regione", inversedBy="provincie")
+     * @ORM\JoinColumn(name="id_regione", referencedColumnName="id")
+     * @Assert\NotNull()
      */
     private $idRegione;
 

@@ -4,6 +4,7 @@ namespace FrontEndBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use FrontEndBundle\Entity\Provincia;
 
 /**
  * Regione
@@ -30,6 +31,15 @@ class Regione
      */
     private $nomeRegione;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Provincia", mappedBy="id_regione")
+    */
+    private $provincie;
+
+    public function __construct()
+    {
+      $this->products = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -63,5 +73,39 @@ class Regione
     public function getNomeRegione()
     {
         return $this->nomeRegione;
+    }
+
+    /**
+     * Add provincie
+     *
+     * @param \FrontEndBundle\Entity\Provincia $provincie
+     *
+     * @return Regione
+     */
+    public function addProvincie(\FrontEndBundle\Entity\Provincia $provincie)
+    {
+        $this->provincie[] = $provincie;
+
+        return $this;
+    }
+
+    /**
+     * Remove provincie
+     *
+     * @param \FrontEndBundle\Entity\Provincia $provincie
+     */
+    public function removeProvincie(\FrontEndBundle\Entity\Provincia $provincie)
+    {
+        $this->provincie->removeElement($provincie);
+    }
+
+    /**
+     * Get provincie
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProvincie()
+    {
+        return $this->provincie;
     }
 }
