@@ -141,38 +141,4 @@ class Provincia
     {
         return $this->citta;
     }
-
-    /**
-     * Add city
-     *
-     * @param \FrontEndBundle\Entity\Citta $city
-     *
-     * @return Provincia
-     */
-    public function addCity(\FrontEndBundle\Entity\Citta $city)
-    {
-        $this->cities[] = $city;
-
-        return $this;
-    }
-
-    /**
-     * Remove city
-     *
-     * @param \FrontEndBundle\Entity\Citta $city
-     */
-    public function removeCity(\FrontEndBundle\Entity\Citta $city)
-    {
-        $this->cities->removeElement($city);
-    }
-
-    /**
-     * Get cities
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCities()
-    {
-        return $this->cities;
-    }
 }
