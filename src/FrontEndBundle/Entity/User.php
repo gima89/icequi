@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Utenti
  *
- * @ORM\Table(name="utenti")
- * @ORM\Entity(repositoryClass="FrontEndBundle\Repository\UtentiRepository")
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="FrontEndBundle\Repository\UserRepository")
  */
-class Utenti
+class User
 {
     /**
      * @var int
@@ -65,7 +65,7 @@ class Utenti
      *
      * @param string $mail
      *
-     * @return Utenti
+     * @return User
      */
     public function setMail($mail)
     {
@@ -89,7 +89,7 @@ class Utenti
      *
      * @param string $password
      *
-     * @return Utenti
+     * @return User
      */
     public function setPassword($password)
     {
@@ -113,7 +113,7 @@ class Utenti
      *
      * @param boolean $isAdmin
      *
-     * @return Utenti
+     * @return User
      */
     public function setIsAdmin($isAdmin)
     {
@@ -137,7 +137,7 @@ class Utenti
      *
      * @param integer $defaultCity
      *
-     * @return Utenti
+     * @return User
      */
     public function setDefaultCity($defaultCity)
     {
@@ -156,4 +156,3 @@ class Utenti
         return $this->defaultCity;
     }
 }
-

@@ -5,12 +5,12 @@ namespace FrontEndBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Gusti
+ * Gusto
  *
  * @ORM\Table(name="gusti")
- * @ORM\Entity(repositoryClass="FrontEndBundle\Repository\GustiRepository")
+ * @ORM\Entity(repositoryClass="FrontEndBundle\Repository\GustoRepository")
  */
-class Gusti
+class Gusto
 {
     /**
      * @var int
@@ -58,7 +58,7 @@ class Gusti
      *
      * @param string $name
      *
-     * @return Gusti
+     * @return Gusto
      */
     public function setName($name)
     {
@@ -82,7 +82,7 @@ class Gusti
      *
      * @param string $color
      *
-     * @return Gusti
+     * @return Gusto
      */
     public function setColor($color)
     {
@@ -106,7 +106,7 @@ class Gusti
      *
      * @param integer $flavourType
      *
-     * @return Gusti
+     * @return Gusto
      */
     public function setFlavourType($flavourType)
     {
@@ -125,4 +125,3 @@ class Gusti
         return $this->flavourType;
     }
 }
-
