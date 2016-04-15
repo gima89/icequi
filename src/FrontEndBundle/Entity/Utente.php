@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use FrontEndBundle\Entity\Segnalazione;
 use FrontEndBundle\Entity\Citta;
+use FrontEndBundle\Entity\Riecerca;
 /**
  * User
  *
@@ -51,9 +52,15 @@ class Utente
     */
     private $segnalazioni;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Ricerca", mappedBy="id_utente")
+    */
+    private $ricerche;
+
     public function __construct()
     {
       $this->segnalazioni= new ArrayCollection();
+      $this->ricerche = new ArrayCollection();
     }
 
     /**
@@ -204,5 +211,39 @@ class Utente
     public function getSegnalazioni()
     {
         return $this->segnalazioni;
+    }
+
+    /**
+     * Add ricerche
+     *
+     * @param \FrontEndBundle\Entity\Ricerca $ricerche
+     *
+     * @return Utente
+     */
+    public function addRicerche(\FrontEndBundle\Entity\Ricerca $ricerche)
+    {
+        $this->ricerche[] = $ricerche;
+
+        return $this;
+    }
+
+    /**
+     * Remove ricerche
+     *
+     * @param \FrontEndBundle\Entity\Ricerca $ricerche
+     */
+    public function removeRicerche(\FrontEndBundle\Entity\Ricerca $ricerche)
+    {
+        $this->ricerche->removeElement($ricerche);
+    }
+
+    /**
+     * Get ricerche
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRicerche()
+    {
+        return $this->ricerche;
     }
 }
