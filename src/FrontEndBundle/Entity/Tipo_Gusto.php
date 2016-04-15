@@ -25,6 +25,7 @@ class Tipo_Gusto
      * @var string
      *
      * @ORM\Column(name="nome_tipo", type="string", length=10)
+     * @Assert\NotBlank()
      */
     private $nomeTipo;
 
