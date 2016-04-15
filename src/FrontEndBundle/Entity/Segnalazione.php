@@ -4,6 +4,7 @@ namespace FrontEndBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use FrontEndBundle\EntityUtente;
 /**
  * Segnalazione
  *
@@ -24,7 +25,8 @@ class Segnalazione
     /**
      * @var int
      *
-     * @ORM\Column(name="id_utente", type="integer")
+     * @ORM\ManyToOne(targetEntity="Utente", inversedBy="segnalazioni")
+     * @ORM\JoinColumn(name="id_utente", referencedColumnName="id")
      * @Assert\NotNull()
      */
     private $idUtente;

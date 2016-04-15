@@ -4,6 +4,7 @@ namespace FrontEndBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use FrontEndBundle\Entity\Segnalazione;
 /**
  * User
  *
@@ -43,6 +44,15 @@ class Utente
      */
     private $idCittaPredefinita;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Segnalazione", mappedBy="id_utente")
+    */
+    private $segnalazioni;
+
+    public function __construct()
+    {
+      $this->segnalazioni= new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -124,5 +134,73 @@ class Utente
     public function getIdCittaPredefinita()
     {
         return $this->idCittaPredefinita;
+    }
+
+    /**
+     * Add utenti
+     *
+     * @param \FrontEndBundle\Entity\Segnalazione $utenti
+     *
+     * @return Utente
+     */
+    public function addUtenti(\FrontEndBundle\Entity\Segnalazione $utenti)
+    {
+        $this->utenti[] = $utenti;
+
+        return $this;
+    }
+
+    /**
+     * Remove utenti
+     *
+     * @param \FrontEndBundle\Entity\Segnalazione $utenti
+     */
+    public function removeUtenti(\FrontEndBundle\Entity\Segnalazione $utenti)
+    {
+        $this->utenti->removeElement($utenti);
+    }
+
+    /**
+     * Get utenti
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUtenti()
+    {
+        return $this->utenti;
+    }
+
+    /**
+     * Add segnalazioni
+     *
+     * @param \FrontEndBundle\Entity\Segnalazione $segnalazioni
+     *
+     * @return Utente
+     */
+    public function addSegnalazioni(\FrontEndBundle\Entity\Segnalazione $segnalazioni)
+    {
+        $this->segnalazioni[] = $segnalazioni;
+
+        return $this;
+    }
+
+    /**
+     * Remove segnalazioni
+     *
+     * @param \FrontEndBundle\Entity\Segnalazione $segnalazioni
+     */
+    public function removeSegnalazioni(\FrontEndBundle\Entity\Segnalazione $segnalazioni)
+    {
+        $this->segnalazioni->removeElement($segnalazioni);
+    }
+
+    /**
+     * Get segnalazioni
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSegnalazioni()
+    {
+        return $this->segnalazioni;
     }
 }
