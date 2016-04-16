@@ -32,11 +32,7 @@
         <div class="impostazionimain">
         	<h3>IMPOSTAZIONI ACCOUNT</h3>
         		<div class="impwrap">
-      				<nav>
-      					<p id="changePsw" class="<?= gelatoCambioPsw() ?>"><a href="{{ url('password_settings')}}">CAMBIO PASSWORD</a></p>
-      					<p id="defaultCity"  class="<?= gelatoCambioCity() ?>"><a href="{{ url('city_settings')}}">CITT&Agrave; PREDEFINITA</a></p>
-      				</nav>
-              {% block settings_section %}{% endblock %}
+              {% block section %}{% endblock %}
             </div>
         </div>
         {% block footer %}

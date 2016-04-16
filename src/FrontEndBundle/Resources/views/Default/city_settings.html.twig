@@ -1,16 +1,22 @@
 {% extends 'settings_base.html.twig' %}
 
-{% block settings_section %}
-<form method="post">
-	<select name="favRegion">
-		<?php crea_elenco($regioni) ?>
-	</select><br />
-	<select name="favProvince">
-		<?php crea_elenco($province) ?>
-	</select><br />
-	<select name="favCity">
-		<?php crea_elenco($cities) ?>
-	</select><br />
-	<input type="submit" class="submitButton" value="OK" />
-</form>
+{% block section %}
+<nav>
+  <p id="changePsw" class=""><a href="{{ url('password_settings')}}">CAMBIO PASSWORD</a></p>
+  <p id="defaultCity"  class="gelato"><a href="{{ url('city_settings')}}">CITT&Agrave; PREDEFINITA</a></p>
+</nav>
+<section>
+	<form method="post">
+		<select name="favRegion">
+			<?php crea_elenco($regioni) ?>
+		</select><br />
+		<select name="favProvince">
+			<?php crea_elenco($province) ?>
+		</select><br />
+		<select name="favCity">
+			<?php crea_elenco($cities) ?>
+		</select><br />
+		<input type="submit" class="submitButton" value="OK" />
+	</form>
+</section>
 {% endblock %}
