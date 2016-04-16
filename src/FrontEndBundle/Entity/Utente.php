@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use FrontEndBundle\Entity\Segnalazione;
 use FrontEndBundle\Entity\Citta;
 use FrontEndBundle\Entity\Riecerca;
+use FrontEndBundle\Entity\Gelateria;
 /**
  * User
  *
@@ -57,10 +58,18 @@ class Utente
     */
     private $ricerche;
 
+    /**
+    * @ORM\ManyToMany(targetEntity="Gelateria", inversedBy="gelaterie")
+    * @ORM\JoinTable(name="users_groups")
+    */
+
+    private $gelaterie;
+
     public function __construct()
     {
-      $this->segnalazioni= new ArrayCollection();
-      $this->ricerche = new ArrayCollection();
+      $this->segnalazioni= new \Doctrine\Common\Collections\ArrayCollection();
+      $this->ricerche = new \Doctrine\Common\Collections\ArrayCollection();
+      $this->gelaterie = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -245,5 +254,39 @@ class Utente
     public function getRicerche()
     {
         return $this->ricerche;
+    }
+
+    /**
+     * Add gelaterie
+     *
+     * @param \FrontEndBundle\Entity\Gelateria $gelaterie
+     *
+     * @return Utente
+     */
+    public function addGelaterie(\FrontEndBundle\Entity\Gelateria $gelaterie)
+    {
+        $this->gelaterie[] = $gelaterie;
+
+        return $this;
+    }
+
+    /**
+     * Remove gelaterie
+     *
+     * @param \FrontEndBundle\Entity\Gelateria $gelaterie
+     */
+    public function removeGelaterie(\FrontEndBundle\Entity\Gelateria $gelaterie)
+    {
+        $this->gelaterie->removeElement($gelaterie);
+    }
+
+    /**
+     * Get gelaterie
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGelaterie()
+    {
+        return $this->gelaterie;
     }
 }
