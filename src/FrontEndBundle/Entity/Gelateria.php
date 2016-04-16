@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use FrontEndBundle\Entity\Citta;
 use FrontEndBundle\Entity\Utente;
+use FrontEndBundle\Entity\Gusto;
 
 /**
  * Gelateria
@@ -109,9 +110,15 @@ class Gelateria
     */
     private $utenti;
 
+    /**
+    * @ORM\ManyToMany(targetEntity="Gusto", mappedBy="gelaterie")
+    */
+    private $gusti;
+
     public function __construct()
     {
       $this->utenti= new \Doctrine\Common\Collections\ArrayCollection();
+      $this->gusti= new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -421,5 +428,39 @@ class Gelateria
     public function getUtenti()
     {
         return $this->utenti;
+    }
+
+    /**
+     * Add gusti
+     *
+     * @param \FrontEndBundle\Entity\Gusto $gusti
+     *
+     * @return Gelateria
+     */
+    public function addGusti(\FrontEndBundle\Entity\Gusto $gusti)
+    {
+        $this->gusti[] = $gusti;
+
+        return $this;
+    }
+
+    /**
+     * Remove gusti
+     *
+     * @param \FrontEndBundle\Entity\Gusto $gusti
+     */
+    public function removeGusti(\FrontEndBundle\Entity\Gusto $gusti)
+    {
+        $this->gusti->removeElement($gusti);
+    }
+
+    /**
+     * Get gusti
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGusti()
+    {
+        return $this->gusti;
     }
 }

@@ -5,6 +5,8 @@ namespace FrontEndBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use FrontEndBundle\Entity\Tipo_Gusto;
+use FrontEndBundle\Entity\Gelateria;
+
 /**
  * Gusto
  *
@@ -47,6 +49,16 @@ class Gusto
      */
     private $idTipoGusto;
 
+    /**
+    * @ORM\ManyToMany(targetEntity="Gelateria", inversedBy="gusti")
+    * @ORM\JoinTable(name="gusti_gelaterie")
+    */
+    private $gelaterie;
+
+    public function __construct()
+    {
+      $this->gelaterie= new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -128,5 +140,39 @@ class Gusto
     public function getIdTipoGusto()
     {
         return $this->idTipoGusto;
+    }
+
+    /**
+     * Add gelaterie
+     *
+     * @param \FrontEndBundle\Entity\Gelateria $gelaterie
+     *
+     * @return Gusto
+     */
+    public function addGelaterie(\FrontEndBundle\Entity\Gelateria $gelaterie)
+    {
+        $this->gelaterie[] = $gelaterie;
+
+        return $this;
+    }
+
+    /**
+     * Remove gelaterie
+     *
+     * @param \FrontEndBundle\Entity\Gelateria $gelaterie
+     */
+    public function removeGelaterie(\FrontEndBundle\Entity\Gelateria $gelaterie)
+    {
+        $this->gelaterie->removeElement($gelaterie);
+    }
+
+    /**
+     * Get gelaterie
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGelaterie()
+    {
+        return $this->gelaterie;
     }
 }

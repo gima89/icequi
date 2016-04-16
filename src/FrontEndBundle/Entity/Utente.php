@@ -60,7 +60,7 @@ class Utente
 
     /**
     * @ORM\ManyToMany(targetEntity="Gelateria", inversedBy="gelaterie")
-    * @ORM\JoinTable(name="users_groups")
+    * @ORM\JoinTable(name="Preferite")
     */
 
     private $gelaterie;
