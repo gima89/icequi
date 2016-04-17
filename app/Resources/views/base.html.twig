@@ -21,9 +21,15 @@
         <header>
           <div id="hpTopBar">
             <nav>
-              <a href="#" title="Registrati" id="reg">Registrati</a>
-              <span> &#124; </span>
-              <a href="#" title="Effettua il login" id="log">Login</a>
+          {% if is_granted('ROLE_USER') %}
+            <a href="{{ url('admin')}}" title="Registrati" id="reg">marco@taginnovationschool.it</a>
+            <span> &#124; </span><a href="{{ url('favorites')}}" title="Visualizza le gelaterie preferite">&#127775;</a><span> &#124; </span>
+            <a href="{{ 'logout' }}" title="Effettua il logout" id="log">Logout</a>
+          {% else %}
+            <a href="{{ url('register') }}" title="Registrati" id="reg">Registrati</a>
+            <span> &#124; </span>
+            <a href="{{ url('login') }}" title="Effettua il login" id="log">Login</a>
+          {% endif %}
             </nav>
           </div>
           <div id="headerBanner">
