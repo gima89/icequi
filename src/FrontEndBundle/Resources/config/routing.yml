@@ -15,11 +15,11 @@ front_settings:
     defaults: { _controller: FrontEndBundle:Default:password_settings }
 
 password_settings:
-    path:     /password_settings
+    path:     /settings_password
     defaults: { _controller: FrontEndBundle:Default:password_settings }
 
 city_settings:
-    path:     /city_settings
+    path:     /settings_city
     defaults: { _controller: FrontEndBundle:Default:city_settings }
 
 segnala:
