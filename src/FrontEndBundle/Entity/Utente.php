@@ -2,6 +2,7 @@
 
 namespace FrontEndBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use FrontEndBundle\Entity\Segnalazione;
@@ -14,7 +15,7 @@ use FrontEndBundle\Entity\Gelateria;
  * @ORM\Table(name="utente")
  * @ORM\Entity(repositoryClass="FrontEndBundle\Repository\UtenteRepository")
  */
-class Utente
+class Utente extends BaseUser
 {
     /**
      * @var int
@@ -23,7 +24,7 @@ class Utente
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -67,6 +68,7 @@ class Utente
 
     public function __construct()
     {
+      parent::__construct();
       $this->segnalazioni= new \Doctrine\Common\Collections\ArrayCollection();
       $this->ricerche = new \Doctrine\Common\Collections\ArrayCollection();
       $this->gelaterie = new \Doctrine\Common\Collections\ArrayCollection();
