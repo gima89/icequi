@@ -27,19 +27,11 @@ class Utente extends BaseUser
     protected $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="mail_utente", type="string", length=30, unique=true)
-     * @Assert\NotBlank()
-     */
-    private $mailUtente;
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="is_admin", type="boolean")
      */
-    private $isAdmin;
+    private $isAdmin = false;
 
     /**
      * @var int
@@ -82,30 +74,6 @@ class Utente extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set mailUtente
-     *
-     * @param string $mailUtente
-     *
-     * @return Utente
-     */
-    public function setMailUtente($mailUtente)
-    {
-        $this->mailUtente = $mailUtente;
-
-        return $this;
-    }
-
-    /**
-     * Get mailUtente
-     *
-     * @return string
-     */
-    public function getMailUtente()
-    {
-        return $this->mailUtente;
     }
 
     /**
