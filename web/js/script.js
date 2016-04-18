@@ -16,19 +16,19 @@ $(document).ready(
 	});
 });
 
-
+//chiamata del popup di login
 $(document).ready(
 	function () {
-	$("#log").click(function (e) {
-		e.preventDefault();
-		var urlPaginaLogin = $(this).attr('href');
+	$("#log").click(function (e) { //al click del tag A con id log nell'header
+		e.preventDefault(); //impedisce che segua la rotta
+		var urlPaginaLogin = $(this).attr('href'); //prende l'href del tag a, che contiene la rotta /login
 
-		$.ajax({
-		  url: urlPaginaLogin
-		}).done(function (data) {
-		  $('#signInPopUp').html(data);
-			$("#layer").fadeIn("slow");
-			$("#signInPopUp").fadeIn("fast");
+		$.ajax({ //funzione nativa di jQuery che effettua una chiamata asincrona
+		  url: urlPaginaLogin //va sull'url che gli abbiamo passato sopra
+		}).done(function (data) { //una  volta ottenuta risposta, prende il contenuto della pagina chiamata
+		  $('#signInPopUp').html(data); // e lo butta dentro all'HTML dell'elemento con ID signInPopUp
+			$("#layer").fadeIn("slow"); // fa comparire il Layer
+			$("#signInPopUp").fadeIn("fast"); // fa comparire il popUp
 		});
 	});
 });

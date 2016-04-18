@@ -24,7 +24,7 @@
           {% if is_granted('ROLE_USER') %}
             <a href="{{ url('admin')}}" title="Registrati" id="reg">marco@taginnovationschool.it</a>
             <span> &#124; </span><a href="{{ url('favorites')}}" title="Visualizza le gelaterie preferite">&#127775;</a><span> &#124; </span>
-            <a href="#" title="Effettua il logout" id="log">Logout</a>
+            <a href="/logout" title="Effettua il logout">Logout</a>
           {% else %}
             <a href="#" title="Registrati" id="reg">Registrati</a>
             <span> &#124; </span>
@@ -71,6 +71,7 @@
                   </div>
                 </div>
                 <div id="signInPopUp">
+                  <!-- questa parte la prende da app\Resources\FOSUserBundle\views\Security\login.html.twig-->
                 </div>
                 <div id="inviteFriendsPopUp">
                   <div class="closePP" id="inviteFriendsClose"></div>
