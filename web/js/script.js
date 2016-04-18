@@ -18,11 +18,18 @@ $(document).ready(
 
 
 $(document).ready(
-	function(){
-	$("#log").click(function(){
-		$("#layer").fadeIn("slow");
-		$("#signInPopUp").fadeIn("fast");
-		
+	function () {
+	$("#log").click(function (e) {
+		e.preventDefault();
+		var urlPaginaLogin = $(this).attr('href');
+
+		$.ajax({
+		  url: urlPaginaLogin
+		}).done(function (data) {
+		  $('#signInPopUp').html(data);
+			$("#layer").fadeIn("slow");
+			$("#signInPopUp").fadeIn("fast");
+		});
 	});
 });
 
@@ -53,7 +60,7 @@ $(document).ready(
 });
 
 
-//PANNELLO RICERCA 
+//PANNELLO RICERCA
 
 $(document).ready(
 	function(){
@@ -169,7 +176,7 @@ function giraFreccia(){
 	$freccia=document.getElementById("arrow");
 	$su="http://www.esniulm.it/tag/img/upArrow.png";
 	$giu="http://www.esniulm.it/tag/img/downArrow.png";
-	$freccia.src==$giu ? $freccia.src=$su : $freccia.src=$giu;	
+	$freccia.src==$giu ? $freccia.src=$su : $freccia.src=$giu;
 }
 
 function giraFrecciaOverview(){
@@ -184,7 +191,7 @@ function giraFrecciaOverview(){
 		 $freccia.src=$su;
 		 $suggerimento.innerHTML="riduci finestra";
 	}
-	
+
 }
 
 //GELATO DINAMICO NELLE IMPOSTAZIONI

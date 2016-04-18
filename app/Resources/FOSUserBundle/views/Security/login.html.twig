@@ -1,0 +1,43 @@
+<div class="closePP" id="signInClose"></div>
+  <h2>BENTORNATO SU</h2>
+  <img src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
+  <form name="signInForm" method="get" action="<?= $_SERVER['PHP_SELF'] ?>" id="signInForm" />
+    <input type="hidden" name="logged" value="1" />
+    <input type="mail" name="user" placeholder="E-mail" class="greyInput" /><br />
+    <input type="password" name="psw" placeholder="Password" class="greyInput" /><br />
+    <p id="forgotten">Password Dimenticata?</p>
+    <input type="submit" class="submitButton" value="ACCEDI" />
+  </form>
+  <form name="forgottenForm" method="post" action="recover.php" id="forgottenForm" />
+    <input type="mail" name="mail" placeholder="E-mail" class="greyInput" /><br />
+    <p id="tornaAlLogin">Torna al login</p>
+    <input type="submit" class="submitButton" value="RECUPERO" />
+  </form>
+<div class="popupFooter">
+  OPPURE REGISTRATI CON FACEBOOK <a href="http://www.facebook.com" target="_blank"><img src="http://www.marcolanci.it/icequi/img/fblogin.png" alt="Facebook LogIn" /></a>
+</div>
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <label for="username">{{ 'security.login.username'|trans }}</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+    <label for="password">{{ 'security.login.password'|trans }}</label>
+    <input type="password" id="password" name="_password" required="required" />
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+</form>
+{% endblock fos_user_content %}
