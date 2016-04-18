@@ -1,0 +1,18 @@
+
+
+<div class="closePP" id="signUpClose"></div>
+  <h2>BENVENUTO SU</h2>
+  <img src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
+  {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+    <input type="mail" name="user" placeholder="E-mail" class="greyInput" /><br />
+    <input type="password" name="psw1" placeholder="Password" class="greyInput" /><br />
+    <input type="password" name="psw2" placeholder="Ripeti Password" class="greyInput" /><br />
+    <input type="submit" class="submitButton" value="REGISTRATI" />
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+<div class="popupFooter">
+  OPPURE REGISTRATI CON FACEBOOK <a href="http://www.facebook.com" target="_blank"><img src="http://www.marcolanci.it/icequi/img/fblogin.png" alt="Facebook LogIn" /></a>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{{ asset('/js/script.js') }}"></script>

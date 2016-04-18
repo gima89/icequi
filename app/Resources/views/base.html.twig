@@ -26,7 +26,7 @@
             <span> &#124; </span><a href="{{ url('favorites')}}" title="Visualizza le gelaterie preferite">&#127775;</a><span> &#124; </span>
             <a href="/logout" title="Effettua il logout">Logout</a>
           {% else %}
-            <a href="#" title="Registrati" id="reg">Registrati</a>
+            <a href="/register" title="Registrati" id="reg">Registrati</a>
             <span> &#124; </span>
             <a href="/login" title="Effettua il login" id="log">Login</a>
           {% endif %}
@@ -56,19 +56,7 @@
         <div class="layer" id="layer">
               <section class="popup">
                 <div id="signUpPopUp">
-                  <div class="closePP" id="signUpClose"></div>
-                    <h2>BENVENUTO SU</h2>
-                    <img src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
-                    <form name="signUpForm" method="get" action="<?= $_SERVER['PHP_SELF'] ?>" />
-                      <input type="hidden" name="logged" value="1" />
-                      <input type="mail" name="user" placeholder="E-mail" class="greyInput" /><br />
-                      <input type="password" name="psw1" placeholder="Password" class="greyInput" /><br />
-                      <input type="password" name="psw2" placeholder="Ripeti Password" class="greyInput" /><br />
-                      <input type="submit" class="submitButton" value="REGISTRATI" />
-                    </form>
-                  <div class="popupFooter">
-                    OPPURE REGISTRATI CON FACEBOOK <a href="http://www.facebook.com" target="_blank"><img src="http://www.marcolanci.it/icequi/img/fblogin.png" alt="Facebook LogIn" /></a>
-                  </div>
+                    <!-- questa parte la prende da app\Resources\FOSUserBundle\views\Registration\register_content.html.twig-->
                 </div>
                 <div id="signInPopUp">
                   <!-- questa parte la prende da app\Resources\FOSUserBundle\views\Security\login.html.twig-->

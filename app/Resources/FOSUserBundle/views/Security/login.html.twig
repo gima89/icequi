@@ -12,18 +12,16 @@
     <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Username" class="greyInput" /><br />
     <input type="password" id="password" name="_password" required="required" placeholder="Password" class="greyInput" /><br />
     <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-    <p id="forgotten">Password Dimenticata?</p><br />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label><br /><br />
+    <p><a style="color:#fff" id="forgotten" href="/resetting/request">Password Dimenticata?</a></p><br />
+
     <input type="submit" id="_submit" name="_submit" class="submitButton" value="{{ 'security.login.submit'|trans }}" />
 </form>
-  <!--
-  <form name="forgottenForm" method="post" action="recover.php" id="forgottenForm" />
-		<input type="mail" name="mail" placeholder="E-mail" class="greyInput" /><br />
-		<p id="tornaAlLogin">Torna al login</p>
-		<input type="submit" class="submitButton" value="RECUPERO" />
-	</form>
-  -->
+<div id="forgottenForm" style="margin:0; padding:0">
+  <!-- qui c'è un'altra chiamata asincrona-->
+</div>
 </div>
 <div class="popupFooter">
   OPPURE REGISTRATI CON FACEBOOK <a href="http://www.facebook.com" target="_blank"><img src="http://www.marcolanci.it/icequi/img/fblogin.png" alt="Facebook LogIn" /></a>
 </div>
+<script src="{{ asset('/js/script.js') }}"></script>

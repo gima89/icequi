@@ -1,10 +1,17 @@
 //homepage
 
 $(document).ready(
-	function(){
-	$("#reg").click(function(){
-		$("#layer").fadeIn("slow");
-		$("#signUpPopUp").fadeIn("fast");
+	function () {
+	$("#reg").click(function (e) { //al click del tag A con id log nell'header
+		e.preventDefault(); //impedisce che segua la rotta
+		var urlPaginaRegister = $(this).attr('href'); //prende l'href del tag a, che contiene la rotta /login
+		$.ajax({ //funzione nativa di jQuery che effettua una chiamata asincrona
+		  url: urlPaginaRegister //va sull'url che gli abbiamo passato sopra
+		}).done(function (data) { //una  volta ottenuta risposta, prende il contenuto della pagina chiamata
+		  $('#signUpPopUp').html(data); // e lo butta dentro all'HTML dell'elemento con ID signInPopUp
+			$("#layer").fadeIn("slow"); // fa comparire il Layer
+			$("#signUpPopUp").fadeIn("fast"); // fa comparire il popUp
+		});
 	});
 });
 
@@ -45,9 +52,16 @@ $(document).ready(
 
 $(document).ready(
 	function(){
-	$("#forgotten").click(function(){
-		$("#signInForm").slideUp("slow");
-		$("#forgottenForm").slideDown("slow");
+	$("#forgotten").click(function(e){
+		e.preventDefault();
+		var paginaReset=$(this).attr('href');
+		$.ajax({ //funzione nativa di jQuery che effettua una chiamata asincrona
+			url: paginaReset //va sull'url che gli abbiamo passato sopra
+		}).done(function (data) { //una  volta ottenuta risposta, prende il contenuto della pagina chiamata
+			$('#forgottenForm').html(data); // e lo butta dentro all'HTML dell'elemento con ID signInPopUp
+			$("#signInForm").slideUp("slow");
+			$("#forgottenForm").slideDown("slow");
+		});
 	});
 });
 
