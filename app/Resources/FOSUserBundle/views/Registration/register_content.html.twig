@@ -1,16 +1,14 @@
-
-
 <div class="closePP" id="signUpClose"></div>
   <h2>BENVENUTO SU</h2>
   <img src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
-  {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-
-    <input type="mail" name="user" placeholder="E-mail" class="greyInput" /><br />
-    <input type="password" name="psw1" placeholder="Password" class="greyInput" /><br />
-    <input type="password" name="psw2" placeholder="Ripeti Password" class="greyInput" /><br />
+  {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'id':'fos_user_registration_register' }}) }}
+  {{ form_row(form.email, { 'label': ' ' ,'attr':{'class':'greyInput', 'placeholder':'Email'}}) }}
+  {{ form_row(form.username, { 'label': ' ' ,'attr':{'class':'greyInput', 'placeholder':'Username'}}) }}
+  {{ form_row(form.plainPassword.first, { 'label': ' ' ,'attr':{'class':'greyInput', 'placeholder':'Password'}}) }}
+  {{ form_row(form.plainPassword.second, { 'label': ' ' ,'attr':{'class':'greyInput', 'placeholder':'Ripeti Password'}}) }}
+  {{ form_widget(form) }}
     <input type="submit" class="submitButton" value="REGISTRATI" />
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+  {{ form_end(form) }}
 <div class="popupFooter">
   OPPURE REGISTRATI CON FACEBOOK <a href="http://www.facebook.com" target="_blank"><img src="http://www.marcolanci.it/icequi/img/fblogin.png" alt="Facebook LogIn" /></a>
 </div>

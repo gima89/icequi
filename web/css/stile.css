@@ -443,6 +443,7 @@ footer ul li{
 	padding-top:220px;
 }
 
+
 #daysForm{
 	height:320px;
 	padding-bottom:40px;
@@ -466,6 +467,10 @@ footer ul li{
 
 #forgottenForm{
 	display: none;
+}
+
+#fos_user_registration_register div:first-child{
+	padding-top:0;
 }
 
 #headerBanner{
