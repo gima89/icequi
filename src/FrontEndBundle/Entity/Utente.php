@@ -36,15 +36,10 @@ class Utente extends BaseUser
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="Citta", inversedBy="utenti")
+     * @ORM\ManyToOne(targetEntity="Citta")
      * @ORM\JoinColumn(name="id_citta_predefinita", referencedColumnName="id")
      */
     private $idCittaPredefinita;
-
-    /**
-    * @ORM\OneToMany(targetEntity="Segnalazione", mappedBy="id_utente")
-    */
-    private $segnalazioni;
 
     /**
     * @ORM\OneToMany(targetEntity="Ricerca", mappedBy="id_utente")
@@ -52,7 +47,7 @@ class Utente extends BaseUser
     private $ricerche;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Gelateria", inversedBy="gelaterie")
+    * @ORM\ManyToMany(targetEntity="Gelateria", inversedBy="utenti")
     * @ORM\JoinTable(name="Preferite")
     */
 
@@ -61,7 +56,6 @@ class Utente extends BaseUser
     public function __construct()
     {
       parent::__construct();
-      $this->segnalazioni= new \Doctrine\Common\Collections\ArrayCollection();
       $this->ricerche = new \Doctrine\Common\Collections\ArrayCollection();
       $this->gelaterie = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -156,40 +150,6 @@ class Utente extends BaseUser
     public function getUtenti()
     {
         return $this->utenti;
-    }
-
-    /**
-     * Add segnalazioni
-     *
-     * @param \FrontEndBundle\Entity\Segnalazione $segnalazioni
-     *
-     * @return Utente
-     */
-    public function addSegnalazioni(\FrontEndBundle\Entity\Segnalazione $segnalazioni)
-    {
-        $this->segnalazioni[] = $segnalazioni;
-
-        return $this;
-    }
-
-    /**
-     * Remove segnalazioni
-     *
-     * @param \FrontEndBundle\Entity\Segnalazione $segnalazioni
-     */
-    public function removeSegnalazioni(\FrontEndBundle\Entity\Segnalazione $segnalazioni)
-    {
-        $this->segnalazioni->removeElement($segnalazioni);
-    }
-
-    /**
-     * Get segnalazioni
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSegnalazioni()
-    {
-        return $this->segnalazioni;
     }
 
     /**

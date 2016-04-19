@@ -43,15 +43,14 @@ class Gusto
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="Tipo_Gusto", inversedBy="gusti")
+     * @ORM\ManyToOne(targetEntity="Tipo_Gusto")
      * @ORM\JoinColumn(name="id_tipo_gusto", referencedColumnName="id")
      * @Assert\NotNull()
      */
     private $idTipoGusto;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Gelateria", inversedBy="gusti")
-    * @ORM\JoinTable(name="gusti_gelaterie")
+    * @ORM\ManyToMany(targetEntity="Gelateria", mappedBy="gusti")
     */
     private $gelaterie;
 

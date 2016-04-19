@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use FrontEndBundle\Entity\Citta;
 use FrontEndBundle\Entity\Utente;
-
+use FrontEndBundle\Entity\Gusto;
 /**
  * Ricerca
  *
@@ -42,7 +42,7 @@ class Ricerca
     private $idUtente;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Citta", inversedBy="ricerche")
+     * @ORM\ManyToOne(targetEntity="Citta")
      * @ORM\JoinColumn(name="id_citta", referencedColumnName="id")
      */
     private $idCitta;
@@ -50,28 +50,11 @@ class Ricerca
     /**
      * @var int
      *
-     * @ORM\Column(name="id_gustoUno", type="integer")
+     * @ORM\ManyToOne(targetEntity="Gusto")
+     * @ORM\JoinColumn(name="id_gusto", referencedColumnName="id")
      * @Assert\NotNull()
      */
-    private $idGustoUno;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_gustoDue", type="integer")
-     * @Assert\NotNull()
-     */
-    private $idGustoDue;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_gustoTre", type="integer")
-     * @Assert\NotNull()
-     */
-    private $idGustoTre;
-
-
+    private $idGusto;
     /**
      * Get id
      *
@@ -153,99 +136,27 @@ class Ricerca
     }
 
     /**
-     * Set idGusto1
+     * Set idGusto
      *
-     * @param integer $idGusto1
+     * @param integer $idGusto
      *
      * @return Ricerca
      */
-    public function setIdGusto1($idGusto1)
+    public function setIdGusto($idGusto)
     {
-        $this->idGusto1 = $idGusto1;
+        $this->idGusto = $idGusto;
 
         return $this;
     }
 
     /**
-     * Get idGusto1
+     * Get idGusto
      *
      * @return int
      */
-    public function getIdGusto1()
+    public function getIdGusto()
     {
-        return $this->idGusto1;
-    }
-
-    /**
-     * Set idGustoDue
-     *
-     * @param integer $idGustoDue
-     *
-     * @return Ricerca
-     */
-    public function setIdGustoDue($idGustoDue)
-    {
-        $this->idGustoDue = $idGustoDue;
-
-        return $this;
-    }
-
-    /**
-     * Get idGustoDue
-     *
-     * @return int
-     */
-    public function getIdGustoDue()
-    {
-        return $this->idGustoDue;
-    }
-
-    /**
-     * Set idGustoTre
-     *
-     * @param integer $idGustoTre
-     *
-     * @return Ricerca
-     */
-    public function setIdGustoTre($idGustoTre)
-    {
-        $this->idGustoTre = $idGustoTre;
-
-        return $this;
-    }
-
-    /**
-     * Get idGustoTre
-     *
-     * @return int
-     */
-    public function getIdGustoTre()
-    {
-        return $this->idGustoTre;
-    }
-
-    /**
-     * Set idGustoUno
-     *
-     * @param integer $idGustoUno
-     *
-     * @return Ricerca
-     */
-    public function setIdGustoUno($idGustoUno)
-    {
-        $this->idGustoUno = $idGustoUno;
-
-        return $this;
-    }
-
-    /**
-     * Get idGustoUno
-     *
-     * @return integer
-     */
-    public function getIdGustoUno()
-    {
-        return $this->idGustoUno;
+        return $this->idGusto;
     }
 
     /**

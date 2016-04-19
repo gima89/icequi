@@ -111,7 +111,8 @@ class Gelateria
     private $utenti;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Gusto", mappedBy="gelaterie")
+    * @ORM\ManyToMany(targetEntity="Gusto", inversedBy="gelaterie")
+    * @ORM\JoinTable(name="gusti_gelaterie")
     */
     private $gusti;
 

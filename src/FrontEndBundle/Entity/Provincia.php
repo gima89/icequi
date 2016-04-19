@@ -34,21 +34,11 @@ class Provincia
     /**
      * @var Provincia
      *
-     * @ORM\ManyToOne(targetEntity="Regione", inversedBy="provincie")
+     * @ORM\ManyToOne(targetEntity="Regione")
      * @ORM\JoinColumn(name="id_regione", referencedColumnName="id")
      * @Assert\NotNull()
      */
     private $idRegione;
-
-    /**
-    * @ORM\OneToMany(targetEntity="Citta", mappedBy="id_provincia")
-    */
-    private $cities;
-
-    public function __construct()
-    {
-      $this->cities= new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -108,71 +98,4 @@ class Provincia
         return $this->idRegione;
     }
 
-    /**
-     * Add cittum
-     *
-     * @param \FrontEndBundle\Entity\Citta $cittum
-     *
-     * @return Provincia
-     */
-    public function addCittum(\FrontEndBundle\Entity\Citta $cittum)
-    {
-        $this->citta[] = $cittum;
-
-        return $this;
-    }
-
-    /**
-     * Remove cittum
-     *
-     * @param \FrontEndBundle\Entity\Citta $cittum
-     */
-    public function removeCittum(\FrontEndBundle\Entity\Citta $cittum)
-    {
-        $this->citta->removeElement($cittum);
-    }
-
-    /**
-     * Get citta
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCitta()
-    {
-        return $this->citta;
-    }
-
-    /**
-     * Add city
-     *
-     * @param \FrontEndBundle\Entity\Citta $city
-     *
-     * @return Provincia
-     */
-    public function addCity(\FrontEndBundle\Entity\Citta $city)
-    {
-        $this->cities[] = $city;
-
-        return $this;
-    }
-
-    /**
-     * Remove city
-     *
-     * @param \FrontEndBundle\Entity\Citta $city
-     */
-    public function removeCity(\FrontEndBundle\Entity\Citta $city)
-    {
-        $this->cities->removeElement($city);
-    }
-
-    /**
-     * Get cities
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCities()
-    {
-        return $this->cities;
-    }
 }
