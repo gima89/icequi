@@ -36,7 +36,7 @@ class Gelateria
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="Citta", inversedBy="cities")
+     * @ORM\ManyToOne(targetEntity="Citta")
      * @ORM\JoinColumn(name="id_citta", referencedColumnName="id")
      */
     private $idCitta;

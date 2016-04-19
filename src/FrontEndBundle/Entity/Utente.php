@@ -42,11 +42,6 @@ class Utente extends BaseUser
     private $idCittaPredefinita;
 
     /**
-    * @ORM\OneToMany(targetEntity="Ricerca", mappedBy="id_utente")
-    */
-    private $ricerche;
-
-    /**
     * @ORM\ManyToMany(targetEntity="Gelateria", inversedBy="utenti")
     * @ORM\JoinTable(name="Preferite")
     */
@@ -56,7 +51,6 @@ class Utente extends BaseUser
     public function __construct()
     {
       parent::__construct();
-      $this->ricerche = new \Doctrine\Common\Collections\ArrayCollection();
       $this->gelaterie = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -150,40 +144,6 @@ class Utente extends BaseUser
     public function getUtenti()
     {
         return $this->utenti;
-    }
-
-    /**
-     * Add ricerche
-     *
-     * @param \FrontEndBundle\Entity\Ricerca $ricerche
-     *
-     * @return Utente
-     */
-    public function addRicerche(\FrontEndBundle\Entity\Ricerca $ricerche)
-    {
-        $this->ricerche[] = $ricerche;
-
-        return $this;
-    }
-
-    /**
-     * Remove ricerche
-     *
-     * @param \FrontEndBundle\Entity\Ricerca $ricerche
-     */
-    public function removeRicerche(\FrontEndBundle\Entity\Ricerca $ricerche)
-    {
-        $this->ricerche->removeElement($ricerche);
-    }
-
-    /**
-     * Get ricerche
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRicerche()
-    {
-        return $this->ricerche;
     }
 
     /**

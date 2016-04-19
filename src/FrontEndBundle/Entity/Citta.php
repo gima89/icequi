@@ -42,16 +42,6 @@ class Citta
     private $idProvincia;
 
     /**
-    * @ORM\OneToMany(targetEntity="Gelateria", mappedBy="id_citta")
-    */
-    private $gelaterie;
-
-    public function __construct()
-    {
-      $this->gelaterie = new ArrayCollection();
-    }
-
-    /**
      * Get id
      *
      * @return int
@@ -109,37 +99,4 @@ class Citta
         return $this->idProvincia;
     }
 
-    /**
-     * Add gelaterie
-     *
-     * @param \FrontEndBundle\Entity\Gelateria $gelaterie
-     *
-     * @return Citta
-     */
-    public function addGelaterie(\FrontEndBundle\Entity\Gelateria $gelaterie)
-    {
-        $this->gelaterie[] = $gelaterie;
-
-        return $this;
-    }
-
-    /**
-     * Remove gelaterie
-     *
-     * @param \FrontEndBundle\Entity\Gelateria $gelaterie
-     */
-    public function removeGelaterie(\FrontEndBundle\Entity\Gelateria $gelaterie)
-    {
-        $this->gelaterie->removeElement($gelaterie);
-    }
-
-    /**
-     * Get gelaterie
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getGelaterie()
-    {
-        return $this->gelaterie;
-    }
 }
