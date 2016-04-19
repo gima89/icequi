@@ -637,6 +637,7 @@ footer ul li{
 #results{
 	margin: 0 auto;
 	width:70%;
+	padding-top: 200px;
 }
 
 #searchFormWrapper{
