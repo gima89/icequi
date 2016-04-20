@@ -111,8 +111,8 @@ class Gelateria
     private $utenti;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Gusto", inversedBy="gelaterie")
-    * @ORM\JoinTable(name="gusti_gelaterie")
+    * @ORM\ManyToOne(targetEntity="Gusto")
+    * @ORM\JoinColumn(name="gusti", referencedColumnName="id")
     */
     private $gusti;
 
@@ -463,5 +463,19 @@ class Gelateria
     public function getGusti()
     {
         return $this->gusti;
+    }
+
+    /**
+     * Set gusti
+     *
+     * @param \FrontEndBundle\Entity\Gusto $gusti
+     *
+     * @return Gelateria
+     */
+    public function setGusti(\FrontEndBundle\Entity\Gusto $gusti = null)
+    {
+        $this->gusti = $gusti;
+
+        return $this;
     }
 }

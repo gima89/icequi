@@ -36,7 +36,7 @@ class Gusto
      * @var string
      *
      * @ORM\Column(name="colore", type="string", length=7)
-     * @Assert\Regex("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")
+     * 
      */
     private $colore;
 
@@ -48,16 +48,6 @@ class Gusto
      * @Assert\NotNull()
      */
     private $idTipoGusto;
-
-    /**
-    * @ORM\ManyToMany(targetEntity="Gelateria", mappedBy="gusti")
-    */
-    private $gelaterie;
-
-    public function __construct()
-    {
-      $this->gelaterie= new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -141,37 +131,4 @@ class Gusto
         return $this->idTipoGusto;
     }
 
-    /**
-     * Add gelaterie
-     *
-     * @param \FrontEndBundle\Entity\Gelateria $gelaterie
-     *
-     * @return Gusto
-     */
-    public function addGelaterie(\FrontEndBundle\Entity\Gelateria $gelaterie)
-    {
-        $this->gelaterie[] = $gelaterie;
-
-        return $this;
-    }
-
-    /**
-     * Remove gelaterie
-     *
-     * @param \FrontEndBundle\Entity\Gelateria $gelaterie
-     */
-    public function removeGelaterie(\FrontEndBundle\Entity\Gelateria $gelaterie)
-    {
-        $this->gelaterie->removeElement($gelaterie);
-    }
-
-    /**
-     * Get gelaterie
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getGelaterie()
-    {
-        return $this->gelaterie;
-    }
 }

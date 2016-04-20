@@ -62,7 +62,7 @@
 	font-size:20px;
 	padding:5px 0px;
 	width:25%
-	
+
 }
 
 .bloccoGusto{
@@ -71,7 +71,7 @@
 
 .bloccoGusto h4{
 	margin-bottom:10px;
-	
+
 }
 
 .bloccoGusto input[type=color]{
@@ -99,4 +99,8 @@ width: 30%;
 
 .containerGusti label{
 	display: inline-block;
+}
+
+#addGustiForm>div{
+
 }
