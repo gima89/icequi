@@ -36,18 +36,17 @@ class Gusto
      * @var string
      *
      * @ORM\Column(name="colore", type="string", length=7)
-     * 
+     *
      */
     private $colore;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Tipo_Gusto")
-     * @ORM\JoinColumn(name="id_tipo_gusto", referencedColumnName="id")
+     * @ORM\Column(name="tipoGusto", type="string")
      * @Assert\NotNull()
      */
-    private $idTipoGusto;
+    private $tipoGusto;
 
     /**
      * Get id
@@ -108,27 +107,27 @@ class Gusto
     }
 
     /**
-     * Set idTipoGusto
+     * Set tipoGusto
      *
-     * @param integer $idTipoGusto
+     * @param string $tipoGusto
      *
      * @return Gusto
      */
-    public function setIdTipoGusto($idTipoGusto)
+    public function setTipoGusto($tipoGusto)
     {
-        $this->idTipoGusto = $idTipoGusto;
+        $this->tipoGusto = $tipoGusto;
 
         return $this;
     }
 
     /**
-     * Get idTipoGusto
+     * Get tipoGusto
      *
-     * @return int
+     * @return string
      */
-    public function getIdTipoGusto()
+    public function getTipoGusto()
     {
-        return $this->idTipoGusto;
+        return $this->tipoGusto;
     }
 
 }
