@@ -9,7 +9,7 @@
 		<h4>Aggiungi nuovo gusto</h4>
 		{{form_row(form.nomeGusto, {  'label':' ', 'attr':{'class': 'ngName', 'placeholder':'Nome del nuovo gusto'}}) }}
 		<div class="divGusti">
-				{{form_row(form.idTipoGusto, { 'label':' ', 'attr':{'class': 'ngCategory'}}) }} <!--deve essere una select!!-->
+				{{form_row(form.tipoGusto, { 'label':' ', 'attr':{'class': 'ngCategory'}}) }} <!--deve essere una select!!-->
 				{{form_row(form.colore, { 'label': 'Scegli il colore: ', 'attr':{'class': 'ngColor'}}) }}
 				{{form_row(form.save, { 'attr':{'class': 'submitButton', 'value' : 'INSERISCI'}}) }}
 		</div>

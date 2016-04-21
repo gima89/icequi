@@ -30,11 +30,12 @@ class GustoType extends AbstractType
                 'Rosso' => '#ff0040',
                 'Verde' => '#80ff00',
              ]])
-            ->add('idTipoGusto', ChoiceType::class, [
+            ->add('tipoGusto', ChoiceType::class, [
               'choices'=>[
-                'Frutta'=> 1, //si aspetta un oggetto, non un numero, usare un servizio o una repository forse?
-                'Crema'=>2,
-                'Altro'=>3
+                'Seleziona' => 'Scegli Tipo',
+                'Frutta'=> 'Frutta', //si aspetta un oggetto, non un numero, usare un servizio o una repository forse?
+                'Crema'=>'Crema',
+                'Altro'=>'Altro'
               ]
             ])
             ->add('save', SubmitType::class )
