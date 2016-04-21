@@ -85,8 +85,29 @@ class AdminController extends Controller
 
     public function updFlavourAction()
     {
+        $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
+
         return $this->render('BackEndBundle:Admin:upd_flavour.html.twig', array(
-            // ...
+            'gusti'=>$gusti,
+        ));
+      }
+
+    public function updFlavourFormAction(Request $request) {
+        $gusto = $this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->find($request->get('id'));
+
+        $form=$this->createForm(GustoType::class, $gusto);
+        $form->handleRequest($request);
+        $message='';
+        if($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($gusto);
+            $em->flush();
+            $message="Gusto modificato con successo!";
+        }
+
+        return $this->render('BackEndBundle:Admin:updFlavourForm.html.twig', array(
+            'form'=>$form->createView(),
+            'message'=>$message
         ));
     }
 

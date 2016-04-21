@@ -38,7 +38,7 @@ class GustoType extends AbstractType
                 'Altro'=>'Altro'
               ]
             ])
-            ->add('save', SubmitType::class )
+            ->add('INSERISCI', SubmitType::class )
         ;
     }
 

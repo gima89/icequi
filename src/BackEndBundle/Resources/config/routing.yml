@@ -42,6 +42,10 @@ upd_flavour:
     path:     updFlavour
     defaults: { _controller: BackEndBundle:Admin:updFlavour }
 
+upd_flavourForm:
+    path:     updFlavour/{id}
+    defaults: { _controller: BackEndBundle:Admin:updFlavourForm }
+
 del_flavour:
     path:     delFlavour
     defaults: { _controller: BackEndBundle:Admin:delFlavour }
