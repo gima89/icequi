@@ -1,7 +1,8 @@
-{{ form_start(form, {'action' : path('upd_flavourForm', {id: gusto.id})}) }}
+{{ form_start(form, {'action' : path('editagusto')}) }}
 {{form_row(form.nomeGusto, {  'label':' ', 'attr':{'class': 'ngName', 'placeholder':'Nome del nuovo gusto'}}) }}
 <div class="divGusti">
     {{form_row(form.tipoGusto, { 'label':'Modifica tipo: ', 'attr':{'class': 'ngCategory'}}) }} <!--deve essere una select!!-->
     {{form_row(form.colore, { 'label': 'Modifica colore: ', 'attr':{'class': 'ngColor'}}) }}
     {{form_row(form.INSERISCI, { 'attr':{'class': 'submitButton', 'value' : 'MODIFICA'}}) }}
+    <input type="hidden" value="{{ gusto.id }}" name="idSelected" />
 {{ form_end(form) }}

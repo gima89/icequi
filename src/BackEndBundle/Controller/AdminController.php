@@ -108,6 +108,21 @@ class AdminController extends Controller
         ));
     }
 
+    public function editaGustoAction(Request $request) {
+        $gusto = $this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->find($request->get('idSelected'));
+        $form=$this->createForm(GustoType::class, $gusto);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($gusto);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('upd_flavour', array(
+        ));
+    }
+
+
     public function delFlavourFormAction()
     {
         $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
@@ -120,14 +135,14 @@ class AdminController extends Controller
 
     public function delFlavourAction(Request $request)
     {
-        $gusto=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->find($request->request->get('idToDelete'));
+        $gusto=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->find($request->get('idToDelete'));
         if(!$gusto){
           throw $this->createNotFoundException('Gusto non esistente');
         }
         $em=$this->getDoctrine()->getManager();
         $em->remove($gusto);
         $em->flush();
-        return $this->redirectToRoute('delFlavourForm', array(
+        return $this->redirectToRoute('del_flavourForm', array(
         ));
     }
 
