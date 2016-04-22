@@ -1,0 +1,18 @@
+{% extends "::adminBase.html.twig" %}
+
+{% block rightcol %}
+<div class="adminTitle">
+	Database Gusti
+</div>
+<div class="bloccoAdmin">
+	<form name="eliminaGusto" action="delFlavour" method="post">
+		<h4>Seleziona il gusto da eliminare:</h4>
+		<select name="idToDelete">
+			{% for gusto in gusti %}
+			<option value="{{gusto.id}}">{{ gusto.nomeGusto }}</option>
+			{% endfor %}
+		</select>
+		<input class="submitButton" type="submit" value="ELIMINA" />
+	</form>
+</div>
+{% endblock %}

@@ -94,27 +94,40 @@ class AdminController extends Controller
 
     public function updFlavourFormAction(Request $request) {
         $gusto = $this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->find($request->get('id'));
-
         $form=$this->createForm(GustoType::class, $gusto);
         $form->handleRequest($request);
-        $message='';
         if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
             $em->persist($gusto);
             $em->flush();
-            $message="Gusto modificato con successo!";
         }
 
         return $this->render('BackEndBundle:Admin:updFlavourForm.html.twig', array(
             'form'=>$form->createView(),
-            'message'=>$message
+            'gusto'=>$gusto
         ));
     }
 
-    public function delFlavourAction()
+    public function delFlavourFormAction()
     {
-        return $this->render('BackEndBundle:Admin:del_flavour.html.twig', array(
-            // ...
+        $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
+
+
+        return $this->render('BackEndBundle:Admin:del_flavourForm.html.twig', array(
+            'gusti'=>$gusti
+        ));
+    }
+
+    public function delFlavourAction(Request $request)
+    {
+        $gusto=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->find($request->request->get('idToDelete'));
+        if(!$gusto){
+          throw $this->createNotFoundException('Gusto non esistente');
+        }
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($gusto);
+        $em->flush();
+        return $this->redirectToRoute('delFlavourForm', array(
         ));
     }
 
