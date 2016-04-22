@@ -22,9 +22,9 @@
         <header>
         	<div id="hpTopBar">
         		<nav>
-        			<a href="{{ url('admin') }}" title="Registrati">marco@taginnovationschool.it</a>
+        			<a href="{{ url('admin') }}" title="Registrati">Admin</a>
         			<span> &#124; </span><a href="{{url('favorites')}}" title="Visualizza le gelaterie preferite">&#127775;</a><span> &#124; </span>
-        			<a href="/logout" title="Effettua il logout" id="log">Logout</a>
+        			<a href="/logout" title="Effettua il logout">Logout</a>
         		</nav>
         	</div>
         	<div id="headerBanner">
@@ -82,7 +82,7 @@
                 <div id="signUpPopUp">
                   <div class="closePP" id="signUpClose"></div>
                     <h2>BENVENUTO SU</h2>
-                    <img src="http://www.marcolanci.it/icequi/imgimg/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
+                    <img src="http://www.marcolanci.it/icequi/img/whitelogo.png" alt="iceQui Logo" class="popupLogo" />
                     <form name="signUpForm" method="get" action="<?= $_SERVER['PHP_SELF'] ?>" />
                       <input type="hidden" name="logged" value="1" />
                       <input type="mail" name="user" placeholder="E-mail" class="greyInput" /><br />
@@ -132,7 +132,7 @@
         {% endblock %}
         {% block javascripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://www.marcolanci.it/icequi/js/script.js"></script>
+        <script src="{{asset('js/script.js')}}"></script>
         {% endblock %}
     </body>
 </html>

@@ -1,4 +1,3 @@
-//homepage
 
 $(document).ready(
 	function () {
@@ -225,3 +224,15 @@ function(){
 		$(this).addClass("gelato");
 	});
 });*/
+
+$(document).ready(function () {
+	$('#selectFlavourToModify').on('change', function (el) {
+		var id = $("option:selected", this).val();
+		$.ajax({
+			url: '/admin/updFlavour/' + id
+		})
+		.done(function (data) {
+			$('#formGusto').html(data);
+		})
+	});
+});
