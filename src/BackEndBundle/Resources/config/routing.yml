@@ -49,3 +49,7 @@ del_flavour:
 dashboard:
     path:     dashboard
     defaults: { _controller: BackEndBundle:Admin:dashboard }
+
+login2:
+    path:     login
+    defaults: { _controller: FOSUserBundle:Security:login }
