@@ -164,6 +164,11 @@ footer ul li{
 	padding-top: 3px;*/
 }
 
+.flash-success {
+	margin-top: 300px;
+	text-align: center;
+}
+
 .gelato:before{
 	content: url('../img/icecream.png');
 }
