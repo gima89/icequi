@@ -106,11 +106,6 @@ class Gelateria
     private $isDomenica;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Utente", mappedBy="gelaterie")
-    */
-    private $utenti;
-
-    /**
     * @ORM\ManyToOne(targetEntity="Gusto")
     * @ORM\JoinColumn(name="gusti", referencedColumnName="id")
     */
@@ -118,7 +113,6 @@ class Gelateria
 
     public function __construct()
     {
-      $this->utenti= new \Doctrine\Common\Collections\ArrayCollection();
       $this->gusti= new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -395,40 +389,6 @@ class Gelateria
     public function getIsDomenica()
     {
         return $this->isDomenica;
-    }
-
-    /**
-     * Add utenti
-     *
-     * @param \FrontEndBundle\Entity\Utente $utenti
-     *
-     * @return Gelateria
-     */
-    public function addUtenti(\FrontEndBundle\Entity\Utente $utenti)
-    {
-        $this->utenti[] = $utenti;
-
-        return $this;
-    }
-
-    /**
-     * Remove utenti
-     *
-     * @param \FrontEndBundle\Entity\Utente $utenti
-     */
-    public function removeUtenti(\FrontEndBundle\Entity\Utente $utenti)
-    {
-        $this->utenti->removeElement($utenti);
-    }
-
-    /**
-     * Get utenti
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUtenti()
-    {
-        return $this->utenti;
     }
 
     /**

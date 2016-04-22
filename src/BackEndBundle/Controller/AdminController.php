@@ -4,7 +4,9 @@ namespace BackEndBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontEndBundle\Entity\Gusto;
+use FrontEndBundle\Entity\Gelateria;
 use FrontEndBundle\Form\GustoType;
+use FrontEndBundle\Form\GelateriaType;
 use Symfony\Component\HttpFOundation\Request;
 use Symfony\Component\HttpFOundation\Response;
 
@@ -24,17 +26,20 @@ class AdminController extends Controller
         ));
     }
 
-    public function addGelAction()
+    public function addGelAction(Request $request)
     {
-        return $this->render('BackEndBundle:Admin:add_gel.html.twig', array(
-            // ...
-        ));
-    }
+        $gelateria=new Gelateria();
+        $form=$this->createForm(GelateriaType::class, $gelateria);
+        $form->handleRequest($request);
 
-    public function addGel2Action()
-    {
-        return $this->render('BackEndBundle:Admin:add_gel2.html.twig', array(
-            // ...
+        if($form->isSubmitted() && $form->isValid()){
+          $em=$this->getDoctrine()->getManager();
+          $em->persist($gelateria);
+          $em->flush();
+        }
+
+        return $this->render('BackEndBundle:Admin:add_gel.html.twig', array(
+            'form'=>$form->createView()
         ));
     }
 
@@ -69,6 +74,7 @@ class AdminController extends Controller
     public function addFlavourAction(Request $request)
     {
         $gusto = new Gusto();
+
         $form=$this->createForm(GustoType::class, $gusto);
         $form->handleRequest($request);
 

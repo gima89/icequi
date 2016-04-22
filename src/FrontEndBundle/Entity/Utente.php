@@ -42,10 +42,12 @@ class Utente extends BaseUser
     private $idCittaPredefinita;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Gelateria", inversedBy="utenti")
-    * @ORM\JoinTable(name="Preferite")
+    * @ORM\ManyToMany(targetEntity="Gelateria")
+    * @ORM\JoinTable(name="preferite",
+    *   joinColumns={@ORM\JoinColumn(name="id_utente", referencedColumnName="id")},
+    *      inverseJoinColumns={@ORM\JoinColumn(name="id_gelateria", referencedColumnName="id")}
+    *      )
     */
-
     private $gelaterie;
 
     public function __construct()

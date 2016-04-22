@@ -14,10 +14,6 @@ add_gel:
     path:     addGel
     defaults: { _controller: BackEndBundle:Admin:addGel }
 
-add_gel2:
-    path:     addGel/2
-    defaults: { _controller: BackEndBundle:Admin:addGel2 }
-
 upd_gel:
     path:     updGel
     defaults: { _controller: BackEndBundle:Admin:updGel }

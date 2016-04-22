@@ -1,30 +1,32 @@
 {% extends "::adminBase.html.twig" %}
 
 {% block rightcol %}
-							<div class="adminTitle">
-								Aggiungi Gelateria
-							</div>
-							<div class="bloccoAdmin">
-								<form name="nuovaGelateria" action="{{url ('add_gel2') }}" method="get">
-									<input type="hidden" name="requestedPage" value="aggiungiGelateria2" />
-									<h4>Aggiungi Nuova Gelateria</h4>
-									<input type="text" name="nuovaGelName" placeholder="Nome gelateria" required /><br />
-									<label for="nuovaGelCity">Seleziona la citt&agrave;</label><br />
-									<select name="nuovaGelCity"><?php crea_elenco($cities) ?></select><br />
-									<label for="nuovaGelAddress">Inserisci l'indirizzo</label><br />
-									<input type="text" name="nuovaGelAddress" placeholder="Indirizzo nuova gelateria" required /><br />
-									<label for="nuovaGelTel">Inserisci recapito telefonico</label><br />
-									<input type="tel" name="nuovaGelTel" /><br />
-									<label>Indica giorni di apertura:</label>
-									<label for="lun">Lun<input type="checkbox" name="lun" value=1 /></label>
-									<label for="mar">Mar<input type="checkbox" name="mar" value=1 /></label>
-									<label for="mer">Mer<input type="checkbox" name="mer" value=1 /></label>
-									<label for="gio">Gio<input type="checkbox" name="gio" value=1 /></label>
-									<label for="ven">Ven<input type="checkbox" name="ven" value=1 /></label>
-									<label for="sab">Sab<input type="checkbox" name="sab" value=1 /></label>
-									<label for="dom">Dom<input type="checkbox" name="dom" value=1 /></label>
-									<br /><br />
-									<span>1/2</span><input class="submitButton" type="submit" value="CONTINUA" />
-								</form>
-							</div>
+<div class="adminTitle">Aggiungi Gelateria</div>
+	<div class="bloccoAdmin">
+		<h4>Aggiungi Nuova Gelateria</h4>
+		{{form_start(form)}}
+			{{form_row(form.nomeGelateria, {'label':' ', 'attr':{'placeholder':'Nome nuova gelateria'} } )}}
+			{{form_row(form.idCitta, {'label':'Seleziona la città' } )}}
+			{{form_row(form.indirizzo, {'attr':{'placeholder':'Indirizzo nuova gelateria'}} )}}
+			{{form_row(form.telefono, {'label':'Inserisci recapito telefonico'})}}
+			<div class="containerGusti">
+			<span>Giorni di apertura:</span>
+			{{form_row(form.isLunedi, {'label':'Lun'})}}
+			{{form_row(form.isMartedi, {'label':'Mar'})}}
+			{{form_row(form.isMercoledi, {'label':'Mer'})}}
+			{{form_row(form.isGiovedi, {'label':'Gio'})}}
+			{{form_row(form.isVenerdi, {'label':'Ven'})}}
+			{{form_row(form.isSabato, {'label':'Sab'})}}
+			{{form_row(form.isDomenica, {'label':'Dom'})}}
+		</div>
+			<div class="containerGusti">
+				<h5>Seleziona i gusti disponibili:</h5>
+				{{form_row(form.gusti, {'label':' '})}}
+			</div>
+			{{form_row(form.INSERISCI, {'attr':{'value':'INSERISCI', 'class':'submitButton'}})}}
+			{{form_widget(form)}}
+		{{form_end(form)}}
+	</div>
+
+
 {% endblock %}
