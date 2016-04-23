@@ -1,0 +1,9 @@
+<form name="form" method="post"  action="updGel2">
+  <select name="gelToUpdate">
+    <option>Gelateria da Modificare</option>
+    {% for gelateria in gelaterie %}
+      <option value="{{gelateria.id}}">{{gelateria.nomeGelateria}}</option>
+    {% endfor %}
+  </select>
+  <input class="submitButton" type="submit" value="MODIFICA" />
+</form>

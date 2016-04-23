@@ -1,4 +1,3 @@
-
 $(document).ready(
 	function () {
 	$("#reg").click(function (e) { //al click del tag A con id log nell'header
@@ -225,6 +224,7 @@ function(){
 	});
 });*/
 
+//tendina di selezione modifica gusti
 $(document).ready(function () {
 	$('#selectFlavourToModify').on('change', function (el) {
 		var id = $("option:selected", this).val();
@@ -236,3 +236,16 @@ $(document).ready(function () {
 		})
 	});
 });
+
+//tendina seleziona Regione di Modifica Gelateria che influisce sulle Province
+$(document).ready(function(){
+	$('#regToModify').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: '/admin/updGelProvince/'+id
+		})
+		.done(function(data){
+			$('#selProvincia').html(data);
+		})
+	})
+})

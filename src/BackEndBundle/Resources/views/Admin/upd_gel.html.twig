@@ -1,32 +1,30 @@
 {% extends "::adminBase.html.twig" %}
 
 {% block rightcol %}
-<div class="adminTitle">
-								Modifica Dati Gelaterie
-							</div>
-							<div class="bloccoAdmin">
-								<form name="selezGelToModify" action="{{url ('upd_gel2') }}" method="get">
-									<input type="hidden" name="requestedPage" value="modificaGelateria" />
-									<h4>Indica la gateria da modificare</h4>
-									<label for="regToModify">Seleziona la Regione</label><br />
-									<select name="regToModify">
-										<?php crea_elenco($regioni) ?>
-									</select><br />
-									<label for="provToModify">Seleziona la Provincia</label><br />
-									<select name="provToModify">
-										<?php crea_elenco($province) ?>
-									</select><br />
-									<label for="cityToModify">Seleziona la Citt&agrave;</label><br />
-									<select name="cityToModify">
-										<?php crea_elenco($cities) ?>
-									</select><br />
-									<label for="gelToModify">Gelateria da modificare</label>
-									<select name="gelToModify">
-										<option>Bar Rizzo</option>
-										<option>Bar Olona</option>
-										<option selected>La deliziosa</option>
-									</select>
-									<input class="submitButton" type="submit" value="MODIFICA" /><span>1/3</span>
-								</form>
-							</div>
+<div class="adminTitle">Modifica Dati Gelaterie</div>
+<div class="bloccoAdmin">
+	<h4>Indica la gateria da modificare</h4>
+	<select id="regToModify">
+		<option>Seleziona la Regione</option>
+		{%for regione in regioni %}
+			<option value="{{regione.id}}">{{regione.nomeRegione}}</option>
+		{% endfor %}
+	</select><br />
+	<div id="selProvincia">
+		<select disabled onclick="alert('Selezionare una regione')">
+			<option>Seleziona la Provincia</option>
+		</select>
+	</div>
+	<div id="selCity">
+		<select disabled onclick="alert('Selezionare una provincia')">
+			<option>Seleziona la Citt&agrave;</option>
+		</select>
+	</div>
+	<div id="selGel">
+		<select disabled onclick="alert('Selezionare una citt&agrave;')'">
+			<option>Gelateria da Modificare</option>
+		</select>
+			<input class="submitButton" type="submit" value="MODIFICA" onclick="alert('Devi selezionare una gelateria')" />
+	</div>
+</div>
 {% endblock %}

@@ -45,15 +45,61 @@ class AdminController extends Controller
 
     public function updGelAction()
     {
+        $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
+
+
         return $this->render('BackEndBundle:Admin:upd_gel.html.twig', array(
-            // ...
+              'regioni'=>$regioni
         ));
     }
 
-    public function updGel2Action()
+    public function updGelProvinceAction(Request $request)
     {
+        $provincie=$this->getDoctrine()->getRepository('FrontEndBundle:Provincia')->findByIdRegione($request->get('id'));
+
+
+        return $this->render('BackEndBundle:Admin:upd_gel_province.html.twig', array(
+              'provincie'=>$provincie
+        ));
+    }
+
+    public function updGelCittaAction(Request $request)
+    {
+        $citta=$this->getDoctrine()->getRepository('FrontEndBundle:Citta')->findByIdProvincia($request->get('id'));
+
+
+        return $this->render('BackEndBundle:Admin:upd_gel_citta.html.twig', array(
+              'cities'=>$citta
+        ));
+    }
+
+    public function updGelListAction(Request $request)
+    {
+        $gelaterie=$this->getDoctrine()->getRepository('FrontEndBundle:Gelateria')->findByIdCitta($request->get('id'));
+
+
+        return $this->render('BackEndBundle:Admin:upd_gel_list.html.twig', array(
+              'gelaterie'=>$gelaterie
+        ));
+    }
+
+
+    public function updGel2Action(Request $request)
+    {
+        $gelateria=$this->getDoctrine()->getRepository('FrontEndBundle:Gelateria')->find($request->get('gelToUpdate'));
+        $form=$this->createForm(GelateriaType::class, $gelateria);
+        $form->handleRequest($request);
+
+        if(!$gelateria) throw $this->createNotFoundException('Gelateria inesistente');
+
+        if($form->isSubmitted() && $form->isValid()){
+          $em=$this->getDoctrine()->getManager();
+          $em->persist($gelateria);
+          $em->flush();
+        }
+
         return $this->render('BackEndBundle:Admin:upd_gel2.html.twig', array(
-            // ...
+            'form'=>$form->createView()
         ));
     }
 

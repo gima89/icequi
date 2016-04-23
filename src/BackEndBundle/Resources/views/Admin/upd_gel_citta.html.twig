@@ -1,0 +1,20 @@
+<select id="cityToModify">
+  <option>Seleziona la Citt&agrave;</option>
+  {% for city in cities %}
+    <option value="{{city.id}}">{{city.nomeCitta}}</option>
+  {% endfor %}
+</select>
+<script>
+//tendina seleziona Città di Modifica Gelateria che influisce sulle Gelaterie
+$(document).ready(function(){
+	$('#cityToModify').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: '/admin/updGelList/'+id
+		})
+		.done(function(data){
+			$('#selGel').html(data);
+		})
+	})
+})
+</script>

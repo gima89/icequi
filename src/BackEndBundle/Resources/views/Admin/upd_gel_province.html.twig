@@ -1,0 +1,20 @@
+<select id="provToModify">
+  <option >Seleziona la Provincia</option>
+  {% for provincia in provincie %}
+    <option value="{{provincia.id}}">{{provincia.nomeProvincia}}</option>
+  {% endfor %}
+</select>
+<script>
+//tendina seleziona Provincia di Modifica Gelateria che influisce sulle Città
+$(document).ready(function(){
+	$('#provToModify').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: '/admin/updGelCitta/'+id
+		})
+		.done(function(data){
+			$('#selCity').html(data);
+		})
+	})
+})
+</script>

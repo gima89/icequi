@@ -18,8 +18,20 @@ upd_gel:
     path:     updGel
     defaults: { _controller: BackEndBundle:Admin:updGel }
 
+upd_gelProvince:
+    path:     updGelProvince/{id}
+    defaults: { _controller: BackEndBundle:Admin:updGelProvince }
+
+upd_gelCitta:
+    path:     updGelCitta/{id}
+    defaults: { _controller: BackEndBundle:Admin:updGelCitta }
+
+upd_gelList:
+    path:     updGelList/{id}
+    defaults: { _controller: BackEndBundle:Admin:updGelList }
+
 upd_gel2:
-    path:     updGel/2
+    path:     updGel2
     defaults: { _controller: BackEndBundle:Admin:updGel2 }
 
 upd_gel3:
