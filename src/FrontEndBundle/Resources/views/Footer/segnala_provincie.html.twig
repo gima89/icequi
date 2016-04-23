@@ -1,0 +1,20 @@
+<select id="selectProvincia" class="segnalacitta" name="provincia">
+  <option>Seleziona Provincia</option>
+  {% for provincia in provincie %}
+  <option value="{{provincia.id}}">{{provincia.nomeProvincia}}</option>
+  {% endfor %}
+</select>
+<script>
+//tendina seleziona Provincia di Segnala Gelateria che influisce sulle Città
+$(document).ready(function(){
+	$('#selectProvincia').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'segnalaCitta/'+id
+		})
+		.done(function(data){
+			$('#sezCitta').html(data);
+		})
+	})
+})
+</script>

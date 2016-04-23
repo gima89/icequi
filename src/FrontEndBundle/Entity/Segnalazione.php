@@ -25,10 +25,10 @@ class Segnalazione
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="Utente")
-     * @ORM\JoinColumn(name="id_utente", referencedColumnName="id")
+     * @ORM\Column(name="email", type="string", length=50)
+     * @Assert\NotBlank()
      */
-    private $idUtente;
+    private $mailUtente;
 
     /**
      * @var string
@@ -45,22 +45,6 @@ class Segnalazione
      * @Assert\NotBlank()
      */
     private $cittaSegnalazione;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="provincia_segnalazione", type="string", length=25)
-     * @Assert\NotBlank()
-     */
-    private $provinciaSegnalazione;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="regione_segnalazione", type="string", length=25)
-     * @Assert\NotBlank()
-     */
-    private $regioneSegnalazione;
 
     /**
      * @var string
@@ -89,27 +73,27 @@ class Segnalazione
     }
 
     /**
-     * Set idUtente
+     * Set mailUtente
      *
-     * @param integer $idUtente
+     * @param integer $mailUtente
      *
      * @return Segnalazione
      */
-    public function setIdUtente($idUtente)
+    public function setMailUtente($mailUtente)
     {
-        $this->idUtente = $idUtente;
+        $this->mailUtente = $mailUtente;
 
         return $this;
     }
 
     /**
-     * Get idUtente
+     * Get mailUtente
      *
      * @return int
      */
-    public function getIdUtente()
+    public function getMailUtente()
     {
-        return $this->idUtente;
+        return $this->mailUtente;
     }
 
     /**
@@ -158,54 +142,6 @@ class Segnalazione
     public function getCittaSegnalazione()
     {
         return $this->cittaSegnalazione;
-    }
-
-    /**
-     * Set provinciaSegnalazione
-     *
-     * @param string $provinciaSegnalazione
-     *
-     * @return Segnalazione
-     */
-    public function setProvinciaSegnalazione($provinciaSegnalazione)
-    {
-        $this->provinciaSegnalazione = $provinciaSegnalazione;
-
-        return $this;
-    }
-
-    /**
-     * Get provinciaSegnalazione
-     *
-     * @return string
-     */
-    public function getProvinciaSegnalazione()
-    {
-        return $this->provinciaSegnalazione;
-    }
-
-    /**
-     * Set regioneSegnalazione
-     *
-     * @param string $regioneSegnalazione
-     *
-     * @return Segnalazione
-     */
-    public function setRegioneSegnalazione($regioneSegnalazione)
-    {
-        $this->regioneSegnalazione = $regioneSegnalazione;
-
-        return $this;
-    }
-
-    /**
-     * Get regioneSegnalazione
-     *
-     * @return string
-     */
-    public function getRegioneSegnalazione()
-    {
-        return $this->regioneSegnalazione;
     }
 
     /**

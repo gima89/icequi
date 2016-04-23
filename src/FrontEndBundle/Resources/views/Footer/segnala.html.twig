@@ -13,26 +13,31 @@
 <div id="segnalamain">
 	<h3 >SEGNALACI UNA GELATERIA</h3>
 		<div id="segnalaselect">
-			<form method="POST">
-				<select class="segnalacitta" name="regione">
-					<option>Regione</option>
+			<select id="regToSig" class="segnalacitta" name="regione">
+				<option>Seleziona Regione</option>
+				{% for regione in regioni %}
+				<option value="{{regione.id}}">{{regione.nomeRegione}}</option>
+				{% endfor %}
+			</select>
+			<div id="sezProvincia">
+				<select id="selectProvincia" class="segnalacitta" name="provincia" disabled>
+					<option>Seleziona Provincia</option>
 				</select>
-				<select class="segnalacitta" name="provincia">
-					<option>Provincia</option>
+			</div>
+			<div id="sezCitta">
+				<select id="selectCitta" class="segnalacitta" name="citta" disabled>
+						<option>Seleziona Citt&agrave;</option>
 				</select>
-				<select class="segnalacitta" name="citta">
-						<option>Citta</option>
-				</select>
-		</div>
-		<div id="segnalaform">
-			<input type="text" name="nome" placeholder="Nome della gelateria." class="segnalainput" required="required">
-			<input type="text" name="via" placeholder="Via." class="segnalainput" required="required">
-			<input type="tel" name="telefono" placeholder="Telefono" class="segnalainput"><br/>
-			<div id="formsegnala">
-				<textarea name="raccontaci" placeholder="Raccontaci quali gusti hai provato!"></textarea><br />
-				<input type="submit" value="INVIA" class="submitButton segnalaButton" method="POST">
+				<div id="segnalaform">
+					<input type="text" name="nome" placeholder="Nome della gelateria." class="segnalainput" required="required" disabled>
+					<input type="text" name="via" placeholder="Via." class="segnalainput" required="required" disabled>
+					<input type="tel" name="telefono" placeholder="Telefono" class="segnalainput" disabled ><br/>
+					<div id="formsegnala">
+						<textarea name="raccontaci" placeholder="Raccontaci quali gusti hai provato!" disabled></textarea><br />
+						<input type="submit" value="INVIA" class="submitButton segnalaButton" method="POST" disabled onclick="Devi scegliere una città">
+					</div>
+				</div>
 			</div>
 		</div>
-	</form>
 </div>
 {% endblock %}

@@ -33,7 +33,7 @@ class AdminController extends Controller
 
     public function addAdminAction(Request $request)
     {
-        $newAdmin=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->find($request->get('idToAdd');
+        $newAdmin=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->find($request->request->get('idToAdd'));
 
         $em=$this->getDoctrine()->getManager();
         $newAdmin->setRoles('a:1:{i:0;s:10:"ROLE_ADMIN";}');
@@ -45,7 +45,7 @@ class AdminController extends Controller
 
     public function delAdminAction(Request $request)
     {
-        $oldAdmin=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->find($request->get('idToAdd');
+        $oldAdmin=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->find($request->get('idToDel'));
 
         $em=$this->getDoctrine()->getManager();
         $oldAdmin->setRoles('a:0:{}');

@@ -1,0 +1,20 @@
+<select id="selectCitta" class="segnalacitta" name="citta" disabled>
+    <option>Seleziona Citt&agrave;</option>
+    {% for city in cities %}
+    <option value="{{city.id}}">{{city.nomeCitta}}</option>
+    {% endfor %}
+</select>
+<script>
+//tendina seleziona Citta di Segnala Gelateria
+$(document).ready(function(){
+	$('#selectCitta').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'segnalaGelateria/'+id
+		})
+		.done(function(data){
+			$('#sezGelateria').html(data);
+		})
+	})
+})
+</script>

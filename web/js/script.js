@@ -249,3 +249,15 @@ $(document).ready(function(){
 		})
 	})
 })
+//tendina seleziona Regione di Segnala Gelateria che influisce sulle Province
+$(document).ready(function(){
+	$('#regToSig').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'segnalaProvincia/'+id
+		})
+		.done(function(data){
+			$('#sezProvincia').html(data);
+		})
+	})
+})

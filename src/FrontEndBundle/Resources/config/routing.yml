@@ -26,6 +26,18 @@ segnala:
     path:     /segnala
     defaults: { _controller: FrontEndBundle:Footer:segnala }
 
+segnalaProvincia:
+    path:     /segnalaProvincia/{id}
+    defaults: { _controller: FrontEndBundle:Footer:segnalaProvincia }
+
+segnalaCitta:
+    path:     /segnalaCitta/{id}
+    defaults: { _controller: FrontEndBundle:Footer:segnalaCitta }
+
+segnalaGelateria:
+    path:     /segnalaGelateria/{id}
+    defaults: { _controller: FrontEndBundle:Footer:segnalaGelateria }
+
 chisiamo:
     path:     /chisiamo
     defaults: { _controller: FrontEndBundle:Footer:chisiamo }
