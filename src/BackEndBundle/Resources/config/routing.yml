@@ -38,10 +38,6 @@ upd_gel3:
     path:     updGel/3
     defaults: { _controller: BackEndBundle:Admin:updGel3 }
 
-sig_gel:
-    path:     sigGel
-    defaults: { _controller: BackEndBundle:Admin:sigGel }
-
 add_flavour:
     path:     addFlavour
     defaults: { _controller: BackEndBundle:Admin:addFlavour }
