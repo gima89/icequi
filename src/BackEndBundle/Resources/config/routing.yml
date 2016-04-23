@@ -10,6 +10,14 @@ admin_manage:
     path:     adminManage
     defaults: { _controller: BackEndBundle:Admin:adminManage }
 
+add_admin:
+    path:     addAdmin
+    defaults: { _controller: BackEndBundle:Admin:addAdmin }
+
+del_admin:
+    path:     delAdmin
+    defaults: { _controller: BackEndBundle:Admin:delAdmin }
+
 add_gel:
     path:     addGel
     defaults: { _controller: BackEndBundle:Admin:addGel }

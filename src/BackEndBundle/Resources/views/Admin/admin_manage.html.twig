@@ -1,25 +1,27 @@
 {% extends "::adminBase.html.twig" %}
 
 {% block rightcol %}
-<div class="adminTitle">
-              Gestisci Amministratori
-            </div>
-            <div class="bloccoAdmin">
-              <form name="newAdmin" action="" method="post">
-                <h4>Nomina nuovo amministratore</h4>
-                <input type="email" name="newAdminEmail" placeholder="E-mail nuovo amministratore" required />
-                <input class="submitButton" type="submit" value="NOMINA" onclick="alert('Nuovo amministratore aggiunto.')" />
-              </form>
-            </div>
-            <div class="bloccoAdmin">
-              <form name="removeAdmin" action="" method="post">
-                <h4>Rimuovi amministratore</h4>
-                <select name="removedAdmin">
-                  <option>marco@taginnovationschool.it</option>
-                  <option>enrico@taginnovationschool.it</option>
-                  <option>carlos@taginnovationschool.it</option>
-                </select><br />
-                <input class="submitButton" type="submit" value="RIMUOVI" onclick="confirm('Vuoi davvero rimuovere questo admin?')" />
-              </form>
-            </div>
+<div class="adminTitle">Gestisci Amministratori</div>
+<div class="bloccoAdmin">
+  <form name="newAdmin" action="addAdmin" method="post">
+    <h4>Nomina nuovo amministratore</h4>
+    <select name="idToAdd">
+    {% for utente in utenti %}
+      <option value="{{utente.id}}">{{utente.email}}</option>
+    {% endfor %}
+    </select>
+    <input class="submitButton" type="submit" value="NOMINA" />
+  </form>
+</div>
+<div class="bloccoAdmin">
+  <form name="delAdmin" action="delAdmin" method="post">
+    <h4>Rimuovi amministratore</h4>
+    <select name="idToDel">
+    {% for admin in admins %}
+      <option value="{{admin.id}}">{{admin.email}}</option>
+    {% endfor %}
+    </select><br />
+    <input class="submitButton" type="submit" value="RIMUOVI" />
+  </form>
+</div>
 {% endblock %}

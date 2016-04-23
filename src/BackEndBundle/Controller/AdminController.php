@@ -5,6 +5,7 @@ namespace BackEndBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontEndBundle\Entity\Gusto;
 use FrontEndBundle\Entity\Gelateria;
+use FrontEndBundle\Entity\Utente;
 use FrontEndBundle\Form\GustoType;
 use FrontEndBundle\Form\GelateriaType;
 use Symfony\Component\HttpFOundation\Request;
@@ -21,9 +22,37 @@ class AdminController extends Controller
 
     public function adminManageAction()
     {
+        $utenti=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->findByRoles('a:0:{}');
+        $admins=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->findByRoles('a:1:{i:0;s:10:"ROLE_ADMIN";}');
+
         return $this->render('BackEndBundle:Admin:admin_manage.html.twig', array(
-            // ...
+            'utenti'=>$utenti,
+            'admins'=>$admins
         ));
+    }
+
+    public function addAdminAction(Request $request)
+    {
+        $newAdmin=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->find($request->get('idToAdd');
+
+        $em=$this->getDoctrine()->getManager();
+        $newAdmin->setRoles('a:1:{i:0;s:10:"ROLE_ADMIN";}');
+        $em->persist($newAdmin);
+        $em->flush();
+
+        return $this->rendirectToRoute('admin_manage');
+    }
+
+    public function delAdminAction(Request $request)
+    {
+        $oldAdmin=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->find($request->get('idToAdd');
+
+        $em=$this->getDoctrine()->getManager();
+        $oldAdmin->setRoles('a:0:{}');
+        $em->persit($oldAdmin);
+        $em->flush();
+
+        return $this->rendirectToRoute('admin_manage');
     }
 
     public function addGelAction(Request $request)
