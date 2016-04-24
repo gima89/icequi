@@ -49,3 +49,7 @@ privacy:
 contatti:
     path:     /contatti
     defaults: { _controller: FrontEndBundle:Footer:contatti }
+
+contatta:
+    path:     /contatta
+    defaults: { _controller: FrontEndBundle:Footer:contatta }

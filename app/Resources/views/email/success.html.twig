@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{asset('css/stileFooter.css')}}" />
+{% endblock %}
+
+{% block body %}
+<div id="contattimain">
+  <h2>E-mail inviata correttamente!</h2>
+  <a href="{{url('contatti')}}"><div type="submit" class="hpBlueButton" />OK</a>
+</div>
+{% endblock %}

@@ -56,7 +56,42 @@ class FooterController extends Controller
     public function contattiAction()
     {
         return $this->render('FrontEndBundle:Footer:contatti.html.twig', array(
-            // ...
+
+        ));
+    }
+
+    public function contattaAction(Request $request)
+    {
+        $testo=$request->request->get('testo');
+        $data=date("d-m-Y ");
+        $ora=date("h:i:s");
+
+        /*$destinatario="marcolanciesn@gmail.com".",";
+        $destinatario.="giacomo.marolla@gmail.com";
+        $oggetto="Ricchiesta di contatto su Icequi del $data $ora";
+        $intestazione="MIME-Version: 1.0\r\n";
+        $intestazione.="Content-type: text/html; charset=iso-8859-1\r\n";
+        $intestazione.="From: contactsystem@icequi.it" . "\r\n" . "Reply-To: marcolanciesn@gmail.it";
+        mail($destinatario, $oggetto, $testo, $intestazione);*/
+
+
+        $message = \Swift_Message::newInstance()
+        ->setSubject('Un utente ti ha contattato')
+        ->setFrom('icequisystem@icequi.it')
+        ->setTo('marcolanciesn@gmail.it')
+        ->setBody(
+        $this->renderView(
+            ':email:mailcontattato.html.twig',
+            ['testo'=>$testo, 'data'=>date("d-m-Y"), 'ora'=>date('h:i:s')]
+          ),
+          'text/html'
+        );
+        $this->get('mailer')->send($message);
+
+
+
+        return $this->render(':email:success.html.twig', array(
+
         ));
     }
 
