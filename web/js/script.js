@@ -261,3 +261,16 @@ $(document).ready(function(){
 		})
 	})
 })
+
+//tendina seleziona Regione di Impostazioni Account che influisce sulle Province
+$(document).ready(function(){
+	$('#tendinaRegioni').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'settings/provinceFilter/'+id
+		})
+		.done(function(data){
+			$('#sezioneProvincie').html(data);
+		})
+	})
+})

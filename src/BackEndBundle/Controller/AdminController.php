@@ -10,24 +10,103 @@ use FrontEndBundle\Form\GustoType;
 use FrontEndBundle\Form\GelateriaType;
 use Symfony\Component\HttpFOundation\Request;
 use Symfony\Component\HttpFOundation\Response;
+use FOS\UserBundle\Doctrine\UserManager;
 
 class AdminController extends Controller
 {
+    public function successAction(){
+      return $this->render('BackEndBundle:Admin:success.html.twig', array(
+          // ...
+      ));
+    }
+
+    public function failureAction(){
+      return $this->render('BackEndBundle:Admin:failure.html.twig', array(
+          // ...
+      ));
+    }
+
     public function settingsAction()
     {
+      if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+      {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+      }
+
+      $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
         return $this->render('BackEndBundle:Admin:settings.html.twig', array(
-            // ...
+            'user'=>$user,
+            'regioni'=>$regioni
         ));
     }
 
+    public function changePswAction(Request $request)
+    {
+      if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+      {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+      }
+
+      $password=$request->request->get('newpsw');
+      $password2=$request->request->get('pswrepeat');
+      if($password != $password2) return $this->redirectToRoute('failure');
+      $um = $this->container->get('fos_user.user_manager');
+      $user->setPlainPassword($password);
+      $user->setEnabled('true');
+      $um->updateUser($user);
+      return $this->redirectToRoute('success');
+    }
+
+    public function changeMailAction(Request $request)
+    {
+      if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+      {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+      }
+
+      $mail=$request->request->get('newEmail');
+      $um = $this->container->get('fos_user.user_manager');
+      $user->setEmail($mail);
+      $um->updateUser($user);
+      return $this->redirectToRoute('success');
+    }
+
+    public function provinceFilterAction(Request $request)
+    {
+        $provincie=$this->getDoctrine()->getRepository('FrontEndBundle:Provincia')->findByIdRegione($request->get('id'));
+
+        return $this->render('BackEndBundle:Admin:favoriteProvinces.html.twig', array(
+              'provincie'=>$provincie
+        ));
+    }
+
+    public function cityFilterAction(Request $request)
+    {
+        $citta=$this->getDoctrine()->getRepository('FrontEndBundle:Citta')->findByIdProvincia($request->get('id'));
+
+        return $this->render('BackEndBundle:Admin:favoriteCities.html.twig', array(
+              'cities'=>$citta
+        ));
+    }
+
+      public function favoriteCityAction(Request $request)
+      {
+          $defaultCity=$this->getDoctrine()->getRepository('FrontEndBundle:Citta')->find($request->get('defaultCity'));
+          if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+          {$user = $this->container->get('security.token_storage')->getToken()->getUser(); }
+
+          $um=$this->container->get('fos_user.user_manager');
+          $user->setIdCittaPredefinita($defaultCity);
+          $um->updateUser($user);
+          return $this->redirectToRoute('success');
+        }
+
     public function adminManageAction()
     {
-        $utenti=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->findByRoles('a:0:{}');
-        $admins=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->findByRoles('a:1:{i:0;s:10:"ROLE_ADMIN";}');
+        $utenti=$this->container->get('fos_user.user_manager')->findUsers('a:0:{}');
 
         return $this->render('BackEndBundle:Admin:admin_manage.html.twig', array(
-            'utenti'=>$utenti,
-            'admins'=>$admins
+            'utenti'=>$utenti
         ));
     }
 
@@ -35,12 +114,11 @@ class AdminController extends Controller
     {
         $newAdmin=$this->getDoctrine()->getRepository('FrontEndBundle:Utente')->find($request->request->get('idToAdd'));
 
-        $em=$this->getDoctrine()->getManager();
-        $newAdmin->setRoles('a:1:{i:0;s:10:"ROLE_ADMIN";}');
-        $em->persist($newAdmin);
-        $em->flush();
+        $um=$this->container->get('fos_user.user_manager');
+        $newAdmin->setRoles('a:1:{i:0;s:10:"ROLE_ADMIN";}'); //non lo prende perche ovviamente si aspettta un array
+        $um->updateUser($newAdmin);
 
-        return $this->rendirectToRoute('admin_manage');
+        return $this->redirectToRoute('success');
     }
 
     public function delAdminAction(Request $request)
@@ -52,7 +130,7 @@ class AdminController extends Controller
         $em->persit($oldAdmin);
         $em->flush();
 
-        return $this->rendirectToRoute('admin_manage');
+        return $this->redirectToRoute('success');
     }
 
     public function addGelAction(Request $request)
@@ -65,6 +143,7 @@ class AdminController extends Controller
           $em=$this->getDoctrine()->getManager();
           $em->persist($gelateria);
           $em->flush();
+          return $this->redirectToRoute('success');
         }
 
         return $this->render('BackEndBundle:Admin:add_gel.html.twig', array(
@@ -112,7 +191,6 @@ class AdminController extends Controller
         ));
     }
 
-
     public function updGel2Action(Request $request)
     {
         $gelateria=$this->getDoctrine()->getRepository('FrontEndBundle:Gelateria')->find($request->get('gelToUpdate'));
@@ -125,17 +203,11 @@ class AdminController extends Controller
           $em=$this->getDoctrine()->getManager();
           $em->persist($gelateria);
           $em->flush();
+          return $this->redirectToRoute('success');
         }
 
         return $this->render('BackEndBundle:Admin:upd_gel2.html.twig', array(
             'form'=>$form->createView()
-        ));
-    }
-
-    public function updGel3Action()
-    {
-        return $this->render('BackEndBundle:Admin:upd_gel3.html.twig', array(
-            // ...
         ));
     }
 
@@ -157,6 +229,7 @@ class AdminController extends Controller
           $em=$this->getDoctrine()->getManager();
           $em->persist($gusto);
           $em->flush();
+          return $this->redirectToRoute('success');
         }
 
         return $this->render('BackEndBundle:Admin:add_flavour.html.twig', array(
@@ -181,6 +254,7 @@ class AdminController extends Controller
             $em=$this->getDoctrine()->getManager();
             $em->persist($gusto);
             $em->flush();
+            return $this->redirectToRoute('success');
         }
 
         return $this->render('BackEndBundle:Admin:updFlavourForm.html.twig', array(
@@ -197,6 +271,7 @@ class AdminController extends Controller
             $em=$this->getDoctrine()->getManager();
             $em->persist($gusto);
             $em->flush();
+            return $this->redirectToRoute('success');
         }
 
         return $this->redirectToRoute('upd_flavour', array(

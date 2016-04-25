@@ -17,8 +17,8 @@
   <form name="delAdmin" action="delAdmin" method="post">
     <h4>Rimuovi amministratore</h4>
     <select name="idToDel">
-    {% for admin in admins %}
-      <option value="{{admin.id}}">{{admin.email}}</option>
+    {% for utente in utenti %}
+      <option value="{{utente.id}}">{{utente.email}}</option>
     {% endfor %}
     </select><br />
     <input class="submitButton" type="submit" value="RIMUOVI" />

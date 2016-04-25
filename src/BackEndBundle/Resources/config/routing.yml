@@ -6,6 +6,25 @@ settings:
     path:     settings
     defaults: { _controller: BackEndBundle:Admin:settings }
 
+changePsw:
+    path:     settings/changePsw
+    defaults: { _controller: BackEndBundle:Admin:changePsw }
+
+changeMail:
+    path:     settings/changeMail
+    defaults: { _controller: BackEndBundle:Admin:changeMail }
+
+provinceFilter:
+    path:     settings/provinceFilter/{id}
+    defaults: { _controller: BackEndBundle:Admin:provinceFilter }
+
+cityFilter:
+    path:     settings/cityFilter/{id}
+    defaults: { _controller: BackEndBundle:Admin:cityFilter }
+
+favoriteCity:
+    path:     settings/favoriteCity
+    defaults: { _controller: BackEndBundle:Admin:FavoriteCity }
 admin_manage:
     path:     adminManage
     defaults: { _controller: BackEndBundle:Admin:adminManage }
@@ -77,3 +96,11 @@ dashboard:
 login2:
     path:     login
     defaults: { _controller: FOSUserBundle:Security:login }
+
+success:
+    path: success
+    defaults: { _controller: BackEndBundle:Admin:success}
+
+failure:
+    path: failure
+    defaults: { _controller: BackEndBundle:Admin:failure}

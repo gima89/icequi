@@ -1,0 +1,20 @@
+<select id="tendinaProvincie" name="defaultProvince">
+  <option>Seleziona la Provincia</option>
+  {% for provincia in provincie %}
+  <option value="{{provincia.id}}">{{provincia.nomeProvincia}}</option>
+  {% endfor %}
+</select>
+<script>
+//tendina seleziona Provincia di Impostazioni Account che influisce sulle Città
+$(document).ready(function(){
+	$('#tendinaProvincie').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'settings/cityFilter/'+id
+		})
+		.done(function(data){
+			$('#sezioneCitta').html(data);
+		})
+	})
+})
+</script>

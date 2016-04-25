@@ -380,6 +380,12 @@ h1{
 	width:66%;
 }
 
+#success{
+	margin-bottom:16.4vh;
+	margin-top:15vh;
+	text-align:center;
+}
+
 #table{
 	display:table;
 	font-family: Arial;

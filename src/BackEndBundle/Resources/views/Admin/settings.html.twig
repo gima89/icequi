@@ -3,34 +3,34 @@
 
 {% block rightcol %}
 <div class="adminTitle">Impostazioni Account</div>
-<div class="bloccoAdmin">
-	<form name="changePsw" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-		<h4>Cambio Password</h4>
-		<input type="password" name="oldpsw" placeholder="Password attuale" required /><br />
-		<input type="password" name="newpsw" placeholder="Nuova password" required /><br />
-		<input  type="password" name="pswrepeat" placeholder="Ripeti Password" required />
-		<input class="submitButton" type="submit" value="CAMBIA" onclick="alert('Password aggiornata')" />
-	</form>
-</div>
-<div class="bloccoAdmin">
-	<form name="changeMail" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-		<h4>Mail per la ricezione della reportistica</h4>
-		<input type="email" name="AccountEmail" placeholder="Indirizzo e-mail" value="marco@taginnovationschool.it" required /><br />
-		<input class="submitButton" type="submit" value="CAMBIA" onclick="alert('E-mail modificata')" />
-	</form>
-</div>
+	<div class="bloccoAdmin">
+		<form name="changePsw" action="{{url('changePsw')}}" method="post">
+			<h4>Cambio Password</h4>
+			<input type="password" name="newpsw" placeholder="Nuova password" required /><br />
+			<input  type="password" name="pswrepeat" placeholder="Ripeti Password" required />
+			<input class="submitButton" type="submit" value="CAMBIA" />
+		</form>
+	</div>
+	<div class="bloccoAdmin">
+		<form name="changeMail" action="{{url('changeMail')}}" method="post">
+			<h4>Mail per la ricezione della reportistica</h4>
+			<input type="email" name="newEmail" placeholder="Indirizzo e-mail" value="{{user.email}}" required /><br />
+			<input class="submitButton" type="submit" value="CAMBIA" />
+		</form>
+	</div>
 
 <div class="bloccoAdmin">
-	<form name="favoriteCity" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-		<h4>Seleziona la citt&agrave; predefinita</h4>
-		<input type="text" name="defaultName" placeholder="Nome gelateria" required /><br />
-		<label for="defaultRegion">Seleziona la regione</label><br />
-		<select name="defaultRegion"><?php crea_elenco($regioni) ?></select><br />
-		<label for="defaultProvince">Seleziona la provincia</label><br />
-		<select name="defaultProvince"><?php crea_elenco($province) ?></select><br />
-		<label for="defaultCity">Seleziona la citt&agrave;</label>
-		<select name="defaultCity"><?php crea_elenco($cities) ?></select>
-		<input class="submitButton" type="submit" value="CAMBIA" onclick="alert('Citt&agrave; predefinita modificata')" />
-	</form>
+	<h4>Seleziona la citt&agrave; predefinita  {% if user.idCittaPredefinita != null %}<em><small>(attuale: {{user.idCittaPredefinita.nomeCitta}})</small></em>{% endif %}</h4>
+	<select name="defaultRegion" id="tendinaRegioni">
+		<option >Seleziona la Regione</option>
+		{% for regione in regioni %}
+		<option value="{{regione.id}}">{{regione.nomeRegione}}</option>
+		{% endfor %}
+	</select><br />
+	<div id="sezioneProvincie"><select name="defaultProvince" disabled><option>Seleziona la Provincia</option></select></div>
+	<div id="sezioneCitta">
+		<select name="defaultCity" disabled><option>Seleziona la Citt&agrave;</option></select>
+		<input class="submitButton" type="submit" value="CAMBIA" onclick="Nessuna citt&agrave; selezionata!" />
+	</div>
 </div>
 {% endblock %}
