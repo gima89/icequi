@@ -11,52 +11,68 @@
 <div id="results">
 	<header id="resultHeader">
 		<h1><span>2</span> Gelaterie Trovate     </h1>
-		<h6 id="ricerca" onclick="giraFreccia()">Cerca</h6><img src="http://www.marcolanci.it/icequi/img/downArrow.png" alt="downArrow" id="arrow" onclick="giraFreccia();" />
+		<h6 id="ricerca" onclick="giraFreccia()">Cerca</h6><img src="{{asset('img/downArrow.png')}}" alt="downArrow" id="arrow" onclick="giraFreccia();" />
 		<hr />
 	</header>
 	<section id="searchPanel">
-		<form name="searchForm" method="get" action="<?php $_SERVER['PHP_SELF'] ?>">
+		<form name="searchForm" method="post" action="{{url('search')}}">
 			<div id="searchFormWrapper">
 				<div class="searchFormColumn">
 					<select name="gusto1">
-						<option>Nessun Gusto</option>
-						<?php crea_elenco($gusti); ?>
+						<option value=0>Nessun Gusto</option>
+						{% for gusto in gusti %}
+						<option value={{gusto.id}}>{{gusto.nomeGusto}}</option>
+						{% endfor %}
 					</select><br />
-					<select name="region">
-						<option>Ovunque</option>
-					<?php crea_elenco($regioni); ?>
+					<select name="region" id="searchRegion">
+						<option value=0>Regione</option>
+						{% for regione in regioni %}
+						<option value={{regione.id}}>{{regione.nomeRegione}}</option>
+						{% endfor %}
 					</select><br />
 					<select name="day1">
 						<option>Indifferente</option>
-						<?php crea_elenco($days); ?>
+						{% for giorno in giorni %}
+						<option>{{giorno}}</option>
+						{% endfor %}
 					</select><br />
 				</div>
 				<div class="searchFormColumn">
 					<select name="gusto2">
-						<option>Nessun Gusto</option>
-						<?php crea_elenco($gusti); ?>
+						<option value=0>Nessun Gusto</option>
+						{% for gusto in gusti %}
+						<option value={{gusto.id}}>{{gusto.nomeGusto}}</option>
+						{% endfor %}
 					</select><br />
-					<select name="province">
-						<option>Ovunque</option>
-						<?php crea_elenco($province) ?>
+					<div id="searchProvinceSection">
+					<select name="province" disabled>
+						<option>Provincia</option>
 					</select><br />
+					</div>
 					<select name="day2">
 						<option>Indifferente</option>
-						<?php crea_elenco($days) ?>
+						{% for giorno in giorni %}
+						<option>{{giorno}}</option>
+						{% endfor %}
 					</select><br />
 				</div>
 				<div class="searchFormColumn">
 					<select name="gusto3">
-						<option>Nessun Gusto</option>
-						<?php crea_elenco($gusti); ?>
+						<option value=0>Nessun Gusto</option>
+						{% for gusto in gusti %}
+						<option value={{gusto.id}}>{{gusto.nomeGusto}}</option>
+						{% endfor %}
 					</select>
-					<select name="city">
-						<option>Ovunque</option>
-						<?php crea_elenco($cities) ?>
+					<div id="searchCitySection">
+					<select name="city" disabled>
+						<option>Citt&agrave;</option>
 					</select>
+					</div>
 					<select name="day3">
 						<option>Indifferente</option>
-						<?php crea_elenco($days) ?>
+						{% for giorno in giorni %}
+						<option>{{giorno}}</option>
+						{% endfor %}
 					</select>
 				</div>
 				<div class="searchFormColumn">
@@ -68,25 +84,25 @@
 	<section class="resultSection">
 		<div class="resultInfo">
 			<h2>1. Gelateria "Da Mimmo"</h2>
-			<p class="address">Corso Valparaiso 118, corso Enrico Millo 28</p>
-			<p class="tel">3914526587</p>
+			<p class="address">Corso Valparaiso 118, </p>
+			<p class="tel">02 391587</p>
 		</div>
 		<div class="resultIcon">
-			<div><img src="http://www.marcolanci.it/icequi/img/visualizzaGusti.png" alt="Visualizza i Gusti" title="Visualizza i Gusti" class="imgGusti" /></div>
-			<div><img src="http://www.marcolanci.it/icequi/img/favoriteStar.png" alt="Aggiungi ai preferiti" title="Aggiungi ai preferiti" onclick="changePic(this)" /></div>
-			<div><img  class="invita" src="http://www.marcolanci.it/icequi/img/inviteFriends.png" alt="Invita amici" title="Invita amici" /></div>
+			<div><img src="{{asset('img/visualizzaGusti.png')}}" alt="Visualizza i Gusti" title="Visualizza i Gusti" class="imgGusti" /></div>
+			<div><img src="{{asset('img/favoriteStar.png')}}" alt="Aggiungi ai preferiti" title="Aggiungi ai preferiti" onclick="changePic(this)" /></div>
+			<div><img  class="invita" src="{{asset('img/inviteFriends.png')}}" alt="Invita amici" title="Invita amici" /></div>
 		</div>
 	</section>
 	<section class="resultSection greyBG">
 		<div class="resultInfo">
 			<h2>2. Bar "La Golosa"</h2>
-			<p class="address">Corso Numistrano, 65 corso Enrico Millo 28</p>
-			<p class="tel">3914526587</p>
+			<p class="address">Corso Numistrano, 12 </p>
+			<p class="tel">0968 25556</p>
 		</div>
 		<div class="resultIcon">
-			<div><img src="http://www.marcolanci.it/icequi/img/visualizzaGusti.png" alt="Visualizza i Gusti" title="Visualizza i Gusti" class="imgGusti" /></div>
-			<div><img src="http://www.marcolanci.it/icequi/img/yellowStar.png" alt="Rimuovi dai preferiti" title="Rimuovi dai preferiti" onclick="changePic(this)" /></div>
-			<div><img  class="invita" src="http://www.marcolanci.it/icequi/img/inviteFriends.png" alt="Invita amici" title="Invita amici" /></div>
+			<div><img src="{{asset('img/visualizzaGusti.png')}}" alt="Visualizza i Gusti" title="Visualizza i Gusti" class="imgGusti" /></div>
+			<div><img src="{{asset('img/yellowStar.png')}}" alt="Rimuovi dai preferiti" title="Rimuovi dai preferiti" onclick="changePic(this)" /></div>
+			<div><img  class="invita" src="{{asset('img/inviteFriends.png')}}" alt="Invita amici" title="Invita amici" /></div>
 		</div>
 	</section>
 	<div class="impaginatore"><a href="#">1</a> <a href="#">>></a> <a href="#">1</a></div>

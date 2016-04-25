@@ -1,0 +1,20 @@
+<select name="province" id="searchProvince">
+  <option>Provincia</option>
+  {% for provincia in provincie %}
+  <option value={{provincia.id}}>{{provincia.nomeProvincia}}</option>
+  {% endfor %}
+</select><br />
+<script>
+//tendina seleziona Provincia della pagina ricerca che influisce sulle Città
+$(document).ready(function(){
+	$('#searchProvince').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'searchcityfilter/'+id
+		})
+		.done(function(data){
+			$('#searchCitySection').html(data);
+		})
+	})
+})
+</script>

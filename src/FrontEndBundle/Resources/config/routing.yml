@@ -53,3 +53,19 @@ contatti:
 contatta:
     path:     /contatta
     defaults: { _controller: FrontEndBundle:Footer:contatta }
+
+hpprovincefilter:
+    path:     /hpprovincefilter/{id}
+    defaults: { _controller: FrontEndBundle:Default:hpProvinceFilter }
+
+hpcityfilter:
+    path:     /hpcityfilter/{id}
+    defaults: { _controller: FrontEndBundle:Default:hpCityFilter }
+
+searchprovincefilter:
+    path:     /searchprovincefilter/{id}
+    defaults: { _controller: FrontEndBundle:Default:searchProvinceFilter }
+
+searchcityfilter:
+    path:     /searchcityfilter/{id}
+    defaults: { _controller: FrontEndBundle:Default:searchCityFilter }

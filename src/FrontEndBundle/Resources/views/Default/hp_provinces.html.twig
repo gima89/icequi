@@ -1,0 +1,20 @@
+<select name="provincia" id="hpProvinceSelect">
+  <option>Provincia</option>
+  {% for provincia in provincie %}
+  <option value="{{provincia.id}}">{{provincia.nomeProvincia}}</option>
+  {% endfor %}
+</select><br />
+<script>
+//tendina seleziona Provincia dell'Home Page che influisce sulle Città
+$(document).ready(function(){
+	$('#hpProvinceSelect').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'hpcityfilter/'+id
+		})
+		.done(function(data){
+			$('#hpCitySection').html(data);
+		})
+	})
+})
+</script>

@@ -1,59 +1,78 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets  %}
-<style>html: overflow-y: auto </style>
+{% block stylesheets %}
+<style>
+	header{position: static}
+	html {overflow-y: auto}
+</style>
 {% endblock %}
 
 {% block body %}
 <div id="results">
 	<header id="resultHeader">
-		<h1><span>2</span> Gelaterie Preferite     </h1>
-		<h6 id="ricerca">Cerca</h6><img src="http://www.marcolanci.it/icequi/img/downArrow.png" alt="downArrow" id="arrow" onclick="giraFreccia();" />
+		<h1><span>2</span> Gelaterie Trovate     </h1>
+		<h6 id="ricerca" onclick="giraFreccia()">Cerca</h6><img src="{{asset('img/downArrow.png')}}" alt="downArrow" id="arrow" onclick="giraFreccia();" />
 		<hr />
 	</header>
 	<section id="searchPanel">
-		<form name="searchForm" method="get" action="<?php $_SERVER['PHP_SELF'] ?>">
+		<form name="searchForm" method="post" action="{{url('search')}}">
 			<div id="searchFormWrapper">
 				<div class="searchFormColumn">
 					<select name="gusto1">
-						<option>Nessun Gusto</option>
-						<?php crea_elenco($gusti); ?>
+						<option value=0>Nessun Gusto</option>
+						{% for gusto in gusti %}
+						<option value={{gusto.id}}>{{gusto.nomeGusto}}</option>
+						{% endfor %}
 					</select><br />
-					<select name="gusto2">
-						<option>Nessun Gusto</option>
-						<?php crea_elenco($gusti); ?>
+					<select name="region" id="searchRegion">
+						<option value=0>Regione</option>
+						{% for regione in regioni %}
+						<option value={{regione.id}}>{{regione.nomeRegione}}</option>
+						{% endfor %}
 					</select><br />
-					<select name="gusto3">
-						<option>Nessun Gusto</option>
-						<?php crea_elenco($gusti); ?>
-					</select>
-				</div>
-				<div class="searchFormColumn">
-					<select name="region">
-						<option>Ovunque</option>
-					<?php crea_elenco($regioni); ?>
-					</select><br />
-					<select name="gusto2">
-						<option>Ovunque</option>
-						<?php crea_elenco($province) ?>
-					</select><br />
-					<select name="gusto3">
-						<option>Ovunque</option>
-						<?php crea_elenco($cities) ?>
-					</select>
-				</div>
-				<div class="searchFormColumn">
 					<select name="day1">
 						<option>Indifferente</option>
-						<?php crea_elenco($days); ?>
+						{% for giorno in giorni %}
+						<option>{{giorno}}</option>
+						{% endfor %}
 					</select><br />
+				</div>
+				<div class="searchFormColumn">
+					<select name="gusto2">
+						<option value=0>Nessun Gusto</option>
+						{% for gusto in gusti %}
+						<option value={{gusto.id}}>{{gusto.nomeGusto}}</option>
+						{% endfor %}
+					</select><br />
+					<div id="searchProvinceSection">
+					<select name="province" disabled>
+						<option>Provincia</option>
+					</select><br />
+					</div>
 					<select name="day2">
 						<option>Indifferente</option>
-						<?php crea_elenco($days) ?>
+						{% for giorno in giorni %}
+						<option>{{giorno}}</option>
+						{% endfor %}
 					</select><br />
+				</div>
+				<div class="searchFormColumn">
+					<select name="gusto3">
+						<option value=0>Nessun Gusto</option>
+						{% for gusto in gusti %}
+						<option value={{gusto.id}}>{{gusto.nomeGusto}}</option>
+						{% endfor %}
+					</select>
+					<div id="searchCitySection">
+					<select name="city" disabled>
+						<option>Citt&agrave;</option>
+					</select>
+					</div>
 					<select name="day3">
 						<option>Indifferente</option>
-						<?php crea_elenco($days) ?>
+						{% for giorno in giorni %}
+						<option>{{giorno}}</option>
+						{% endfor %}
 					</select>
 				</div>
 				<div class="searchFormColumn">
@@ -64,26 +83,26 @@
 	</section>
 	<section class="resultSection">
 		<div class="resultInfo">
-			<h2>1. La Gelateria di Delgano</h2>
-			<p class="address">Via Benedetto Varchi, 4</p>
-			<p class="tel">02 87213421</p>
+			<h2>1. Gelateria "Da Mimmo"</h2>
+			<p class="address">Corso Valparaiso 118, </p>
+			<p class="tel">02 391587</p>
 		</div>
 		<div class="resultIcon">
-			<div><img src="http://www.marcolanci.it/icequi/img/visualizzaGusti.png" alt="Visualizza i Gusti" class="imgGusti" /></div>
-			<div><img src="http://www.marcolanci.it/icequi/img/yellowStar.png" alt="Rimuovi dai preferiti" title="Rimuovi dai preferiti" onclick="changePic(this)" /></div>
-			<div><img  class="invita" src="http://www.marcolanci.it/icequi/img/inviteFriends.png" alt="Invita amici" title="Invita amici" /></div>
+			<div><img src="{{asset('img/visualizzaGusti.png')}}" alt="Visualizza i Gusti" title="Visualizza i Gusti" class="imgGusti" /></div>
+			<div><img src="{{asset('img/favoriteStar.png')}}" alt="Aggiungi ai preferiti" title="Aggiungi ai preferiti" onclick="changePic(this)" /></div>
+			<div><img  class="invita" src="{{asset('img/inviteFriends.png')}}" alt="Invita amici" title="Invita amici" /></div>
 		</div>
 	</section>
 	<section class="resultSection greyBG">
 		<div class="resultInfo">
-			<h2>2. Bar Rizzo"</h2>
-			<p class="address">Viale Regina Margherita, 111</p>
-			<p class="tel">090 939495</p>
+			<h2>2. Bar "La Golosa"</h2>
+			<p class="address">Corso Numistrano, 12 </p>
+			<p class="tel">0968 25556</p>
 		</div>
 		<div class="resultIcon">
-			<div><img src="http://www.marcolanci.it/icequi/img/visualizzaGusti.png" alt="Visualizza i Gusti" class="imgGusti" /></div>
-			<div><img src="http://www.marcolanci.it/icequi/img/yellowStar.png" alt="Rimuovi dai preferiti" title="Rimuovi dai preferiti" onclick="changePic(this)" /></div>
-			<div><img  class="invita" src="http://www.marcolanci.it/icequi/img/inviteFriends.png" alt="Invita amici" title="Invita amici" /></div>
+			<div><img src="{{asset('img/visualizzaGusti.png')}}" alt="Visualizza i Gusti" title="Visualizza i Gusti" class="imgGusti" /></div>
+			<	<div><img src="{{asset('img/favoriteStar.png')}}" alt="Aggiungi ai preferiti" title="Aggiungi ai preferiti" onclick="changePic(this)" /></div>
+			<div><img  class="invita" src="{{asset('img/inviteFriends.png')}}" alt="Invita amici" title="Invita amici" /></div>
 		</div>
 	</section>
 	<div class="impaginatore"><a href="#">1</a> <a href="#">>></a> <a href="#">1</a></div>

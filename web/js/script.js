@@ -274,3 +274,29 @@ $(document).ready(function(){
 		})
 	})
 })
+
+//tendina seleziona Regione dell'Home Page che influisce sulle Province
+$(document).ready(function(){
+	$('#hpRegionsSelect').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'hpprovincefilter/'+id
+		})
+		.done(function(data){
+			$('#hpProvinceSection').html(data);
+		})
+	})
+})
+
+//tendina seleziona Regione della pagina ricerche che influisce sulle Province
+$(document).ready(function(){
+	$('#searchRegion').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'searchprovincefilter/'+id
+		})
+		.done(function(data){
+			$('#searchProvinceSection').html(data);
+		})
+	})
+})

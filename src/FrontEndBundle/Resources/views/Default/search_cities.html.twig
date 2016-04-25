@@ -1,0 +1,6 @@
+<select name="city" id="searchCity">
+  <option>Citt&agrave;</option>
+  {% for city in cities %}
+  <option value={{city.id}}>{{city.nomeCitta}}</option>
+  {% endfor %}
+</select>

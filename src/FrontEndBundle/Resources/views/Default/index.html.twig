@@ -14,42 +14,48 @@
 				<h1 id="titolo">CERCHI UN GELATO<wbr> E NON SAI DOVE TROVARLO?</h1>
 				<div id="iconBox">
 					<div>
-						<img src="http://www.marcolanci.it/icequi/img/coppetta.png" alt="Icona1" class="hpIcon"/>
+						<img src="{{asset('img/coppetta.png')}}" alt="Icona1" class="hpIcon"/>
 						<p>Scegli da uno a tre gusti,</p>
 					</div>
 					<div>
-						<img src="http://www.marcolanci.it/icequi/img/map.png" alt="Icona2" class="hpIcon"/>
+						<img src="{{asset('img/map.png')}}" alt="Icona2" class="hpIcon"/>
 						<p>imposta la tua citt&agrave;..</p>
 					</div>
 					<div>
-						<img src="http://www.marcolanci.it/icequi/img/friends.png" alt="Icona3" class="hpIcon"/>
+						<img src="{{asset('img/friends.png')}}" alt="Icona3" class="hpIcon"/>
 						<p>e invita i tuoi amici!</p>
 					</div>
 				</div>
 				<a href="#iceCreamSection"><div class="hpBlueButton" id="startButton">INIZIA RICERCA</div></a>
 			</section>
-			<form method="get" action="{{ url ('favorites') }}" name="hpForm">
+			<form method="post" action="{{ url ('search') }}" name="hpForm">
 				<section id="iceCreamSection" class="hpSection">
 					<div class="hpFormWrapper">
 						<div class="hpColumn">
 							<h2>SCEGLI I GUSTI</h2>
 							<div class="hpForm">
-								<select name="gusto1">
-									<option>Nessuno</option>
-									<?php crea_elenco($gusti) ?>
+								<select name="hpGusto1">
+									<option value=0>Nessuno</option>
+									{% for gusto in gusti %}
+									<option value="{{gusto.id}}">{{gusto.nomeGusto}}</option>
+									{% endfor %}
 								</select><br />
-								<select name="gusto2">
-									<option>Nessuno</option>
-									<?php crea_elenco($gusti) ?>
+								<select name="hpGusto2">
+									<option value=0>Nessuno</option>
+									{% for gusto in gusti %}
+									<option value="{{gusto.id}}">{{gusto.nomeGusto}}</option>
+									{% endfor %}
 								</select><br />
-								<select name="gusto3">
-									<option>Nessuno</option>
-									<?php crea_elenco($gusti) ?>
+								<select name="hpGusto3">
+									<option value=0>Nessuno</option>
+									{% for gusto in gusti %}
+									<option value="{{gusto.id}}">{{gusto.nomeGusto}}</option>
+									{% endfor %}
 								</select><br />
 							</div>
 						</div>
 						<div class="hpColumn">
-							<img src="http://www.marcolanci.it/icequi/img/coppetta.png" /><br />
+							<img src="{{asset('img/coppetta.png')}}" /><br />
 							<a href="#cityForm"><div class="blueButton" id="cityButton">CONTINUA</div></a>
 						</div>
 					</div>
@@ -59,22 +65,26 @@
 						<div class="hpColumn">
 							<h2>SCEGLI DOVE</h2>
 							<div class="hpForm">
-								<select name="regione">
-									<option >Ovunque</option>
-									<?php crea_elenco($regioni) ?>
+								<select name="hpRegione" id="hpRegionsSelect">
+									<option value=0>Regione</option>
+									{% for regione in regioni %}
+									<option value="{{regione.id}}">{{regione.nomeRegione}}</option>
+									{% endfor %}
 								</select><br />
-								<select name="provincia">
-									<option >Ovunque</option>
-									<?php crea_elenco($province) ?>
-								</select><br />
-								<select name="city">
-									<option>Ovunque</option>
-									<?php crea_elenco($cities) ?>
-								</select><br />
+								<div id="hpProvinceSection">
+									<select name="hpProvincia" disabled>
+										<option value=0>Provincia</option>
+									</select><br />
+								</div>
+								<div id="hpCitySection">
+									<select name="hpCitta" disabled>
+										<option value=0>Citt&agrave;</option>
+									</select><br />
+								</div>
 							</div>
 						</div>
 						<div class="hpColumn">
-							<img src="http://www.marcolanci.it/icequi/img/map.png" /><br />
+							<img src="{{asset('img/map.png')}}" /><br />
 							<a href="#daysForm"><div id="daysButton" class="blueButton">CONTINUA</div></a>
 						</div>
 					</div>
@@ -86,20 +96,26 @@
 							<div class="hpForm">
 								<select name="day1">
 									<option>Nessuno</option>
-									<?php crea_elenco($days) ?>
+									{% for giorno in giorni %}
+									<option>{{giorno}}</option>
+									{% endfor %}
 								</select><br />
 								<select name="day2">
 									<option>Nessuno</option>
-									<?php crea_elenco($days) ?>
+									{% for giorno in giorni %}
+									<option>{{giorno}}</option>
+									{% endfor %}
 								</select><br />
 								<select name="day3">
 									<option>Nessuno</option>
-									<?php crea_elenco($days) ?>
+									{% for giorno in giorni %}
+									<option>{{giorno}}</option>
+									{% endfor %}
 								</select><br />
 							</div>
 						</div>
 						<div class="hpColumn">
-							<img src="http://www.marcolanci.it/icequi/img/days.png" /><br />
+							<img src="{{asset('img/days.png')}}" /><br />
 							<input type="submit" value="CERCA!" class="submitButton"/>
 						</div>
 					</div>
