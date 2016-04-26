@@ -32,8 +32,8 @@
 					</select><br />
 					<select name="day1">
 						<option>Indifferente</option>
-						{% for giorno in giorni %}
-						<option>{{giorno}}</option>
+						{% for giorno, num in giorni %}
+						<option value="{{num}}">{{giorno}}</option>
 						{% endfor %}
 					</select><br />
 				</div>
@@ -51,8 +51,8 @@
 					</div>
 					<select name="day2">
 						<option>Indifferente</option>
-						{% for giorno in giorni %}
-						<option>{{giorno}}</option>
+						{% for giorno, num in giorni %}
+						<option value="{{num}}">{{giorno}}</option>
 						{% endfor %}
 					</select><br />
 				</div>
@@ -70,8 +70,8 @@
 					</div>
 					<select name="day3">
 						<option>Indifferente</option>
-						{% for giorno in giorni %}
-						<option>{{giorno}}</option>
+						{% for giorno, num in giorni %}
+						<option value="{{num}}">{{giorno}}</option>
 						{% endfor %}
 					</select>
 				</div>

@@ -107,8 +107,11 @@ class Gelateria
     private $isDomenica;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Gusto")
-    * @ORM\JoinColumn(name="gusti", referencedColumnName="id")
+    * @ORM\ManyToMany(targetEntity="Gusto")
+    * @ORM\JoinTable(name="gelaterie_gusti",
+    *   joinColumns={@ORM\JoinColumn(name="gelateria_id", referencedColumnName="id")},
+    *   inverseJoinColumns={@ORM\JoinColumn(name="gusto_id", referencedColumnName="id")}
+    *   )
     */
     private $gusti;
 

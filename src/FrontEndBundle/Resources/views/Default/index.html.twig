@@ -96,20 +96,20 @@
 							<div class="hpForm">
 								<select name="day1">
 									<option>Nessuno</option>
-									{% for giorno in giorni %}
-									<option>{{giorno}}</option>
+									{% for giorno, num in giorni %}
+									<option value="{{num}}">{{giorno}}</option>
 									{% endfor %}
 								</select><br />
 								<select name="day2">
 									<option>Nessuno</option>
-									{% for giorno in giorni %}
-									<option>{{giorno}}</option>
+									{% for giorno, num in giorni %}
+									<option value="{{num}}">{{giorno}}</option>
 									{% endfor %}
 								</select><br />
 								<select name="day3">
 									<option>Nessuno</option>
-									{% for giorno in giorni %}
-									<option>{{giorno}}</option>
+									{% for giorno, num in giorni %}
+									<option value="{{num}}">{{giorno}}</option>
 									{% endfor %}
 								</select><br />
 							</div>

@@ -18,7 +18,7 @@ class DefaultController extends Controller
     {
         $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
         $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
-        $giorni=['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
+        $giorni=['Lunedì'=>1,'Martedì'=>2,'Mercoledì'=>3,'Giovedì'=>4,'Venerdì'=>5,'Sabato'=>6,'Domenica'=>7];
         return $this->render('FrontEndBundle:Default:index.html.twig', [
           'gusti'=>$gusti,
           'regioni'=>$regioni,
@@ -49,7 +49,7 @@ class DefaultController extends Controller
       //prepariamo tutti gli array per la tendina nascosta
       $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
       $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
-      $giorni=['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
+      $giorni=['Lunedì'=>1,'Martedì'=>2,'Mercoledì'=>3,'Giovedì'=>4,'Venerdì'=>5,'Sabato'=>6,'Domenica'=>7];
 
       //raccogliamo i dati della ricerca provenienti dalla home per registrarla
       $em=$this->getDoctrine()->getManager();
@@ -102,11 +102,26 @@ class DefaultController extends Controller
             $em->flush();
           }}
 
+          /*
+          //g -> gelaterie, f->gusti
+          $repository=$em->getRepository('FrontEndBundle:Gelateria');
+          $query=$repository->createQueryBuilder('g')
+            ->innerJoin('g.gusti','f')
+            ->where('f.id = :')
+
+          //gestiamo la vera ricerca
+         $query=$em->createQuery(
+            "SELECT g
+            FROM FrontEndBundle:Gelateria g
+            WHERE g.id_citta = $cittaScelta
+            ORDER BY g.nome_gelateria DESC'
+          )*/
+
 
       return $this->render('FrontEndBundle:Default:search.html.twig', array(
-        'gusti'=>$gusti,
-        'regioni'=>$regioni,
-        'giorni'=>$giorni
+        'gusti'=>$gusti, //per la tendina
+        'regioni'=>$regioni, //per la tendina
+        'giorni'=>$giorni, //per la tendina
       ));
     }
 
