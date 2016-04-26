@@ -8,6 +8,9 @@ use FrontEndBundle\Entity\Gusto;
 use FrontEndBundle\Entity\Regione;
 use FrontEndBundle\Entity\Provincia;
 use FrontEndBundle\Entity\Citta;
+use FrontEndBundle\Entity\Ricerca;
+use FrontEndBundle\Entity\Utente;
+
 
 class DefaultController extends Controller
 {
@@ -47,6 +50,59 @@ class DefaultController extends Controller
       $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
       $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
       $giorni=['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
+
+      //raccogliamo i dati della ricerca provenienti dalla home per registrarla
+      $em=$this->getDoctrine()->getManager();
+      //controlliamo il primo campo gusto
+      for($i=1;$i<=3;$i++)
+      {
+        if($request->request->get("hpGusto$i")!=0){
+          //raccogliamo i dati della prima ricerca
+          $data=new \DateTime();
+          $dataRicerca=$data->format('d-m-Y');
+          $cittaRicerca=$this->getDoctrine()->getRepository('FrontEndBundle:Citta')->find($request->get('hpCitta'));
+          $gustoRicerca=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->find($request->get("hpGusto$i"));
+          $utenteRicerca=null;
+          //se c'è un utente loggato lo inseriamo
+          if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+          {
+            $utenteRicerca = $this->container->get('security.token_storage')->getToken()->getUser();
+          }
+          //inseriamo i dati della prima ricerca
+          $ricerca=new Ricerca();
+          $ricerca->setIdCitta($cittaRicerca);
+          $ricerca->setDataRicerca($dataRicerca);
+          $ricerca->setIdUtente($utenteRicerca);
+          $ricerca->setIdGusto($gustoRicerca);
+          $em->persist($ricerca);
+          $em->flush();
+        }}
+
+        for($i=1;$i<=3;$i++)
+        {
+          if($request->request->get("gusto$i")!=0){
+            //raccogliamo i dati della prima ricerca
+            $data=new \DateTime();
+            $dataRicerca=$data->format('d-m-Y');
+            $cittaRicerca=$this->getDoctrine()->getRepository('FrontEndBundle:Citta')->find($request->get('city'));
+            $gustoRicerca=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->find($request->get("gusto$i"));
+            $utenteRicerca=null;
+            //se c'è un utente loggato lo inseriamo
+            if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+            {
+              $utenteRicerca = $this->container->get('security.token_storage')->getToken()->getUser();
+            }
+            //inseriamo i dati della prima ricerca
+            $ricerca=new Ricerca();
+            $ricerca->setIdCitta($cittaRicerca);
+            $ricerca->setDataRicerca($dataRicerca);
+            $ricerca->setIdUtente($utenteRicerca);
+            $ricerca->setIdGusto($gustoRicerca);
+            $em->persist($ricerca);
+            $em->flush();
+          }}
+
+
       return $this->render('FrontEndBundle:Default:search.html.twig', array(
         'gusti'=>$gusti,
         'regioni'=>$regioni,

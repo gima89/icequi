@@ -7,6 +7,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use FrontEndBundle\Entity\Citta;
 use FrontEndBundle\Entity\Utente;
 use FrontEndBundle\Entity\Gusto;
+use Symfony\Component\Validator\Constraints\Date;
+use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Ricerca
  *
@@ -26,17 +28,16 @@ class Ricerca
     private $id;
 
     /**
-     * @var \DateTime
+     * @var string
+     * @ORM\Column(name="data_ricerca", type="string")
      *
-     * @ORM\Column(name="data_ricerca", type="date")
-     * @Assert\Date()
      */
     private $dataRicerca;
 
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="Utente", inversedBy="ricerche")
+     * @ORM\ManyToOne(targetEntity="Utente")
      * @ORM\JoinColumn(name="id_utente", referencedColumnName="id")
      */
     private $idUtente;
@@ -68,13 +69,13 @@ class Ricerca
     /**
      * Set dataRicerca
      *
-     * @ORM\PrePersist
+     *
      *
      * @return Ricerca
      */
-    public function setDataRicercaValue()
+    public function setDataRicercaValue($dataRicerca)
     {
-        $this->dataRicerca = new \DateTime();
+        $this->dataRicerca = $dataRicerca;
     }
 
     /**
