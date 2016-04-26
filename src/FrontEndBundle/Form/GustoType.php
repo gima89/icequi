@@ -39,8 +39,7 @@ class GustoType extends AbstractType
                 'Altro'=>'Altro'
               ]
             ])
-            ->add('gelaterie', HiddenType::class)
-            ->add('INSERISCI', SubmitType::class )
+            ->add('INSERISCI', SubmitType::class)
         ;
     }
 

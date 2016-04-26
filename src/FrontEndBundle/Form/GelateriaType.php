@@ -40,10 +40,7 @@ class GelateriaType extends AbstractType
               'class'=>'FrontEndBundle:Gusto',
               'choice_label'=>'nomeGusto',
               'multiple'=>true,
-              'expanded'=>true,
-              'query_builder'=> function (EntityRepository $er) {
-                return $er->createQueryBuilder('g')->orderBy('g.nomeGusto', 'ASC');
-                }))
+              'expanded'=>true))
             ->add('INSERISCI', SubmitType::class)
         ;
     }

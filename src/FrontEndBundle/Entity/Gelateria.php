@@ -107,9 +107,9 @@ class Gelateria
     private $isDomenica;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Gusto")
-     * @ORM\JoinColumn(name="gusti", referencedColumnName="id")
-     */
+    * @ORM\ManyToOne(targetEntity="Gusto")
+    * @ORM\JoinColumn(name="gusti", referencedColumnName="id")
+    */
     private $gusti;
 
     public function __construct()
