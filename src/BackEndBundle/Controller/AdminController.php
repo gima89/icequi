@@ -14,9 +14,11 @@ use FOS\UserBundle\Doctrine\UserManager;
 
 class AdminController extends Controller
 {
-    public function successAction(){
+    public function successAction(Request $request){
+      $from=$request->query->get('from');
+
       return $this->render('BackEndBundle:Admin:success.html.twig', array(
-          // ...
+          'from'=>$from
       ));
     }
 
@@ -54,7 +56,7 @@ class AdminController extends Controller
       $user->setPlainPassword($password);
       $user->setEnabled('true');
       $um->updateUser($user);
-      return $this->redirectToRoute('success');
+      return $this->redirectToRoute('success', ['from'=>'settings']);
     }
 
     public function changeMailAction(Request $request)
@@ -68,7 +70,7 @@ class AdminController extends Controller
       $um = $this->container->get('fos_user.user_manager');
       $user->setEmail($mail);
       $um->updateUser($user);
-      return $this->redirectToRoute('success');
+      return $this->redirectToRoute('success', ['from'=>'settings']);
     }
 
     public function provinceFilterAction(Request $request)
@@ -98,7 +100,7 @@ class AdminController extends Controller
           $um=$this->container->get('fos_user.user_manager');
           $user->setIdCittaPredefinita($defaultCity);
           $um->updateUser($user);
-          return $this->redirectToRoute('success');
+          return $this->redirectToRoute('success', ['from'=>'settings']);
         }
 
     public function adminManageAction()

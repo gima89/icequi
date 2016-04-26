@@ -429,6 +429,16 @@ footer ul li{
 	transform: scale(1);
 }
 
+#successButton{
+	text-align: center;
+	margin:auto;
+}
+
+#successContainer{
+	text-align: center;
+	margin:auto;
+}
+
 .tel {
 	padding-left:26px;
 }

@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use FrontEndBundle\Entity\Citta;
 use FrontEndBundle\Entity\Utente;
 use FrontEndBundle\Entity\Gusto;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Gelateria
@@ -113,7 +114,7 @@ class Gelateria
 
     public function __construct()
     {
-      $this->gusti= new \Doctrine\Common\Collections\ArrayCollection();
+      $this->gusti= new ArrayCollection();
     }
 
 
@@ -428,11 +429,11 @@ class Gelateria
     /**
      * Set gusti
      *
-     * @param \FrontEndBundle\Entity\Gusto $gusti
+     * @param ArrayCollection $gusti
      *
      * @return Gelateria
      */
-    public function setGusti(\FrontEndBundle\Entity\Gusto $gusti = null)
+    public function setGusti(ArrayCollection $gusti = null)
     {
         $this->gusti = $gusti;
 
