@@ -25,6 +25,7 @@ cityFilter:
 favoriteCity:
     path:     settings/favoriteCity
     defaults: { _controller: BackEndBundle:Admin:FavoriteCity }
+    
 admin_manage:
     path:     adminManage
     defaults: { _controller: BackEndBundle:Admin:adminManage }

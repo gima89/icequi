@@ -120,7 +120,7 @@ class AdminController extends Controller
         $newAdmin->setRoles('a:1:{i:0;s:10:"ROLE_ADMIN";}'); //non lo prende perche ovviamente si aspettta un array
         $um->updateUser($newAdmin);
 
-        return $this->redirectToRoute('success');
+        return $this->redirectToRoute('success', ['from'=>'admin_manage']);
     }
 
     public function delAdminAction(Request $request)
@@ -132,7 +132,7 @@ class AdminController extends Controller
         $em->persit($oldAdmin);
         $em->flush();
 
-        return $this->redirectToRoute('success');
+        return $this->redirectToRoute('success', ['from'=>'admin_manage']);
     }
 
     public function addGelAction(Request $request)
@@ -145,7 +145,7 @@ class AdminController extends Controller
           $em=$this->getDoctrine()->getManager();
           $em->persist($gelateria);
           $em->flush();
-          return $this->redirectToRoute('success');
+          return $this->redirectToRoute('success', ['from'=>'add_gel']);
         }
 
         return $this->render('BackEndBundle:Admin:add_gel.html.twig', array(
@@ -205,7 +205,7 @@ class AdminController extends Controller
           $em=$this->getDoctrine()->getManager();
           $em->persist($gelateria);
           $em->flush();
-          return $this->redirectToRoute('success');
+          return $this->redirectToRoute('success', ['from'=>'upd_gel']);
         }
 
         return $this->render('BackEndBundle:Admin:upd_gel2.html.twig', array(
@@ -231,7 +231,7 @@ class AdminController extends Controller
           $em=$this->getDoctrine()->getManager();
           $em->persist($gusto);
           $em->flush();
-          return $this->redirectToRoute('success');
+          return $this->redirectToRoute('success', ['from'=>'add_flavour']);
         }
 
         return $this->render('BackEndBundle:Admin:add_flavour.html.twig', array(
@@ -242,6 +242,7 @@ class AdminController extends Controller
     public function updFlavourAction()
     {
         $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
+        sort($gusti);
 
         return $this->render('BackEndBundle:Admin:upd_flavour.html.twig', array(
             'gusti'=>$gusti,
@@ -256,7 +257,7 @@ class AdminController extends Controller
             $em=$this->getDoctrine()->getManager();
             $em->persist($gusto);
             $em->flush();
-            return $this->redirectToRoute('success');
+            return $this->redirectToRoute('success', ['from'=>'upd_flavour']);
         }
 
         return $this->render('BackEndBundle:Admin:updFlavourForm.html.twig', array(
@@ -273,7 +274,7 @@ class AdminController extends Controller
             $em=$this->getDoctrine()->getManager();
             $em->persist($gusto);
             $em->flush();
-            return $this->redirectToRoute('success');
+            return $this->redirectToRoute('success', ['from'=>'upd_flavour']);
         }
 
         return $this->redirectToRoute('upd_flavour', array(
@@ -300,7 +301,7 @@ class AdminController extends Controller
         $em=$this->getDoctrine()->getManager();
         $em->remove($gusto);
         $em->flush();
-        return $this->redirectToRoute('del_flavourForm', array(
+        return $this->redirectToRoute('del_flavourForm', array( 'from'=>'delFlavour'
         ));
     }
 
