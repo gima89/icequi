@@ -34,19 +34,19 @@
 						<div class="hpColumn">
 							<h2>SCEGLI I GUSTI</h2>
 							<div class="hpForm">
-								<select name="hpGusto1">
+								<select name="gusto1">
 									<option value=0>Nessuno</option>
 									{% for gusto in gusti %}
 									<option value="{{gusto.id}}">{{gusto.nomeGusto}}</option>
 									{% endfor %}
 								</select><br />
-								<select name="hpGusto2">
+								<select name="gusto2">
 									<option value=0>Nessuno</option>
 									{% for gusto in gusti %}
 									<option value="{{gusto.id}}">{{gusto.nomeGusto}}</option>
 									{% endfor %}
 								</select><br />
-								<select name="hpGusto3">
+								<select name="gusto3">
 									<option value=0>Nessuno</option>
 									{% for gusto in gusti %}
 									<option value="{{gusto.id}}">{{gusto.nomeGusto}}</option>
@@ -77,7 +77,7 @@
 									</select><br />
 								</div>
 								<div id="hpCitySection">
-									<select name="hpCitta" disabled>
+									<select name="city" disabled>
 										<option value=0>Citt&agrave;</option>
 									</select><br />
 								</div>
@@ -95,19 +95,19 @@
 							<h2>SCEGLI  GIORNI</h2>
 							<div class="hpForm">
 								<select name="day1">
-									<option>Nessuno</option>
+									<option value=0>Nessuno</option>
 									{% for giorno, num in giorni %}
 									<option value="{{num}}">{{giorno}}</option>
 									{% endfor %}
 								</select><br />
 								<select name="day2">
-									<option>Nessuno</option>
+									<option value=0>Nessuno</option>
 									{% for giorno, num in giorni %}
 									<option value="{{num}}">{{giorno}}</option>
 									{% endfor %}
 								</select><br />
 								<select name="day3">
-									<option>Nessuno</option>
+									<option value=0>Nessuno</option>
 									{% for giorno, num in giorni %}
 									<option value="{{num}}">{{giorno}}</option>
 									{% endfor %}

@@ -18,7 +18,7 @@ class DefaultController extends Controller
     {
         $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
         $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
-        $giorni=['Lunedì'=>1,'Martedì'=>2,'Mercoledì'=>3,'Giovedì'=>4,'Venerdì'=>5,'Sabato'=>6,'Domenica'=>7];
+        $giorni=['Lunedì'=>'isLunedi','Martedì'=>'isMartedi','Mercoledì'=>'isMercoledi','Giovedì'=>'isGiovedi','Venerdì'=>'isVenerdi','Sabato'=>'isSabato','Domenica'=>'isDomenica'];
         return $this->render('FrontEndBundle:Default:index.html.twig', [
           'gusti'=>$gusti,
           'regioni'=>$regioni,
@@ -49,34 +49,11 @@ class DefaultController extends Controller
       //prepariamo tutti gli array per la tendina nascosta
       $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
       $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
-      $giorni=['Lunedì'=>1,'Martedì'=>2,'Mercoledì'=>3,'Giovedì'=>4,'Venerdì'=>5,'Sabato'=>6,'Domenica'=>7];
+      $giorni=['Lunedì'=>'isLunedi','Martedì'=>'isMartedi','Mercoledì'=>'isMercoledi','Giovedì'=>'isGiovedi','Venerdì'=>'isVenerdi','Sabato'=>'isSabato','Domenica'=>'isDomenica'];
 
       //raccogliamo i dati della ricerca provenienti dalla home per registrarla
       $em=$this->getDoctrine()->getManager();
       //controlliamo il primo campo gusto
-      for($i=1;$i<=3;$i++)
-      {
-        if($request->request->get("hpGusto$i")!=0){
-          //raccogliamo i dati della prima ricerca
-          $data=new \DateTime();
-          $dataRicerca=$data->format('d-m-Y');
-          $cittaRicerca=$this->getDoctrine()->getRepository('FrontEndBundle:Citta')->find($request->get('hpCitta'));
-          $gustoRicerca=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->find($request->get("hpGusto$i"));
-          $utenteRicerca=null;
-          //se c'è un utente loggato lo inseriamo
-          if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
-          {
-            $utenteRicerca = $this->container->get('security.token_storage')->getToken()->getUser();
-          }
-          //inseriamo i dati della prima ricerca
-          $ricerca=new Ricerca();
-          $ricerca->setIdCitta($cittaRicerca);
-          $ricerca->setDataRicerca($dataRicerca);
-          $ricerca->setIdUtente($utenteRicerca);
-          $ricerca->setIdGusto($gustoRicerca);
-          $em->persist($ricerca);
-          $em->flush();
-        }}
 
         for($i=1;$i<=3;$i++)
         {
@@ -102,26 +79,54 @@ class DefaultController extends Controller
             $em->flush();
           }}
 
+          //RICERCA VERA E PROPRIA
+          //raccolgo tutti i dati provenienti dal form
+          $cittaCercata=$request->request->get('city');
+          $giorno1=$request->request->get('day1');
+          $giorno2=$request->request->get('day2');
+          $giorno3=$request->request->get('day3');
+          $gusto1=$request->request->get('gusto1');
+          $gusto2=$request->request->get('gusto2');
+          $gusto3=$request->request->get('gusto3');
+
           /*
-          //g -> gelaterie, f->gusti
-          $repository=$em->getRepository('FrontEndBundle:Gelateria');
-          $query=$repository->createQueryBuilder('g')
-            ->innerJoin('g.gusti','f')
-            ->where('f.id = :')
+          APPUNTO JOIN SQL
+          $sql="SELECT ge
+          FROM FrontEndBundle:Gelateria ge
+          INNER JOIN gelateria_gusti gg ON ge.id = gg.gelateria_id
+          INNER JOIN gusto gu ON gu.id = gg.gusto_id
+          WHERE ge.id_citta = $cittaCercata ";
+          QUI ANDREBBERO TUTTE LE COSE OPZIONALI
+          */
 
-          //gestiamo la vera ricerca
-         $query=$em->createQuery(
-            "SELECT g
-            FROM FrontEndBundle:Gelateria g
-            WHERE g.id_citta = $cittaScelta
-            ORDER BY g.nome_gelateria DESC'
-          )*/
+          //costruiamo la query DQL in maniera dinamica
+          $dql="SELECT ge.nomeGelateria
+          FROM FrontEndBundle\Entity\Gelateria ge
+          JOIN ge.gusti gg
+          WHERE ge.idCitta = $cittaCercata ";
 
+          //se sono indicati i giorni controlliamo
+          if ($giorno1 !== 0)  $dql.= " AND ge.$giorno1=true ";
+          if ($giorno2 !== 0) $dql.= " AND ge.$giorno2=true ";
+          if ($giorno3 !== 0) $dql.= " AND ge.$giorno3=true ";
+
+          //se sono indicati i gusti controlliamo
+          if($gusto1 !== 0) $dql.= " AND gg.id=$gusto1 ";
+          if($gusto2 !== 0) $dql.= " AND gg.id=$gusto2 ";
+          if($gusto3 !== 0) $dql.= " AND gg.id=$gusto3 ";
+
+          //ordiniamo i risultati in ordine alfabetico sul nome delle gelaterie
+          $dql.="ORDER BY ge.nomeGelateria DESC";
+          $query=$em->createQuery($dql);
+          $gelaterieTrovate=$query->getResult();
+          var_dump($dql);
+          var_dump($gelaterieTrovate);
 
       return $this->render('FrontEndBundle:Default:search.html.twig', array(
         'gusti'=>$gusti, //per la tendina
         'regioni'=>$regioni, //per la tendina
         'giorni'=>$giorni, //per la tendina
+        'gelaterieTrovate'=>$gelaterieTrovate
       ));
     }
 

@@ -24,6 +24,7 @@
 			</div>
 			{{form_row(form.INSERISCI, {'attr':{'value':'INSERISCI', 'class':'submitButton'}})}}
 			{{form_widget(form)}}
+			<input type="hidden" value="{{ gelateria.id }}" name="gelToUpdate" />
 		{{form_end(form)}}
 	</div>
 </div>

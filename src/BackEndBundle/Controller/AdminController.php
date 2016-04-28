@@ -195,7 +195,7 @@ class AdminController extends Controller
 
     public function updGel2Action(Request $request)
     {
-        $gelateria=$this->getDoctrine()->getRepository('FrontEndBundle:Gelateria')->find($request->get('gelToUpdate'));
+        $gelateria=$this->getDoctrine()->getRepository('FrontEndBundle:Gelateria')->find($request->request->get('gelToUpdate'));
         $form=$this->createForm(GelateriaType::class, $gelateria);
         $form->handleRequest($request);
 
@@ -209,7 +209,8 @@ class AdminController extends Controller
         }
 
         return $this->render('BackEndBundle:Admin:upd_gel2.html.twig', array(
-            'form'=>$form->createView()
+            'form'=>$form->createView(),
+            'gelateria'=>$gelateria
         ));
     }
 
