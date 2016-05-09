@@ -169,6 +169,7 @@ footer ul li{
 	text-align: center;
 }
 
+
 .gelato:before{
 	content: url('../img/icecream.png');
 }
@@ -573,9 +574,9 @@ footer ul li{
 
 #layerGusti .popup{
 	min-height:20%;
-	max-height:80%;
+	max-height:75%;
 	max-width:80%;
-	min-width:50%;
+	min-width:70%;
 }
 
 #main{
@@ -604,13 +605,20 @@ footer ul li{
 	width:20%;
 }
 
+#popupGusti h2{
+	margin-bottom:15px;
+}
+
 #popupGusti p span{
 	font-size: 150%;
 	font-weight: bold;
+	background-color: #7d7b7e;
+	border-radius: 50%;
+	padding: 5px 3px 3px 3px;
 }
 
 #popupGusti .flavourWrapper{
-	margin:auto;
+	margin: auto;
 	text-align:left;
 	width:100%;
 }

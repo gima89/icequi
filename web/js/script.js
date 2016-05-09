@@ -300,3 +300,28 @@ $(document).ready(function(){
 		})
 	})
 })
+
+//tendina seleziona Regione della pagina reports che influisce sulle Province
+$(document).ready(function(){
+	$('#dbRegionSelect').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'dashboardprovincefilter/'+id
+		})
+		.done(function(data){
+			$('#dbProvinceSection').html(data);
+		})
+	})
+})
+
+function sblocca(selezione){
+	var t= document.getElementById('tasto');
+	if (selezione.value!=0){
+		 t.disabled=false;
+		 t.style.cursor=pointer;
+	 }
+	else{
+		t.disabled=true;
+		t.style.cursor=pointer;
+	}
+}

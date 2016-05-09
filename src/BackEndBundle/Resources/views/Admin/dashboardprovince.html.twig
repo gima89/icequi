@@ -1,0 +1,20 @@
+<select id="dbProvinciaSelect">
+	<option>Provincia</option>
+	{% for provincia in provincie %}
+	<option value="{{provincia.id}}">{{provincia.nomeProvincia}}</option>
+	{% endfor %}
+</select>
+<script>
+//tendina seleziona Provincia della pagina reports che influisce sulle Città
+$(document).ready(function(){
+	$('#dbProvinciaSelect').on('change', function(){
+		var id=$("option:selected", this).val();
+		$.ajax({
+			url: 'dashboardcityfilter/'+id
+		})
+		.done(function(data){
+			$('#dbCitySection').html(data);
+		})
+	})
+})
+</script>

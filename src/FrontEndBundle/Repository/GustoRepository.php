@@ -10,4 +10,8 @@ namespace FrontEndBundle\Repository;
  */
 class GustoRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findAllOrderedByName()
+  {
+    return $this->getEntityManager()->createQuery('SELECT g FROM FrontEndBundle:Gusto g ORDER BY g.nomeGusto ASC')->getResult();
+    }
 }

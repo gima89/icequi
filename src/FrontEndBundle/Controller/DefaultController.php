@@ -10,13 +10,15 @@ use FrontEndBundle\Entity\Provincia;
 use FrontEndBundle\Entity\Citta;
 use FrontEndBundle\Entity\Ricerca;
 use FrontEndBundle\Entity\Utente;
+use FrontEndBundle\Repository\GustoRepository;
 
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
+        //$gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findBy([],['nomeGusto'=>'ASC']);
+        $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAllOrderedByName();
         $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
         $giorni=['Lunedì'=>'isLunedi','Martedì'=>'isMartedi','Mercoledì'=>'isMercoledi','Giovedì'=>'isGiovedi','Venerdì'=>'isVenerdi','Sabato'=>'isSabato','Domenica'=>'isDomenica'];
         return $this->render('FrontEndBundle:Default:index.html.twig', [
@@ -47,7 +49,7 @@ class DefaultController extends Controller
     public function searchAction(Request $request)
     {
       //prepariamo tutti gli array per la tendina nascosta
-      $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAll();
+      $gusti=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->findAllOrderedByName();
       $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
       $giorni=['Lunedì'=>'isLunedi','Martedì'=>'isMartedi','Mercoledì'=>'isMercoledi','Giovedì'=>'isGiovedi','Venerdì'=>'isVenerdi','Sabato'=>'isSabato','Domenica'=>'isDomenica'];
 
@@ -59,8 +61,8 @@ class DefaultController extends Controller
         {
           if($request->request->get("gusto$i")!=0){
             //raccogliamo i dati della prima ricerca
-            $data=new \DateTime();
-            $dataRicerca=$data->format('d-m-Y');
+            $dataRicerca=new \DateTime();
+
             $cittaRicerca=$this->getDoctrine()->getRepository('FrontEndBundle:Citta')->find($request->get('city'));
             $gustoRicerca=$this->getDoctrine()->getRepository('FrontEndBundle:Gusto')->find($request->get("gusto$i"));
             $utenteRicerca=null;
@@ -106,22 +108,23 @@ class DefaultController extends Controller
           WHERE ge.idCitta = $cittaCercata ";
 
           //se sono indicati i giorni controlliamo
-          if ($giorno1 !== 0)  $dql.= " AND ge.$giorno1=true ";
-          if ($giorno2 !== 0) $dql.= " AND ge.$giorno2=true ";
-          if ($giorno3 !== 0) $dql.= " AND ge.$giorno3=true ";
+          if ($giorno1 !="nessuno") $dql.= " AND ge.$giorno1=true ";
+          if ($giorno2 !="nessuno") $dql.= " AND ge.$giorno2=true ";
+          if ($giorno3 !="nessuno") $dql.= " AND ge.$giorno3=true ";
 
           //se sono indicati i gusti controlliamo
-          if($gusto1 !== 0) $dql.= " AND gg.id=$gusto1 ";
-          if($gusto2 !== 0) $dql.= " AND gg.id=$gusto2 ";
-          if($gusto3 !== 0) $dql.= " AND gg.id=$gusto3 ";
+          if($gusto1 != 0) $dql.= " AND gg.id=$gusto1 ";
+          if($gusto2 != 0) $dql.= " AND gg.id=$gusto2 ";
+          if($gusto3 != 0) $dql.= " AND gg.id=$gusto3 ";
 
           //ordiniamo i risultati in ordine alfabetico sul nome delle gelaterie
-          $dql.="ORDER BY ge.nomeGelateria DESC";
+          $dql.="ORDER BY ge.nomeGelateria ASC";
           $query=$em->createQuery($dql);
           $gelaterieTrovate=$query->getResult();
+          /*
           var_dump($dql);
           var_dump($gelaterieTrovate);
-
+          */
       return $this->render('FrontEndBundle:Default:search.html.twig', array(
         'gusti'=>$gusti, //per la tendina
         'regioni'=>$regioni, //per la tendina

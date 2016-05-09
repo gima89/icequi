@@ -308,9 +308,65 @@ class AdminController extends Controller
 
     public function dashboardAction()
     {
+        $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
+        $oggi=date('Y-m-d');
+        $settimanaScorsa=date('Y-m-d', strtotime('-7 days'));
+
         return $this->render('BackEndBundle:Admin:dashboard.html.twig', array(
-            // ...
+              'regioni'=>$regioni,
+              'oggi'=>$oggi,
+              'settimanaScorsa'=>$settimanaScorsa
+
         ));
     }
+
+    public function dashboardProvincefilterAction(Request $request)
+    {
+        $provincie=$this->getDoctrine()->getRepository('FrontEndBundle:Provincia')->findByIdRegione($request->get('id'));
+
+        return $this->render('BackEndBundle:Admin:dashboardprovince.html.twig', array(
+              'provincie'=>$provincie
+        ));
+    }
+
+    public function dashboardCityFilterAction(Request $request)
+    {
+        $cities=$this->getDoctrine()->getRepository('FrontEndBundle:Citta')->findByIdProvincia($request->get('id'));
+
+        return $this->render('BackEndBundle:Admin:dashboardcitta.html.twig', array(
+              'cities'=>$cities
+        ));
+    }
+
+    public function ReportAction(Request $request)
+    {
+        $regioni=$this->getDoctrine()->getRepository('FrontEndBundle:Regione')->findAll();
+        $oggi=date('Y-m-d');
+        $settimanaScorsa=date('Y-m-d', strtotime('-7 days'));
+
+        //prendiamo gli elementi
+        $city=$request->request->get('citta');
+        $from=$request->request->get('fromDate');
+        $to=$request->request->get('toDate');
+
+        $em=$this->getDoctrine()->getManager();
+        $dql="SELECT COUNT(r.id)
+        FROM FrontEndBundle:Ricerca r
+        WHERE r.idCitta = $city
+        AND r.dataRicerca BETWEEN $from AND $to
+        GROUP BY r.idGusto";
+        $query= $em->createQuery($dql);
+        $result=$query->getResult();
+
+        var_dump($result);
+
+        return $this->render('BackEndBundle:Admin:dashboard.html.twig', array(
+          'regioni'=>$regioni,
+          'oggi'=>$oggi,
+          'settimanaScorsa'=>$settimanaScorsa,
+          'report'=>$result
+        ));
+    }
+
 
 }

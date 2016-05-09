@@ -5,36 +5,38 @@
 	Consulta Reportistica
 </div>
 <div class="reportFormContainer">
-	<form name="reportForm" action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
-		<input type="hidden" name="requestedPage" value="reports" />
-			<table id="reportFormTable" >
-				<tr>
-					<td>
-						<select>
-							<?php crea_elenco($regioni) ?>
+	<form method="post" action="{{url('report')}}">
+		<table id="reportFormTable" >
+			<tr>
+				<td>
+					<select id="dbRegionSelect">
+						<option>Regione</option>
+						{% for regione in regioni %}
+						<option value="{{regione.id}}">{{regione.nomeRegione}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>
+					Dal:  <input type="date" name="fromDate" value="{{settimanaScorsa}}" />
+					</td>
+				</tr>
+					<td id="dbProvinceSection">
+						<select id="dbProvinciaSelect" disabled>
+							<option>Provincia</option>
 						</select>
 					</td>
 					<td>
-						Dal: <input type="date" name="from" />
-					</td>
-				</tr>
-					<td>
-						<select>
-							<?php crea_elenco($province) ?>
-						</select>
-					</td>
-					<td>
-						Al: <input type="date" name="to" />
+						Al: <input type="date" name="toDate" value="{{oggi}}" />
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<select>
-							<?php crea_elenco($cities) ?>
+					<td id="dbCitySection">
+						<select id="dbCitySelect" disabled>
+							<option>Citt&agrave;</option>
 						</select>
 					</td>
 					<td style="text-align: right">
-						<input type="submit" value="FILTRA" class="submitButton" />
+						<input id="tasto" style="cursor:not-allowed" type="submit" value="FILTRA" class="submitButton" disabled />
 					</td>
 				</tr>
 			</table>

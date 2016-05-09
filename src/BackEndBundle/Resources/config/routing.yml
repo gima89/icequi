@@ -25,7 +25,7 @@ cityFilter:
 favoriteCity:
     path:     settings/favoriteCity
     defaults: { _controller: BackEndBundle:Admin:FavoriteCity }
-    
+
 admin_manage:
     path:     adminManage
     defaults: { _controller: BackEndBundle:Admin:adminManage }
@@ -93,6 +93,18 @@ del_flavour:
 dashboard:
     path:     dashboard
     defaults: { _controller: BackEndBundle:Admin:dashboard }
+
+dashboardprovincefilter:
+    path:     dashboardprovincefilter/{id}
+    defaults: { _controller: BackEndBundle:Admin:dashboardProvinceFilter }
+
+dashboardcityfilter:
+    path:     dashboardcityfilter/{id}
+    defaults: { _controller: BackEndBundle:Admin:dashboardCityFilter }
+
+report:
+    path:     report
+    defaults: { _controller: BackEndBundle:Admin:Report }
 
 login2:
     path:     login

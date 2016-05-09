@@ -29,7 +29,7 @@ class Ricerca
 
     /**
      * @var string
-     * @ORM\Column(name="data_ricerca", type="string")
+     * @ORM\Column(name="data_ricerca", type="date")
      *
      */
     private $dataRicerca;

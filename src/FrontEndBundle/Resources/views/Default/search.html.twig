@@ -31,7 +31,7 @@
 						{% endfor %}
 					</select><br />
 					<select name="day1">
-						<option value=0>Indifferente</option>
+						<option value="nessuno">Indifferente</option>
 						{% for giorno, num in giorni %}
 						<option value="{{num}}">{{giorno}}</option>
 						{% endfor %}
@@ -50,7 +50,7 @@
 					</select><br />
 					</div>
 					<select name="day2">
-						<option value=0>Indifferente</option>
+						<option value="nessuno">Indifferente</option>
 						{% for giorno, num in giorni %}
 						<option value="{{num}}">{{giorno}}</option>
 						{% endfor %}
@@ -69,7 +69,7 @@
 					</select>
 					</div>
 					<select name="day3">
-						<option value=0>Indifferente</option>
+						<option value="nessuno">Indifferente</option>
 						{% for giorno, num in giorni %}
 						<option value="{{num}}">{{giorno}}</option>
 						{% endfor %}
@@ -84,8 +84,8 @@
 	<section class="resultSection">
 		<div class="resultInfo">
 			<h2>1. Gelateria "Da Mimmo"</h2>
-			<p class="address">Corso Valparaiso 118, </p>
-			<p class="tel">02 391587</p>
+			<p class="address">Corso Valparaiso, 118 - Lamezia Terme(CZ)</p>
+			<p class="tel">0968 391587</p>
 		</div>
 		<div class="resultIcon">
 			<div><img src="{{asset('img/visualizzaGusti.png')}}" alt="Visualizza i Gusti" title="Visualizza i Gusti" class="imgGusti" /></div>
@@ -96,7 +96,7 @@
 	<section class="resultSection greyBG">
 		<div class="resultInfo">
 			<h2>2. Bar "La Golosa"</h2>
-			<p class="address">Corso Numistrano, 12 </p>
+			<p class="address">Corso Numistrano, 12 - Lamezia Terme(CZ)</p>
 			<p class="tel">0968 25556</p>
 		</div>
 		<div class="resultIcon">
@@ -115,18 +115,9 @@
 			<h2>IN QUESTA GELATERIA PUOI TROVARE</h2>
 			<!-- il colore deve cambiare dinamicamente -->
 			<div class="flavoursWrapper">
-			<p><span class="gelatini" style="color: green;">&#127846;</span>Pistacchio</p>
-			<p><span class="gelatini" style="color: brown">&#127846;</span>Cacao</p>
-			<p><span class="gelatini" style="color: red">&#127846;</span>Fragola</p>
-			<p><span class="gelatini" style="color: cyan">&#127846;</span>Puffo</p>
-			<p><span class="gelatini" style="color: lightyellow">&#127846;</span>Ananas</p>
-			<p><span class="gelatini" style="color: yellow">&#127846;</span>Banana</p>
-			<p><span class="gelatini" style="color: bordeaux">&#127846;</span>Amarena</p>
-			<p><span class="gelatini" style="color: red">&#127846;</span>Mela Rossa</p>
-			<p><span class="gelatini" style="color: white">&#127846;</span>Stracciatella</p>
-			<p><span class="gelatini" style="color: pink">&#127846;</span>Prosciutto</p>
-			<p><span class="gelatini" style="color: #0ABAB5">&#127846;</span>Carofiglio</p>
-			<p><span class="gelatini" style="color: purple">&#127846;</span>Prugna</p>
+				{% for gusto in gusti %}
+					<p><span class="gelatini" style="color: {{gusto.colore}};">&#127846;</span> {{gusto.nomeGusto}}</p>
+				{% endfor %}
 			</div>
 		</div>
 	</section>

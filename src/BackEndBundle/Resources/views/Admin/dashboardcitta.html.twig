@@ -1,0 +1,19 @@
+<select id="dbCitySelect" name="citta" onchange="sblocca(this);">
+	<option value=0>Citt&agrave;</option>
+	{% for city in cities %}
+	<option value="{{city.id}}">{{city.nomeCitta}}</option>
+	{% endfor %}
+</select>
+<script>
+function sblocca(selezione){
+	var t= document.getElementById('tasto');
+	if (selezione.value!=0){
+		 t.disabled=false;
+		 t.style.cursor='pointer';
+	 }
+	else{
+		t.disabled=true;
+		t.style.cursor='not-allowed';
+	}
+}
+</script>
