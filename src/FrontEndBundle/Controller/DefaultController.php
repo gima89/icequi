@@ -131,7 +131,7 @@ class DefaultController extends Controller
         'gusti'=>$gusti, //per la tendina
         'regioni'=>$regioni, //per la tendina
         'giorni'=>$giorni, //per la tendina
-        'gelaterieTrovate'=>$gelaterieTrovate[0],
+        'gelaterieTrovate'=>$gelaterieTrovate,
         //'numero'=>$gelaterieTrovate[1]
       ));
     }
