@@ -125,13 +125,14 @@ class DefaultController extends Controller
           $gelaterieTrovate=$query->getResult();
 
         //  var_dump($dql);
-      //var_dump($gelaterieTrovate);
+
 
       return $this->render('FrontEndBundle:Default:search.html.twig', array(
         'gusti'=>$gusti, //per la tendina
         'regioni'=>$regioni, //per la tendina
         'giorni'=>$giorni, //per la tendina
-        'gelaterieTrovate'=>$gelaterieTrovate
+        'gelaterieTrovate'=>$gelaterieTrovate[0],
+        //'numero'=>$gelaterieTrovate[1]
       ));
     }
 
