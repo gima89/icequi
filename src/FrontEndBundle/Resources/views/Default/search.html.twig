@@ -81,11 +81,14 @@
 			</div>
 		</form>
 	</section>
+
+
+		{% for gel in gelaterieTrovate %}
 	<section class="resultSection">
 		<div class="resultInfo">
-			<h2>1. Gelateria "Da Mimmo"</h2>
-			<p class="address">Corso Valparaiso, 118 - Lamezia Terme(CZ)</p>
-			<p class="tel">0968 391587</p>
+			<h2>{{ gel.nomeGelateria }}</h2>
+			<p class="address">{{ gel.indirizzo }} - {{ gel.idCitta.nomeCitta }}</p>
+			<p class="tel">{{ gel.telefono }}</p>
 		</div>
 		<div class="resultIcon">
 			<div><img src="{{asset('img/visualizzaGusti.png')}}" alt="Visualizza i Gusti" title="Visualizza i Gusti" class="imgGusti" /></div>
@@ -93,6 +96,8 @@
 			<div><img  class="invita" src="{{asset('img/inviteFriends.png')}}" alt="Invita amici" title="Invita amici" /></div>
 		</div>
 	</section>
+		{% endfor %}
+
 	<section class="resultSection greyBG">
 		<div class="resultInfo">
 			<h2>2. Bar "La Golosa"</h2>

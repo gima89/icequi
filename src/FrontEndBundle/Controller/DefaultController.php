@@ -102,29 +102,31 @@ class DefaultController extends Controller
           */
 
           //costruiamo la query DQL in maniera dinamica
-          $dql="SELECT ge.nomeGelateria
-          FROM FrontEndBundle\Entity\Gelateria ge
-          JOIN ge.gusti gg
-          WHERE ge.idCitta = $cittaCercata ";
+          $dql="SELECT ge
+          FROM FrontEndBundle\Entity\Gelateria ge";
+          if($gusto1 != 0) $dql.= " JOIN ge.gusti gg ";
+          if($gusto2 != 0) $dql.= " JOIN ge.gusti ggg ";
+          if($gusto3 != 0) $dql.= " JOIN ge.gusti gggg ";
+          $dql.= " WHERE ge.idCitta = $cittaCercata ";
+
+          //se sono indicati i gusti controlliamo
+          if($gusto1 != 0) $dql.= " AND gg.id=$gusto1 ";
+          if($gusto2 != 0) $dql.= " AND ggg.id=$gusto2 ";
+          if($gusto3 != 0) $dql.= " AND gggg.id=$gusto3 ";
 
           //se sono indicati i giorni controlliamo
           if ($giorno1 !="nessuno") $dql.= " AND ge.$giorno1=true ";
           if ($giorno2 !="nessuno") $dql.= " AND ge.$giorno2=true ";
           if ($giorno3 !="nessuno") $dql.= " AND ge.$giorno3=true ";
 
-          //se sono indicati i gusti controlliamo
-          if($gusto1 != 0) $dql.= " AND gg.id=$gusto1 ";
-          if($gusto2 != 0) $dql.= " AND gg.id=$gusto2 ";
-          if($gusto3 != 0) $dql.= " AND gg.id=$gusto3 ";
-
           //ordiniamo i risultati in ordine alfabetico sul nome delle gelaterie
           $dql.="ORDER BY ge.nomeGelateria ASC";
           $query=$em->createQuery($dql);
           $gelaterieTrovate=$query->getResult();
-          /*
-          var_dump($dql);
-          var_dump($gelaterieTrovate);
-          */
+
+        //  var_dump($dql);
+      //var_dump($gelaterieTrovate);
+
       return $this->render('FrontEndBundle:Default:search.html.twig', array(
         'gusti'=>$gusti, //per la tendina
         'regioni'=>$regioni, //per la tendina
